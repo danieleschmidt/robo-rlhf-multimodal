@@ -205,3 +205,19 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Robotics specific
+checkpoints/
+data/
+logs/
+runs/
+wandb/
+*.mp4
+*.avi
+*.gif
+*.bag
+*.rosbag
+
+# Simulation files
+*.urdf.xacro
+*.world
