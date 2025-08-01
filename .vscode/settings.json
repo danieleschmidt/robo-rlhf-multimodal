@@ -1,0 +1,118 @@
+{
+  "python.defaultInterpreterPath": "./venv/bin/python",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.banditEnabled": true,
+  "python.formatting.provider": "black",
+  "python.sortImports.provider": "isort",
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": [
+    "tests/",
+    "-v",
+    "--tb=short"
+  ],
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "editor.rulers": [88],
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/*.pyc": true,
+    ".pytest_cache": true,
+    ".mypy_cache": true,
+    ".coverage": true,
+    "htmlcov": true,
+    ".ruff_cache": true,
+    "*.egg-info": true,
+    "build/": true,
+    "dist/": true
+  },
+  "files.watcherExclude": {
+    "**/__pycache__": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/data/**": true,
+    "**/checkpoints/**": true,
+    "**/logs/**": true,
+    "**/wandb/**": true
+  },
+  "search.exclude": {
+    "**/__pycache__": true,
+    "**/node_modules": true,
+    "**/.git": true,
+    "**/data/**": true,
+    "**/checkpoints/**": true,
+    "**/logs/**": true,
+    "**/wandb/**": true,
+    "**/*.egg-info": true
+  },
+  "terminal.integrated.env.linux": {
+    "PYTHONPATH": "${workspaceFolder}"
+  },
+  "terminal.integrated.env.osx": {
+    "PYTHONPATH": "${workspaceFolder}"
+  },
+  "terminal.integrated.env.windows": {
+    "PYTHONPATH": "${workspaceFolder}"
+  },
+  "jupyter.jupyterServerType": "local",
+  "jupyter.askForKernelRestart": false,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-workflow.json": ".github/workflows/*.yml",
+    "https://json.schemastore.org/docker-compose.json": "docker-compose*.yml"
+  },
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME", 
+    "TODO",
+    "NOTE",
+    "OPTIMIZE",
+    "SECURITY"
+  ],
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "tag",
+    "foreground": "red",
+    "background": "white",
+    "opacity": 50,
+    "iconColour": "blue"
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "foreground": "black",
+      "iconColour": "yellow",
+      "gutterIcon": true
+    },
+    "FIXME": {
+      "foreground": "red",
+      "iconColour": "red",
+      "gutterIcon": true
+    },
+    "SECURITY": {
+      "foreground": "red",
+      "background": "yellow",
+      "iconColour": "red",
+      "gutterIcon": true
+    }
+  },
+  "gitLens.codeLens.authors.enabled": false,
+  "gitLens.codeLens.recentChange.enabled": false,
+  "files.associations": {
+    "*.yaml": "yaml",
+    "*.yml": "yaml",
+    "Dockerfile*": "dockerfile",
+    "*.urdf": "xml",
+    "*.xacro": "xml",
+    "*.launch": "xml"
+  }
+}

@@ -1,0 +1,108 @@
+# ============================================================================
+# Docker ignore file for Robo-RLHF-Multimodal
+# ============================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+build/
+dist/
+*.egg
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Development tools
+.mypy_cache/
+.ruff_cache/
+.pre-commit-config.yaml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+venv/
+.venv/
+env/
+
+# Git
+.git/
+.gitignore
+
+# Data and logs
+data/
+logs/
+checkpoints/
+runs/
+wandb/
+*.mp4
+*.avi
+*.gif
+*.bag
+*.rosbag
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Documentation build
+docs/_build/
+site/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Large files
+*.tar
+*.tar.gz
+*.zip
+*.pkl
+*.pt
+*.pth
+*.ckpt
+
+# Secrets
+*.key
+*.pem
+*.crt
+secrets.yaml
+
+# Backup files
+*.bak
+*.backup
+
+# Test artifacts
+test-results/
+test-reports/
+coverage.xml
+.coverage.*
+
+# Development containers
+.devcontainer/
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Terragon autonomous system
+.terragon/

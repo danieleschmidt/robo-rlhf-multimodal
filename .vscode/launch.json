@@ -1,0 +1,117 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Python: Pytest Current File",
+      "type": "python",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${file}", "-v", "-s"],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Python: Pytest All Tests",
+      "type": "python", 
+      "request": "launch",
+      "module": "pytest",
+      "args": ["tests/", "-v"],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Python: Train RLHF Model",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/train_rlhf.py",
+      "args": ["--config", "configs/default.yaml"],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}",
+        "CUDA_VISIBLE_DEVICES": "0"
+      }
+    },
+    {
+      "name": "Python: Collect Demonstrations",
+      "type": "python",
+      "request": "launch", 
+      "program": "${workspaceFolder}/scripts/collect_demos.py",
+      "args": ["--env", "mujoco_manipulation", "--num-episodes", "10"],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Python: Preference Server",
+      "type": "python",
+      "request": "launch",
+      "module": "robo_rlhf.preference.server",
+      "args": ["--port", "8080", "--host", "0.0.0.0"],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Python: Evaluate Policy",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/scripts/evaluate.py", 
+      "args": ["--checkpoint", "checkpoints/best_policy.pt", "--env", "mujoco_manipulation"],
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    {
+      "name": "Python: Debug with Arguments",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": false,
+      "args": [],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}",
+        "DEBUG": "1"
+      }
+    },
+    {
+      "name": "Docker: Run Container",
+      "type": "docker",
+      "request": "launch",
+      "preLaunchTask": "docker-build",
+      "python": {
+        "pathMappings": [
+          {
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/workspace"
+          }
+        ],
+        "projectType": "general"
+      }
+    }
+  ]
+}
