@@ -1,0 +1,139 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "install-dev",
+      "type": "shell",
+      "command": "pip install -e .[dev]",
+      "group": "build",
+      "detail": "Install package in development mode with dev dependencies",
+      "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "type": "shell", 
+      "command": "pytest",
+      "args": ["tests/", "-v", "--cov=robo_rlhf", "--cov-report=html"],
+      "group": "test",
+      "detail": "Run all tests with coverage report",
+      "problemMatcher": []
+    },
+    {
+      "label": "test-fast",
+      "type": "shell",
+      "command": "pytest",
+      "args": ["tests/", "-x", "--ff"],
+      "group": "test",
+      "detail": "Run tests fast (fail fast, failed first)",
+      "problemMatcher": []
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "flake8",
+      "args": ["robo_rlhf/", "tests/"],
+      "group": "build",
+      "detail": "Run linting with flake8",
+      "problemMatcher": []
+    },
+    {
+      "label": "type-check",
+      "type": "shell",
+      "command": "mypy",
+      "args": ["robo_rlhf/"],
+      "group": "build", 
+      "detail": "Run type checking with mypy",
+      "problemMatcher": []
+    },
+    {
+      "label": "format",
+      "type": "shell",
+      "command": "black",
+      "args": ["robo_rlhf/", "tests/"],
+      "group": "build",
+      "detail": "Format code with black",
+      "problemMatcher": []
+    },
+    {
+      "label": "sort-imports",
+      "type": "shell",
+      "command": "isort",
+      "args": ["robo_rlhf/", "tests/"],
+      "group": "build",
+      "detail": "Sort imports with isort",
+      "problemMatcher": []
+    },
+    {
+      "label": "security-check",
+      "type": "shell",
+      "command": "bandit",
+      "args": ["-r", "robo_rlhf/"],
+      "group": "build",
+      "detail": "Run security check with bandit",
+      "problemMatcher": []
+    },
+    {
+      "label": "pre-commit",
+      "type": "shell",
+      "command": "pre-commit",
+      "args": ["run", "--all-files"],
+      "group": "build",
+      "detail": "Run all pre-commit hooks",
+      "problemMatcher": []
+    },
+    {
+      "label": "docker-build",
+      "type": "shell",
+      "command": "docker",
+      "args": ["build", "-t", "robo-rlhf:latest", "."],
+      "group": "build",
+      "detail": "Build Docker image",
+      "problemMatcher": []
+    },
+    {
+      "label": "docker-run",
+      "type": "shell",
+      "command": "docker",
+      "args": ["run", "-it", "--rm", "--gpus=all", "-v", "${workspaceFolder}:/workspace", "robo-rlhf:latest"],
+      "group": "build",
+      "detail": "Run Docker container interactively",
+      "problemMatcher": []
+    },
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "bash",
+      "args": ["-c", "find . -type d -name '__pycache__' -exec rm -rf {} + 2>/dev/null || true; find . -name '*.pyc' -delete; rm -rf .pytest_cache .mypy_cache .coverage htmlcov/ dist/ build/ *.egg-info/"],
+      "group": "build",
+      "detail": "Clean up generated files and caches",
+      "problemMatcher": []
+    },
+    {
+      "label": "docs-build",
+      "type": "shell",
+      "command": "mkdocs",
+      "args": ["build"],
+      "group": "build",
+      "detail": "Build documentation with MkDocs",
+      "problemMatcher": []
+    },
+    {
+      "label": "docs-serve",
+      "type": "shell",
+      "command": "mkdocs",
+      "args": ["serve"],
+      "group": "build",
+      "detail": "Serve documentation locally",
+      "problemMatcher": []
+    },
+    {
+      "label": "tensorboard",
+      "type": "shell",
+      "command": "tensorboard",
+      "args": ["--logdir", "logs/", "--port", "6006"],
+      "group": "build",
+      "detail": "Start TensorBoard server",
+      "problemMatcher": []
+    }
+  ]
+}
