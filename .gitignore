@@ -221,3 +221,17 @@ wandb/
 # Simulation files
 *.urdf.xacro
 *.world
+
+# Security and secrets
+.env
+.env.local
+.env.*.local
+secrets.yaml
+*.key
+*.pem
+*.crt
+
+# Terragon autonomous system
+.terragon/cache/
+.terragon/temp/
+.terragon/*.log
