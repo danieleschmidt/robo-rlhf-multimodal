@@ -1,37 +1,270 @@
 version: '3.8'
 
+# ============================================================================
+# Docker Compose configuration for Robo-RLHF-Multimodal
+# ============================================================================
+
 services:
+  # ============================================================================
+  # Main application service
+  # ============================================================================
   robo-rlhf:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: robo-rlhf-app
     ports:
       - "8080:8080"
     volumes:
-      - ./data:/app/data
-      - ./configs:/app/configs
+      - ./data:/workspace/data:cached
+      - ./configs:/workspace/configs:ro
+      - ./checkpoints:/workspace/checkpoints:cached
+      - ./logs:/workspace/logs:cached
     environment:
+      - ENVIRONMENT=production
       - CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
       - WANDB_API_KEY=${WANDB_API_KEY}
+      - HF_TOKEN=${HF_TOKEN}
+      - DATABASE_URL=mongodb://admin:password@mongodb:27017/robo_rlhf?authSource=admin
+      - REDIS_URL=redis://redis:6379/0
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    depends_on:
+      - mongodb
+      - redis
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - robo-rlhf-network
 
+  # ============================================================================
+  # Development service (for development workflow)
+  # ============================================================================
+  robo-rlhf-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: robo-rlhf-dev
+    ports:
+      - "8000:8000"   # API dev server
+      - "8080:8080"   # Preference UI
+      - "6006:6006"   # TensorBoard
+      - "8888:8888"   # Jupyter
+    volumes:
+      - .:/workspace:cached
+      - dev-cache:/workspace/.cache
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=1
+      - CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - DATABASE_URL=mongodb://admin:password@mongodb:27017/robo_rlhf_dev?authSource=admin
+      - REDIS_URL=redis://redis:6379/1
+    depends_on:
+      - mongodb
+      - redis
+    command: bash
+    stdin_open: true
+    tty: true
+    networks:
+      - robo-rlhf-network
+    profiles:
+      - dev
+
+  # ============================================================================
+  # GPU training service
+  # ============================================================================
+  robo-rlhf-gpu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: gpu-production
+    container_name: robo-rlhf-gpu-trainer
+    ports:
+      - "8081:8080"
+      - "6007:6006"   # TensorBoard for training
+    volumes:
+      - ./data:/workspace/data:cached
+      - ./configs:/workspace/configs:ro
+      - ./checkpoints:/workspace/checkpoints:cached
+      - ./logs:/workspace/logs:cached
+    environment:
+      - ENVIRONMENT=training
+      - CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
+      - WANDB_API_KEY=${WANDB_API_KEY}
+      - DATABASE_URL=mongodb://admin:password@mongodb:27017/robo_rlhf?authSource=admin
+      - REDIS_URL=redis://redis:6379/2
+    depends_on:
+      - mongodb
+      - redis
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+    networks:
+      - robo-rlhf-network
+    profiles:
+      - gpu
+
+  # ============================================================================
+  # Database services
+  # ============================================================================
   mongodb:
     image: mongo:6.0
+    container_name: robo-rlhf-mongodb
     ports:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/init.js:ro
     environment:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=robo_rlhf
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - robo-rlhf-network
 
   redis:
     image: redis:7-alpine
+    container_name: robo-rlhf-redis
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
+      - ./configs/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: redis-server /usr/local/etc/redis/redis.conf
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - robo-rlhf-network
+
+  # ============================================================================
+  # Monitoring and observability
+  # ============================================================================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: robo-rlhf-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    networks:
+      - robo-rlhf-network
+    profiles:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: robo-rlhf-grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./configs/grafana/dashboards:/etc/grafana/provisioning/dashboards:ro
+      - ./configs/grafana/datasources:/etc/grafana/provisioning/datasources:ro
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+    networks:
+      - robo-rlhf-network
+    profiles:
+      - monitoring
+
+  # ============================================================================
+  # Development tools
+  # ============================================================================
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: robo-rlhf-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/workspace:cached
+      - jupyter-data:/home/robo/.jupyter
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN:-robo-rlhf}
+    command: >
+      bash -c "
+        jupyter lab --ip=0.0.0.0 --port=8888 --no-browser 
+        --allow-root --ServerApp.token='${JUPYTER_TOKEN:-robo-rlhf}'
+        --ServerApp.password='' --ServerApp.allow_origin='*'
+      "
+    networks:
+      - robo-rlhf-network
+    profiles:
+      - dev
+
+  tensorboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: robo-rlhf-tensorboard
+    ports:
+      - "6006:6006"
+    volumes:
+      - ./logs:/workspace/logs:ro
+      - ./runs:/workspace/runs:ro
+    command: tensorboard --logdir=/workspace/logs --host=0.0.0.0 --port=6006
+    networks:
+      - robo-rlhf-network
+    profiles:
+      - dev
+
+# ============================================================================
+# Networks and volumes
+# ============================================================================
+networks:
+  robo-rlhf-network:
+    driver: bridge
 
 volumes:
   mongodb_data:
+    driver: local
   redis_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  jupyter-data:
+    driver: local
+  dev-cache:
+    driver: local
