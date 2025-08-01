@@ -1,0 +1,111 @@
+# Prometheus configuration for Robo-RLHF-Multimodal
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    cluster: 'robo-rlhf-local'
+    environment: 'development'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  - "alert_rules.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+    scrape_interval: 5s
+    metrics_path: /metrics
+
+  # Main application
+  - job_name: 'robo-rlhf-app'
+    static_configs:
+      - targets: ['robo-rlhf:8080']
+    scrape_interval: 10s
+    metrics_path: /metrics
+    scrape_timeout: 5s
+    honor_labels: true
+
+  # Development application
+  - job_name: 'robo-rlhf-dev'
+    static_configs:
+      - targets: ['robo-rlhf-dev:8080']
+    scrape_interval: 15s
+    metrics_path: /metrics
+    scrape_timeout: 5s
+
+  # GPU training service
+  - job_name: 'robo-rlhf-gpu'
+    static_configs:
+      - targets: ['robo-rlhf-gpu:8080']
+    scrape_interval: 5s  # More frequent for training metrics
+    metrics_path: /metrics
+    scrape_timeout: 5s
+
+  # MongoDB exporter (if enabled)
+  - job_name: 'mongodb'
+    static_configs:
+      - targets: ['mongodb-exporter:9216']
+    scrape_interval: 30s
+    metrics_path: /metrics
+
+  # Redis exporter (if enabled)  
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis-exporter:9121']
+    scrape_interval: 30s
+    metrics_path: /metrics
+
+  # Node exporter for system metrics (if enabled)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 15s
+    metrics_path: /metrics
+
+  # Docker container metrics (if cAdvisor is enabled)
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+    scrape_interval: 15s
+    metrics_path: /metrics
+
+  # Custom metrics for ML training
+  - job_name: 'training-metrics'
+    static_configs:
+      - targets: ['robo-rlhf:8081']  # Custom metrics endpoint
+    scrape_interval: 5s
+    metrics_path: /training/metrics
+    scrape_timeout: 10s
+
+  # Health check endpoints
+  - job_name: 'health-checks'
+    static_configs:
+      - targets: 
+        - 'robo-rlhf:8080'
+        - 'mongodb:27017'
+        - 'redis:6379'
+    scrape_interval: 30s
+    metrics_path: /health
+    scrape_timeout: 5s
+
+# Remote write configuration (for external storage)
+# remote_write:
+#   - url: "https://your-remote-storage/api/v1/write"
+#     headers:
+#       Authorization: "Bearer YOUR_TOKEN"
+
+# Remote read configuration (for external storage)
+# remote_read:
+#   - url: "https://your-remote-storage/api/v1/read"
+#     headers:
+#       Authorization: "Bearer YOUR_TOKEN"
