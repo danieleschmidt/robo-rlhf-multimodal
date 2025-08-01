@@ -41,11 +41,16 @@ isaac = ["isaacsim>=2023.1.0"]
 dev = [
     "pytest>=7.0.0",
     "pytest-cov>=4.0.0",
+    "pytest-xdist>=2.5.0",
+    "pytest-benchmark>=4.0.0",
     "black>=22.0.0",
     "isort>=5.10.0",
     "flake8>=5.0.0",
     "mypy>=0.991",
     "pre-commit>=2.20.0",
+    "bandit>=1.7.0",
+    "safety>=2.0.0",
+    "tox>=4.0.0",
 ]
 full = ["robo-rlhf-multimodal[mujoco,isaac,dev]"]
 
