@@ -1,0 +1,403 @@
+# Continuous Deployment Workflow
+# Deploys to staging and production environments
+
+name: CD
+
+on:
+  push:
+    branches: [ main ]
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [ main ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+# Ensure only one deployment runs at a time
+concurrency:
+  group: deployment
+  cancel-in-progress: false
+
+jobs:
+  # ============================================================================
+  # Check CI Status
+  # ============================================================================
+  check-ci:
+    name: Check CI Status
+    runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success' || github.event_name == 'push'
+    
+    steps:
+    - name: Verify CI passed
+      run: |
+        if [[ "${{ github.event_name }}" == "workflow_run" ]]; then
+          if [[ "${{ github.event.workflow_run.conclusion }}" != "success" ]]; then
+            echo "❌ CI workflow failed, skipping deployment"
+            exit 1
+          fi
+        fi
+        echo "✅ CI passed, proceeding with deployment"
+
+  # ============================================================================
+  # Build and Push Images
+  # ============================================================================
+  build-images:
+    name: Build and Push Images
+    runs-on: ubuntu-latest
+    needs: [check-ci]
+    
+    outputs:
+      image-digest: ${{ steps.build.outputs.digest }}
+      image-tag: ${{ steps.meta.outputs.tags }}
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Log in to Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ${{ env.REGISTRY }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          type=ref,event=branch
+          type=sha,prefix={{branch}}-
+          type=raw,value=latest,enable={{is_default_branch}}
+          
+    - name: Build and push images
+      id: build
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64,linux/arm64
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        target: production
+        
+    - name: Build GPU image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        platforms: linux/amd64
+        push: true
+        tags: |
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:gpu-latest
+          ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:gpu-${{ github.sha }}
+        labels: ${{ steps.meta.outputs.labels }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+        target: gpu-production
+
+  # ============================================================================
+  # Deploy to Staging
+  # ============================================================================
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [build-images]
+    environment:
+      name: staging
+      url: https://robo-rlhf-staging.company.com
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to staging
+      run: |
+        echo "🚀 Deploying to staging environment"
+        echo "Image: ${{ needs.build-images.outputs.image-tag }}"
+        echo "Digest: ${{ needs.build-images.outputs.image-digest }}"
+        
+        # In a real deployment, this would:
+        # 1. Update Kubernetes manifests
+        # 2. Apply configuration changes
+        # 3. Trigger rolling update
+        # 4. Wait for deployment to complete
+        
+        # Example with kubectl (requires cluster credentials):
+        # kubectl set image deployment/robo-rlhf \
+        #   robo-rlhf=${{ needs.build-images.outputs.image-tag }} \
+        #   --namespace=staging
+        # kubectl rollout status deployment/robo-rlhf --namespace=staging
+        
+    - name: Wait for deployment
+      run: |
+        echo "⏳ Waiting for staging deployment to stabilize..."
+        sleep 30
+        
+    - name: Health check staging
+      run: |
+        echo "🏥 Checking staging health..."
+        
+        # Wait for service to be ready
+        timeout 300 bash -c 'until curl -f https://robo-rlhf-staging.company.com/health; do sleep 10; done'
+        
+        # Additional health checks
+        curl -f https://robo-rlhf-staging.company.com/ready
+        curl -f https://robo-rlhf-staging.company.com/metrics
+        
+    - name: Post deployment notification
+      uses: 8398a7/action-slack@v3
+      with:
+        status: custom
+        custom_payload: |
+          {
+            "text": "🚀 Deployed to staging",
+            "attachments": [{
+              "color": "good",
+              "fields": [{
+                "title": "Environment",
+                "value": "staging",
+                "short": true
+              }, {
+                "title": "Version",
+                "value": "${{ github.sha }}",
+                "short": true
+              }, {
+                "title": "URL",
+                "value": "https://robo-rlhf-staging.company.com",
+                "short": false
+              }]
+            }]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ============================================================================
+  # Integration Tests on Staging
+  # ============================================================================
+  staging-tests:
+    name: Staging Integration Tests
+    runs-on: ubuntu-latest
+    needs: [deploy-staging]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.10"
+        cache: 'pip'
+        
+    - name: Install test dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e ".[dev]"
+        
+    - name: Run end-to-end tests
+      env:
+        STAGING_URL: https://robo-rlhf-staging.company.com
+        API_KEY: ${{ secrets.STAGING_API_KEY }}
+      run: |
+        pytest tests/e2e/ \
+          --base-url=$STAGING_URL \
+          --api-key=$API_KEY \
+          --junit-xml=e2e-results.xml \
+          -v
+          
+    - name: Run performance tests
+      env:
+        STAGING_URL: https://robo-rlhf-staging.company.com
+        API_KEY: ${{ secrets.STAGING_API_KEY }}
+      run: |
+        pytest tests/performance/ \
+          --base-url=$STAGING_URL \
+          --api-key=$API_KEY \
+          --benchmark-json=staging-benchmark.json \
+          -v
+          
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: staging-test-results
+        path: |
+          e2e-results.xml
+          staging-benchmark.json
+
+  # ============================================================================
+  # Deploy to Production
+  # ============================================================================
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [staging-tests]
+    environment:
+      name: production
+      url: https://robo-rlhf.company.com
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Pre-deployment checks
+      run: |
+        echo "🔍 Running pre-deployment checks..."
+        
+        # Check if staging tests passed
+        if [[ "${{ needs.staging-tests.result }}" != "success" ]]; then
+          echo "❌ Staging tests failed, aborting production deployment"
+          exit 1
+        fi
+        
+        echo "✅ All pre-deployment checks passed"
+        
+    - name: Deploy to production
+      run: |
+        echo "🚀 Deploying to production environment"
+        echo "Image: ${{ needs.build-images.outputs.image-tag }}"
+        
+        # Blue-green deployment strategy
+        # 1. Deploy to green environment
+        # 2. Run health checks
+        # 3. Switch traffic to green
+        # 4. Keep blue as backup
+        
+        # Example deployment commands:
+        # kubectl apply -f k8s/production/
+        # kubectl set image deployment/robo-rlhf \
+        #   robo-rlhf=${{ needs.build-images.outputs.image-tag }} \
+        #   --namespace=production
+        # kubectl rollout status deployment/robo-rlhf --namespace=production
+        
+    - name: Health check production
+      run: |
+        echo "🏥 Checking production health..."
+        
+        # Wait for deployment to stabilize
+        sleep 60
+        
+        # Health checks
+        timeout 300 bash -c 'until curl -f https://robo-rlhf.company.com/health; do sleep 10; done'
+        curl -f https://robo-rlhf.company.com/ready
+        curl -f https://robo-rlhf.company.com/metrics
+        
+        # Business logic checks
+        curl -f https://robo-rlhf.company.com/api/v1/status
+        
+    - name: Post-deployment verification
+      run: |
+        echo "✅ Running post-deployment verification..."
+        
+        # Monitor error rates for 5 minutes
+        for i in {1..10}; do
+          response=$(curl -s https://robo-rlhf.company.com/metrics | grep http_requests_total)
+          echo "Metrics check $i: $response"
+          sleep 30
+        done
+        
+    - name: Deployment success notification
+      uses: 8398a7/action-slack@v3
+      with:
+        status: custom
+        custom_payload: |
+          {
+            "text": "🎉 Successfully deployed to production!",
+            "attachments": [{
+              "color": "good",
+              "fields": [{
+                "title": "Environment",
+                "value": "production",
+                "short": true
+              }, {
+                "title": "Version",
+                "value": "${{ github.sha }}",
+                "short": true
+              }, {
+                "title": "URL",
+                "value": "https://robo-rlhf.company.com",
+                "short": false
+              }, {
+                "title": "Commit",
+                "value": "${{ github.event.head_commit.message }}",
+                "short": false
+              }]
+            }]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ============================================================================
+  # Rollback on Failure
+  # ============================================================================
+  rollback-on-failure:
+    name: Rollback on Failure
+    runs-on: ubuntu-latest
+    needs: [deploy-production]
+    if: failure()
+    
+    steps:
+    - name: Rollback deployment
+      run: |
+        echo "🔄 Rolling back production deployment..."
+        
+        # Get previous successful deployment
+        # kubectl rollout undo deployment/robo-rlhf --namespace=production
+        # kubectl rollout status deployment/robo-rlhf --namespace=production
+        
+        echo "✅ Rollback completed"
+        
+    - name: Rollback notification
+      uses: 8398a7/action-slack@v3
+      with:
+        status: custom
+        custom_payload: |
+          {
+            "text": "⚠️ Production deployment failed and was rolled back",
+            "attachments": [{
+              "color": "warning",
+              "fields": [{
+                "title": "Environment",
+                "value": "production",
+                "short": true
+              }, {
+                "title": "Action",
+                "value": "Rolled back to previous version",
+                "short": true
+              }, {
+                "title": "Incident",
+                "value": "Please investigate deployment failure",
+                "short": false
+              }]
+            }]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ============================================================================
+  # Update Deployment Status
+  # ============================================================================
+  deployment-status:
+    name: Update Deployment Status
+    runs-on: ubuntu-latest
+    needs: [deploy-production, rollback-on-failure]
+    if: always()
+    
+    steps:
+    - name: Update deployment status
+      run: |
+        if [[ "${{ needs.deploy-production.result }}" == "success" ]]; then
+          echo "✅ Deployment successful"
+          # Update status page, monitoring dashboards, etc.
+        else
+          echo "❌ Deployment failed"
+          # Create incident, update status page, etc.
+        fi

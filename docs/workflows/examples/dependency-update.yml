@@ -1,0 +1,559 @@
+# Dependency Update Workflow
+# Automated dependency updates with security scanning and testing
+
+name: Dependency Update
+
+on:
+  schedule:
+    # Run every Monday at 6 AM UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      update_type:
+        description: 'Type of update to perform'
+        required: true
+        default: 'minor'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+          - security
+
+env:
+  PYTHON_VERSION: "3.10"
+
+# Prevent multiple dependency updates from running simultaneously
+concurrency:
+  group: dependency-update
+  cancel-in-progress: false
+
+jobs:
+  # ============================================================================
+  # Scan for Outdated Dependencies
+  # ============================================================================
+  scan-dependencies:
+    name: Scan Dependencies
+    runs-on: ubuntu-latest
+    
+    outputs:
+      has-updates: ${{ steps.check.outputs.has-updates }}
+      security-updates: ${{ steps.security.outputs.count }}
+      
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e ".[dev]"
+        pip install pip-audit safety pip-tools
+        
+    - name: Check for outdated packages
+      id: check
+      run: |
+        echo "🔍 Checking for outdated packages..."
+        
+        # Generate current requirements
+        pip-compile pyproject.toml --output-file current-requirements.txt
+        
+        # Generate updated requirements
+        pip-compile pyproject.toml --upgrade --output-file updated-requirements.txt
+        
+        # Check if there are differences
+        if ! diff -q current-requirements.txt updated-requirements.txt >/dev/null; then
+          echo "has-updates=true" >> $GITHUB_OUTPUT
+          echo "📦 Updates available"
+          
+          echo "## Available Updates" > update-summary.md
+          echo "" >> update-summary.md
+          echo "\`\`\`diff" >> update-summary.md
+          diff current-requirements.txt updated-requirements.txt || true >> update-summary.md
+          echo "\`\`\`" >> update-summary.md
+        else
+          echo "has-updates=false" >> $GITHUB_OUTPUT
+          echo "✅ All dependencies are up to date"
+        fi
+        
+    - name: Scan for security vulnerabilities
+      id: security
+      run: |
+        echo "🔒 Scanning for security vulnerabilities..."
+        
+        # Safety scan
+        safety check --json --output safety-report.json || true
+        
+        # pip-audit scan
+        pip-audit --format=json --output=audit-report.json || true
+        
+        # Count security issues
+        SAFETY_COUNT=$(jq '.vulnerabilities | length' safety-report.json 2>/dev/null || echo "0")
+        AUDIT_COUNT=$(jq '. | length' audit-report.json 2>/dev/null || echo "0")
+        TOTAL_COUNT=$((SAFETY_COUNT + AUDIT_COUNT))
+        
+        echo "count=$TOTAL_COUNT" >> $GITHUB_OUTPUT
+        echo "🔒 Found $TOTAL_COUNT security vulnerabilities"
+        
+        if [[ $TOTAL_COUNT -gt 0 ]]; then
+          echo "## Security Vulnerabilities" >> update-summary.md
+          echo "" >> update-summary.md
+          echo "**Safety Issues**: $SAFETY_COUNT" >> update-summary.md
+          echo "**Audit Issues**: $AUDIT_COUNT" >> update-summary.md
+          echo "" >> update-summary.md
+        fi
+        
+    - name: Upload scan results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: dependency-scan-results
+        path: |
+          current-requirements.txt
+          updated-requirements.txt
+          safety-report.json
+          audit-report.json
+          update-summary.md
+
+  # ============================================================================
+  # Create Update Pull Request
+  # ============================================================================
+  create-update-pr:
+    name: Create Update PR
+    runs-on: ubuntu-latest
+    needs: [scan-dependencies]
+    if: needs.scan-dependencies.outputs.has-updates == 'true' || needs.scan-dependencies.outputs.security-updates != '0'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pip-tools
+        
+    - name: Create update branch
+      run: |
+        BRANCH_NAME="dependency-update-$(date +%Y%m%d)"
+        echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+        git checkout -b "$BRANCH_NAME"
+        
+    - name: Update dependencies
+      run: |
+        echo "📦 Updating dependencies..."
+        
+        UPDATE_TYPE="${{ github.event.inputs.update_type || 'minor' }}"
+        
+        case "$UPDATE_TYPE" in
+          "patch")
+            # Only patch updates
+            pip-compile pyproject.toml --upgrade-package "*" --output-file requirements.txt
+            ;;
+          "minor")
+            # Minor and patch updates (default)
+            pip-compile pyproject.toml --upgrade --output-file requirements.txt
+            ;;
+          "major")
+            # All updates including major
+            pip-compile pyproject.toml --upgrade --output-file requirements.txt
+            ;;
+          "security")
+            # Only security updates (would need more sophisticated logic)
+            pip-compile pyproject.toml --upgrade --output-file requirements.txt
+            ;;
+        esac
+        
+        # Update development requirements if they exist
+        if [[ -f "requirements-dev.in" ]]; then
+          pip-compile requirements-dev.in --upgrade --output-file requirements-dev.txt
+        fi
+        
+    - name: Install updated dependencies and test
+      run: |
+        echo "🧪 Testing updated dependencies..."
+        
+        # Install updated dependencies
+        pip install -e ".[dev]"
+        
+        # Run basic tests to ensure nothing is broken
+        python -c "import robo_rlhf; print('✅ Import successful')"
+        
+        # Run a subset of tests to validate compatibility
+        if [[ -d "tests/" ]]; then
+          python -m pytest tests/unit/ -x --tb=short || {
+            echo "❌ Tests failed with updated dependencies"
+            exit 1
+          }
+        fi
+        
+    - name: Generate changelog
+      run: |
+        echo "📝 Generating update changelog..."
+        
+        # Compare old and new requirements
+        if [[ -f "requirements.txt" ]]; then
+          cp requirements.txt old-requirements.txt
+        fi
+        
+        pip-compile pyproject.toml --upgrade --output-file new-requirements.txt
+        
+        # Generate changelog
+        echo "# Dependency Updates" > DEPENDENCY_CHANGELOG.md
+        echo "" >> DEPENDENCY_CHANGELOG.md
+        echo "## Updated Dependencies" >> DEPENDENCY_CHANGELOG.md
+        echo "" >> DEPENDENCY_CHANGELOG.md
+        
+        if [[ -f "old-requirements.txt" ]]; then
+          # Compare versions
+          comm -13 <(sort old-requirements.txt) <(sort new-requirements.txt) | head -20 >> DEPENDENCY_CHANGELOG.md || true
+        fi
+        
+        echo "" >> DEPENDENCY_CHANGELOG.md
+        echo "## Security Information" >> DEPENDENCY_CHANGELOG.md
+        echo "" >> DEPENDENCY_CHANGELOG.md
+        echo "- Security vulnerabilities: ${{ needs.scan-dependencies.outputs.security-updates }}" >> DEPENDENCY_CHANGELOG.md
+        echo "- Update type: ${{ github.event.inputs.update_type || 'minor' }}" >> DEPENDENCY_CHANGELOG.md
+        
+    - name: Commit changes
+      run: |
+        # Add updated files
+        git add pyproject.toml requirements*.txt DEPENDENCY_CHANGELOG.md
+        
+        # Check if there are any changes to commit
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+          exit 0
+        fi
+        
+        # Commit changes
+        UPDATE_TYPE="${{ github.event.inputs.update_type || 'minor' }}"
+        SECURITY_COUNT="${{ needs.scan-dependencies.outputs.security-updates }}"
+        
+        if [[ "$SECURITY_COUNT" != "0" ]]; then
+          COMMIT_MSG="security: update dependencies (fixes $SECURITY_COUNT vulnerabilities)"
+        else
+          COMMIT_MSG="deps: $UPDATE_TYPE dependency updates"
+        fi
+        
+        git commit -m "$COMMIT_MSG"
+        git push origin "$BRANCH_NAME"
+        
+    - name: Download scan results
+      uses: actions/download-artifact@v3
+      with:
+        name: dependency-scan-results
+        
+    - name: Create Pull Request
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const branchName = process.env.BRANCH_NAME;
+          const updateType = '${{ github.event.inputs.update_type || 'minor' }}';
+          const securityCount = '${{ needs.scan-dependencies.outputs.security-updates }}';
+          
+          // Read update summary if it exists
+          let updateSummary = '';
+          try {
+            updateSummary = fs.readFileSync('update-summary.md', 'utf8');
+          } catch (e) {
+            updateSummary = 'No detailed summary available.';
+          }
+          
+          // Read dependency changelog
+          let dependencyChangelog = '';
+          try {
+            dependencyChangelog = fs.readFileSync('DEPENDENCY_CHANGELOG.md', 'utf8');
+          } catch (e) {
+            dependencyChangelog = 'No changelog available.';
+          }
+          
+          const title = securityCount !== '0' 
+            ? `🔒 Security: Update dependencies (fixes ${securityCount} vulnerabilities)`
+            : `📦 Dependencies: ${updateType} updates`;
+            
+          const body = `
+          ## Dependency Update Summary
+          
+          **Update Type**: ${updateType}
+          **Security Fixes**: ${securityCount} vulnerabilities
+          **Branch**: \`${branchName}\`
+          
+          ### Changes
+          ${updateSummary}
+          
+          ### Detailed Changelog
+          ${dependencyChangelog}
+          
+          ### Testing
+          - [x] Updated dependencies install successfully
+          - [x] Basic import tests pass
+          - [x] Unit tests pass
+          - [ ] Manual testing required
+          
+          ### Security
+          ${securityCount !== '0' ? '⚠️ **This PR fixes security vulnerabilities and should be reviewed promptly.**' : '✅ No known security vulnerabilities.'}
+          
+          ### Checklist
+          - [ ] Dependencies are compatible with current codebase
+          - [ ] No breaking changes in public APIs
+          - [ ] Documentation updated if needed
+          - [ ] All tests pass
+          
+          ---
+          
+          *This PR was automatically created by the dependency update workflow.*
+          `;
+          
+          const { data: pr } = await github.rest.pulls.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: title,
+            head: branchName,
+            base: 'main',
+            body: body,
+            draft: false
+          });
+          
+          // Add labels
+          const labels = ['dependencies', 'automated'];
+          if (securityCount !== '0') {
+            labels.push('security', 'high-priority');
+          }
+          
+          await github.rest.issues.addLabels({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: pr.number,
+            labels: labels
+          });
+          
+          console.log(`Created PR #${pr.number}: ${pr.html_url}`);
+          
+          // Store PR info for later steps
+          core.setOutput('pr-number', pr.number);
+          core.setOutput('pr-url', pr.html_url);
+          
+    - name: Request reviews
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const securityCount = '${{ needs.scan-dependencies.outputs.security-updates }}';
+          const prNumber = '${{ steps.create-pr.outputs.pr-number }}';
+          
+          // Request reviews based on security impact
+          let reviewers = ['danieleschmidt']; // Default reviewer
+          
+          if (securityCount !== '0') {
+            // Add security team for security updates
+            reviewers.push('security-team');
+          }
+          
+          try {
+            await github.rest.pulls.requestReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              reviewers: reviewers.filter(r => r !== 'security-team'), // Filter out team names
+              team_reviewers: reviewers.filter(r => r === 'security-team')
+            });
+          } catch (error) {
+            console.log('Could not request reviews:', error.message);
+          }
+
+  # ============================================================================
+  # Run Extended Tests on PR
+  # ============================================================================
+  test-updates:
+    name: Test Updated Dependencies
+    runs-on: ubuntu-latest
+    needs: [create-update-pr]
+    if: needs.create-update-pr.result == 'success'
+    
+    steps:
+    - name: Checkout PR branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ env.BRANCH_NAME }}
+        
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+        cache: 'pip'
+        
+    - name: Install updated dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e ".[dev]"
+        
+    - name: Run comprehensive test suite
+      run: |
+        echo "🧪 Running comprehensive tests with updated dependencies..."
+        
+        # Unit tests
+        pytest tests/unit/ \
+          --cov=robo_rlhf \
+          --cov-report=xml \
+          --junit-xml=test-results.xml \
+          -v
+          
+        # Integration tests (if they exist)
+        if [[ -d "tests/integration/" ]]; then
+          pytest tests/integration/ \
+            --junit-xml=integration-results.xml \
+            -v
+        fi
+        
+        # Performance tests to check for regressions
+        if [[ -d "tests/performance/" ]]; then
+          pytest tests/performance/ \
+            --benchmark-only \
+            --benchmark-json=benchmark-results.json \
+            -v
+        fi
+        
+    - name: Security scan with updated dependencies
+      run: |
+        echo "🔒 Running security scan with updated dependencies..."
+        
+        # Safety check
+        safety check --json --output updated-safety-report.json || true
+        
+        # pip-audit check
+        pip-audit --format=json --output=updated-audit-report.json || true
+        
+        # Bandit code scan
+        bandit -r robo_rlhf -f json -o bandit-report.json || true
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: dependency-update-test-results
+        path: |
+          test-results.xml
+          integration-results.xml
+          benchmark-results.json
+          updated-safety-report.json
+          updated-audit-report.json
+          bandit-report.json
+
+  # ============================================================================
+  # Notification and Reporting
+  # ============================================================================
+  notify:
+    name: Send Notifications
+    runs-on: ubuntu-latest
+    needs: [scan-dependencies, create-update-pr, test-updates]
+    if: always()
+    
+    steps:
+    - name: Determine notification content
+      id: content
+      run: |
+        HAS_UPDATES="${{ needs.scan-dependencies.outputs.has-updates }}"
+        SECURITY_COUNT="${{ needs.scan-dependencies.outputs.security-updates }}"
+        PR_RESULT="${{ needs.create-update-pr.result }}"
+        TEST_RESULT="${{ needs.test-updates.result }}"
+        
+        if [[ "$HAS_UPDATES" == "true" || "$SECURITY_COUNT" != "0" ]]; then
+          if [[ "$PR_RESULT" == "success" ]]; then
+            STATUS="success"
+            MESSAGE="📦 Dependency update PR created successfully"
+            if [[ "$SECURITY_COUNT" != "0" ]]; then
+              MESSAGE="🔒 Security dependency update PR created (fixes $SECURITY_COUNT vulnerabilities)"
+            fi
+          else
+            STATUS="failure"
+            MESSAGE="❌ Failed to create dependency update PR"
+          fi
+        else
+          STATUS="success"
+          MESSAGE="✅ All dependencies are up to date"
+        fi
+        
+        echo "status=$STATUS" >> $GITHUB_OUTPUT
+        echo "message=$MESSAGE" >> $GITHUB_OUTPUT
+        
+    - name: Post to Slack
+      uses: 8398a7/action-slack@v3
+      with:
+        status: custom
+        custom_payload: |
+          {
+            "text": "${{ steps.content.outputs.message }}",
+            "attachments": [{
+              "color": "${{ steps.content.outputs.status == 'success' && 'good' || 'danger' }}",
+              "fields": [{
+                "title": "Security Vulnerabilities",
+                "value": "${{ needs.scan-dependencies.outputs.security-updates }}",
+                "short": true
+              }, {
+                "title": "PR Created",
+                "value": "${{ needs.create-update-pr.result == 'success' && 'Yes' || 'No' }}",
+                "short": true
+              }, {
+                "title": "Tests Passed",
+                "value": "${{ needs.test-updates.result == 'success' && 'Yes' || needs.test-updates.result == 'skipped' && 'Skipped' || 'No' }}",
+                "short": true
+              }, {
+                "title": "Repository",
+                "value": "${{ github.repository }}",
+                "short": true
+              }]
+            }]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        
+    - name: Create issue for failed updates
+      if: needs.create-update-pr.result == 'failure'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const title = '🚨 Dependency Update Failed';
+          const body = `
+          ## Dependency Update Failure
+          
+          The automated dependency update workflow failed to create a pull request.
+          
+          **Workflow Run**: ${{ github.run_id }}
+          **Security Vulnerabilities**: ${{ needs.scan-dependencies.outputs.security-updates }}
+          
+          ### Action Required:
+          1. Review the workflow logs
+          2. Check for dependency conflicts
+          3. Manually update dependencies if needed
+          4. Address any security vulnerabilities
+          
+          **Priority**: ${{ needs.scan-dependencies.outputs.security-updates != '0' && 'High' || 'Medium' }}
+          `;
+          
+          await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: title,
+            body: body,
+            labels: ['dependencies', 'automation-failure', 'needs-investigation']
+          });

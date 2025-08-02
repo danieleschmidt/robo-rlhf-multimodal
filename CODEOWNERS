@@ -1,0 +1,43 @@
+# Code Owners - Auto-assign reviewers for pull requests
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global owners - will be requested for review on all PRs
+* @danieleschmidt
+
+# Core framework code
+/robo_rlhf/ @danieleschmidt
+
+# Algorithms and models
+/robo_rlhf/algorithms/ @danieleschmidt
+/robo_rlhf/models/ @danieleschmidt
+
+# Environment integrations
+/robo_rlhf/envs/ @danieleschmidt
+
+# Testing infrastructure
+/tests/ @danieleschmidt
+pytest.ini @danieleschmidt
+tox.ini @danieleschmidt
+
+# Documentation
+/docs/ @danieleschmidt
+*.md @danieleschmidt
+
+# Configuration files
+pyproject.toml @danieleschmidt
+Dockerfile @danieleschmidt
+docker-compose.yml @danieleschmidt
+Makefile @danieleschmidt
+
+# CI/CD and workflows
+/.github/ @danieleschmidt
+/configs/ @danieleschmidt
+
+# Project governance
+PROJECT_CHARTER.md @danieleschmidt
+CONTRIBUTING.md @danieleschmidt
+CODE_OF_CONDUCT.md @danieleschmidt
+SECURITY.md @danieleschmidt
+
+# Scripts and automation
+/scripts/ @danieleschmidt
