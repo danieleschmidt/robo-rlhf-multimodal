@@ -1,0 +1,241 @@
+{
+  "project": {
+    "name": "robo-rlhf-multimodal",
+    "description": "Multimodal Reinforcement Learning from Human Feedback for robotics",
+    "version": "0.1.0",
+    "repository": "danieleschmidt/robo-rlhf-multimodal",
+    "metrics_version": "1.0.0",
+    "last_updated": "2024-01-01T00:00:00Z"
+  },
+  "metrics": {
+    "development": {
+      "code_quality": {
+        "coverage_threshold": 80,
+        "complexity_threshold": 10,
+        "duplication_threshold": 5,
+        "maintainability_index_threshold": 20,
+        "technical_debt_ratio_threshold": 5
+      },
+      "productivity": {
+        "commits_per_week_target": 15,
+        "pr_review_time_target_hours": 24,
+        "feature_lead_time_target_days": 7,
+        "bug_fix_time_target_hours": 48
+      },
+      "collaboration": {
+        "pr_approval_threshold": 2,
+        "code_review_participation_threshold": 80,
+        "documentation_coverage_threshold": 90
+      }
+    },
+    "operations": {
+      "reliability": {
+        "uptime_target": 99.9,
+        "mttr_target_minutes": 30,
+        "mtbf_target_hours": 720,
+        "error_rate_threshold": 0.1
+      },
+      "performance": {
+        "response_time_p95_threshold_ms": 500,
+        "response_time_p99_threshold_ms": 1000,
+        "throughput_target_rps": 1000,
+        "resource_utilization_threshold": 80
+      },
+      "security": {
+        "vulnerability_remediation_target_days": 7,
+        "security_scan_frequency_days": 1,
+        "dependency_update_frequency_days": 7,
+        "security_training_frequency_months": 6
+      }
+    },
+    "ml_specific": {
+      "model_performance": {
+        "training_loss_improvement_threshold": 0.05,
+        "validation_accuracy_threshold": 0.85,
+        "inference_latency_threshold_ms": 100,
+        "model_size_threshold_mb": 500
+      },
+      "data_quality": {
+        "data_freshness_threshold_days": 1,
+        "data_completeness_threshold": 95,
+        "data_drift_threshold": 0.1,
+        "annotation_quality_threshold": 90
+      },
+      "experimentation": {
+        "experiment_completion_rate_threshold": 80,
+        "hypothesis_validation_rate_threshold": 60,
+        "reproducibility_score_threshold": 95
+      }
+    },
+    "business": {
+      "user_satisfaction": {
+        "nps_target": 70,
+        "user_retention_rate_target": 85,
+        "feature_adoption_rate_target": 60,
+        "support_ticket_resolution_time_target_hours": 24
+      },
+      "growth": {
+        "monthly_active_users_growth_rate": 10,
+        "feature_usage_growth_rate": 15,
+        "api_usage_growth_rate": 20
+      }
+    }
+  },
+  "tracking": {
+    "automated_metrics": [
+      "code_coverage",
+      "test_execution_time",
+      "build_success_rate",
+      "deployment_frequency",
+      "lead_time_for_changes",
+      "mean_time_to_recovery",
+      "change_failure_rate",
+      "security_vulnerabilities",
+      "dependency_freshness",
+      "performance_benchmarks"
+    ],
+    "manual_metrics": [
+      "user_satisfaction_surveys",
+      "code_review_quality",
+      "documentation_quality",
+      "team_productivity_assessment",
+      "technical_debt_assessment"
+    ],
+    "reporting_frequency": {
+      "daily": [
+        "build_status",
+        "test_results",
+        "security_scans",
+        "performance_metrics"
+      ],
+      "weekly": [
+        "code_quality_trends",
+        "productivity_metrics",
+        "user_engagement",
+        "system_health"
+      ],
+      "monthly": [
+        "business_metrics",
+        "team_performance",
+        "technical_debt",
+        "roadmap_progress"
+      ],
+      "quarterly": [
+        "strategic_objectives",
+        "market_analysis",
+        "technology_assessment",
+        "team_satisfaction"
+      ]
+    }
+  },
+  "automation": {
+    "quality_gates": {
+      "pre_commit": [
+        "code_formatting",
+        "linting",
+        "security_scan",
+        "test_execution"
+      ],
+      "pre_merge": [
+        "code_review_approval",
+        "all_tests_pass",
+        "coverage_threshold_met",
+        "security_scan_passed",
+        "performance_benchmarks_met"
+      ],
+      "pre_deployment": [
+        "integration_tests_pass",
+        "security_validation",
+        "performance_validation",
+        "rollback_plan_verified"
+      ]
+    },
+    "scheduled_tasks": {
+      "daily": [
+        "dependency_vulnerability_scan",
+        "performance_benchmark_run",
+        "backup_verification",
+        "log_analysis"
+      ],
+      "weekly": [
+        "dependency_update_check",
+        "code_quality_report",
+        "capacity_planning_review",
+        "security_posture_assessment"
+      ],
+      "monthly": [
+        "full_security_audit",
+        "performance_optimization_review",
+        "technical_debt_planning",
+        "disaster_recovery_test"
+      ]
+    }
+  },
+  "dashboards": {
+    "engineering": {
+      "url": "https://grafana.company.com/d/engineering",
+      "metrics": [
+        "build_success_rate",
+        "test_coverage",
+        "deployment_frequency",
+        "lead_time",
+        "mttr"
+      ]
+    },
+    "operations": {
+      "url": "https://grafana.company.com/d/operations",
+      "metrics": [
+        "uptime",
+        "response_time",
+        "error_rate",
+        "resource_utilization",
+        "security_status"
+      ]
+    },
+    "business": {
+      "url": "https://grafana.company.com/d/business",
+      "metrics": [
+        "user_engagement",
+        "feature_adoption",
+        "performance_kpis",
+        "growth_metrics"
+      ]
+    }
+  },
+  "alerts": {
+    "critical": {
+      "system_down": {
+        "threshold": "uptime < 99%",
+        "notification_channels": ["slack", "email", "sms"],
+        "escalation_time_minutes": 15
+      },
+      "security_breach": {
+        "threshold": "any",
+        "notification_channels": ["slack", "email", "sms"],
+        "escalation_time_minutes": 5
+      },
+      "data_loss": {
+        "threshold": "any",
+        "notification_channels": ["slack", "email", "sms"],
+        "escalation_time_minutes": 10
+      }
+    },
+    "warning": {
+      "high_error_rate": {
+        "threshold": "error_rate > 1%",
+        "notification_channels": ["slack"],
+        "escalation_time_minutes": 60
+      },
+      "slow_response": {
+        "threshold": "p95_response_time > 1000ms",
+        "notification_channels": ["slack"],
+        "escalation_time_minutes": 30
+      },
+      "low_coverage": {
+        "threshold": "code_coverage < 80%",
+        "notification_channels": ["slack"],
+        "escalation_time_minutes": 1440
+      }
+    }
+  }
+}
