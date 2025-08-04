@@ -1,0 +1,85 @@
+# RLHF Training Configuration
+# Example configuration for training multimodal RLHF policies
+
+# Model configuration
+model:
+  type: "vision_language"  # Options: "vision_language", "multimodal"
+  vision_encoder: "resnet18"  # Options: "resnet18", "resnet50", "efficientnet", "clip_vit_b32"
+  proprioception_dim: 7  # Robot state dimension
+  action_dim: 7  # Action space dimension
+  hidden_dim: 512  # Hidden layer dimension
+  num_heads: 8  # Attention heads
+  num_layers: 4  # Transformer layers
+  dropout: 0.1  # Dropout probability
+  use_language: false  # Whether to include language conditioning
+
+# Training configuration
+training:
+  epochs: 100  # Total training epochs
+  batch_size: 32  # Batch size
+  lr: 3e-4  # Learning rate
+  optimizer: "adamw"  # Options: "adamw", "adam"
+  validation_split: 0.1  # Validation data split
+  reward_epochs: 50  # Epochs for reward model training
+  policy_epochs: 100  # Epochs for policy training
+  reward_model: "bradley_terry"  # Options: "bradley_terry", "ensemble"
+  
+  # Advanced training settings
+  gradient_clip: 1.0  # Gradient clipping
+  lr_schedule: "cosine"  # Learning rate schedule
+  warmup_steps: 1000  # Warmup steps
+  weight_decay: 1e-4  # Weight decay
+
+# Data configuration
+data:
+  demonstrations_dir: "data/demonstrations"  # Path to demonstrations
+  preferences_file: "data/preference_pairs.pkl"  # Path to preference pairs
+  output_dir: "checkpoints/"  # Output directory for checkpoints
+  
+  # Data processing
+  segment_length: 50  # Segment length for preferences
+  overlap_threshold: 0.0  # Maximum temporal overlap
+  min_confidence: 0.5  # Minimum annotation confidence
+
+# Environment configuration
+environment:
+  name: "mujoco_manipulation"  # Environment name
+  task: "pick_and_place"  # Specific task
+  modalities: ["rgb", "proprioception"]  # Observation modalities
+  image_size: 64  # Image resolution
+  max_episode_steps: 1000  # Maximum steps per episode
+
+# Logging and monitoring
+logging:
+  use_wandb: true  # Use Weights & Biases
+  project_name: "robo-rlhf"  # W&B project name
+  log_frequency: 10  # Log every N steps
+  save_frequency: 100  # Save checkpoint every N epochs
+  
+  # Metrics to track
+  metrics:
+    - "reward_accuracy"
+    - "policy_return"
+    - "preference_agreement"
+    - "training_loss"
+
+# Distributed training (optional)
+distributed:
+  enabled: false  # Enable distributed training
+  backend: "nccl"  # Distributed backend
+  num_gpus: 1  # Number of GPUs
+  num_workers: 4  # Number of data loading workers
+
+# Evaluation configuration
+evaluation:
+  frequency: 10  # Evaluate every N epochs
+  num_episodes: 10  # Number of evaluation episodes
+  render: false  # Render during evaluation
+  save_videos: true  # Save evaluation videos
+
+# Safety and constraints
+safety:
+  action_bounds: [-1.0, 1.0]  # Action bounds
+  emergency_stop: true  # Enable emergency stop
+  safety_layer: "none"  # Safety layer type
+  max_velocity: 1.0  # Maximum velocity limit
