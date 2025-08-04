@@ -3,7 +3,7 @@ Data models for preference collection.
 """
 
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Tuple
 import numpy as np
 from datetime import datetime
 from enum import Enum
@@ -57,10 +57,18 @@ class PreferencePair:
     segment_b: Segment
     metadata: Optional[Dict[str, Any]] = None
     labels: List['PreferenceLabel'] = field(default_factory=list)
+    preferences: Dict[str, Tuple[PreferenceChoice, float]] = field(default_factory=dict)  # For compatibility
     
     def add_label(self, label: 'PreferenceLabel') -> None:
         """Add a preference label to this pair."""
         self.labels.append(label)
+    
+    def add_preference(self, annotator: str, choice: PreferenceChoice, confidence: float) -> None:
+        """Add a preference (for compatibility with server)."""
+        self.preferences[annotator] = (choice, confidence)
+        # Also create a label
+        label = PreferenceLabel.create(annotator, choice.value, confidence)
+        self.add_label(label)
     
     def get_consensus(self, threshold: float = 0.7) -> Optional[PreferenceChoice]:
         """

@@ -22,7 +22,8 @@ class PreferencePairGenerator:
     
     def __init__(
         self,
-        demo_dir: str,
+        demo_dir: Optional[str] = None,
+        demonstrations: Optional[List] = None,
         pair_selection: str = "diversity_sampling",
         seed: Optional[int] = None
     ):
@@ -30,7 +31,8 @@ class PreferencePairGenerator:
         Initialize preference pair generator.
         
         Args:
-            demo_dir: Directory containing demonstrations
+            demo_dir: Directory containing demonstrations (optional if demonstrations provided)
+            demonstrations: List of demonstration objects (optional if demo_dir provided)
             pair_selection: Strategy for selecting pairs
                 - 'random': Random pair selection
                 - 'diversity_sampling': Maximize diversity in pairs
@@ -38,16 +40,23 @@ class PreferencePairGenerator:
                 - 'disagreement_sampling': Sample where models disagree
             seed: Random seed for reproducibility
         """
-        self.demo_dir = Path(demo_dir)
+        if demo_dir is None and demonstrations is None:
+            raise ValueError("Either demo_dir or demonstrations must be provided")
+        
+        self.demo_dir = Path(demo_dir) if demo_dir else None
         self.selection_strategy = pair_selection
         
         if seed is not None:
             random.seed(seed)
             np.random.seed(seed)
         
-        # Load demonstrations
-        self.demonstrations = self._load_demonstrations()
-        print(f"Loaded {len(self.demonstrations)} demonstrations")
+        # Load or use provided demonstrations
+        if demonstrations is not None:
+            self.demonstrations = demonstrations
+            print(f"Using provided {len(self.demonstrations)} demonstrations")
+        else:
+            self.demonstrations = self._load_demonstrations()
+            print(f"Loaded {len(self.demonstrations)} demonstrations")
     
     def _load_demonstrations(self) -> List[Dict[str, Any]]:
         """Load all demonstrations from directory."""
@@ -293,48 +302,62 @@ class PreferencePairGenerator:
     
     def _extract_segment(
         self,
-        demo: Dict[str, Any],
+        demo,  # Can be Dict or DemonstrationData
         length: int,
         prefer_uncertain: bool = False,
         prefer_diverse_actions: bool = False
     ) -> Segment:
         """Extract a segment from a demonstration."""
-        max_start = max(0, demo["length"] - length)
+        # Handle both dict and DemonstrationData formats
+        if hasattr(demo, 'actions'):  # DemonstrationData object
+            demo_length = len(demo.actions)
+            actions = demo.actions
+            rewards = demo.rewards
+            observations = demo.observations
+            episode_id = demo.episode_id
+        else:  # Dictionary format
+            demo_length = demo["length"]
+            actions = demo["actions"]
+            rewards = demo.get("rewards")
+            observations = demo["observations"]
+            episode_id = demo["episode_id"]
+        
+        max_start = max(0, demo_length - length)
         
         if max_start == 0:
             start_idx = 0
-        elif prefer_uncertain and demo["rewards"] is not None:
+        elif prefer_uncertain and rewards is not None:
             # Find region with high reward variance
             reward_vars = []
             for i in range(max_start):
-                segment_rewards = demo["rewards"][i:i+length]
+                segment_rewards = rewards[i:i+length]
                 reward_vars.append(np.var(segment_rewards))
             start_idx = np.argmax(reward_vars)
         elif prefer_diverse_actions:
             # Find region with diverse actions
             action_vars = []
             for i in range(max_start):
-                segment_actions = demo["actions"][i:i+length]
+                segment_actions = actions[i:i+length]
                 action_vars.append(np.mean(np.var(segment_actions, axis=0)))
             start_idx = np.argmax(action_vars)
         else:
             start_idx = random.randint(0, max_start)
         
-        end_idx = min(start_idx + length, demo["length"])
+        end_idx = min(start_idx + length, demo_length)
         
         # Extract segment data
         segment_obs = {}
-        for key, obs in demo["observations"].items():
+        for key, obs in observations.items():
             segment_obs[key] = obs[start_idx:end_idx]
         
         return Segment(
-            episode_id=demo["episode_id"],
+            episode_id=episode_id,
             start_frame=start_idx,
             end_frame=end_idx,
             observations=segment_obs,
-            actions=demo["actions"][start_idx:end_idx],
-            rewards=demo["rewards"][start_idx:end_idx] if demo["rewards"] is not None else None,
-            metadata=demo["metadata"]
+            actions=actions[start_idx:end_idx],
+            rewards=rewards[start_idx:end_idx] if rewards is not None else None,
+            metadata=getattr(demo, 'metadata', {}) if hasattr(demo, 'metadata') else demo.get("metadata", {})
         )
     
     def _calculate_diversity(
