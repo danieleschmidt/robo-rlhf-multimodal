@@ -283,7 +283,7 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 ### Development Setup
 
 ```bash
-git clone https://github.com/yourusername/robo-rlhf-multimodal
+git clone https://github.com/danieleschmidt/robo-rlhf-multimodal
 cd robo-rlhf-multimodal
 pip install -e ".[dev]"
 pytest tests/
@@ -294,9 +294,9 @@ pytest tests/
 ```bibtex
 @software{robo_rlhf_multimodal,
   title={Robo-RLHF-Multimodal: Multimodal Reinforcement Learning from Human Feedback for Robotics},
-  author={Your Name},
+  author={Daniel Schmidt},
   year={2025},
-  url={https://github.com/yourusername/robo-rlhf-multimodal}
+  url={https://github.com/danieleschmidt/robo-rlhf-multimodal}
 }
 ```
 
