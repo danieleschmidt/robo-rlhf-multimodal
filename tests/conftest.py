@@ -7,8 +7,17 @@ from typing import Any, Dict, Generator
 
 import numpy as np
 import pytest
-import torch
 from unittest.mock import MagicMock, patch
+
+# Optional PyTorch import
+try:
+    import torch
+    HAS_TORCH = True
+except ImportError:
+    HAS_TORCH = False
+    # Create mock torch for tests that don't need it
+    torch = MagicMock()
+    torch.cuda.is_available.return_value = False
 
 # Test configuration
 os.environ["TESTING"] = "1"

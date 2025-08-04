@@ -8,10 +8,16 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 from dataclasses import dataclass, asdict
 import numpy as np
-import cv2
 from datetime import datetime
 import threading
 import queue
+
+try:
+    import cv2
+    HAS_CV2 = True
+except ImportError:
+    HAS_CV2 = False
+    print("Warning: OpenCV not available. Video recording will be disabled.")
 
 @dataclass
 class DemonstrationData:
@@ -57,6 +63,12 @@ class DemonstrationData:
     
     def _save_video(self, frames: np.ndarray, path: Path) -> None:
         """Save image sequence as video."""
+        if not HAS_CV2:
+            # Fallback: save as numpy array
+            np.save(path.with_suffix('.npy'), frames)
+            print(f"Warning: Saved {path.stem} as numpy array (OpenCV not available)")
+            return
+            
         if len(frames.shape) == 3:
             frames = frames[np.newaxis, ...]
         
