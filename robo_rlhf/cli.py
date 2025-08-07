@@ -139,6 +139,32 @@ Examples:
         "--annotators", nargs="+", help="List of annotator names"
     )
     
+    # Quantum autonomous SDLC command
+    quantum_parser = subparsers.add_parser(
+        "quantum", help="Run quantum autonomous SDLC execution"
+    )
+    quantum_parser.add_argument(
+        "--project", default=".", help="Project path for SDLC execution"
+    )
+    quantum_parser.add_argument(
+        "--phases", nargs="+", 
+        choices=["analysis", "design", "implementation", "testing", "integration", "deployment", "monitoring", "optimization"],
+        help="SDLC phases to execute"
+    )
+    quantum_parser.add_argument(
+        "--config", help="Quantum configuration file"
+    )
+    quantum_parser.add_argument(
+        "--demo", action="store_true", help="Run comprehensive quantum demo"
+    )
+    quantum_parser.add_argument(
+        "--optimization-target", choices=["time", "quality", "resources", "reliability"],
+        default="quality", help="Primary optimization target"
+    )
+    quantum_parser.add_argument(
+        "--auto-approve", action="store_true", help="Auto-approve autonomous actions"
+    )
+    
     return parser
 
 
@@ -167,6 +193,9 @@ def main() -> None:
         elif args.command == "server":
             from robo_rlhf.preference.server import main as server_main
             server_main(args)
+        elif args.command == "quantum":
+            from robo_rlhf.quantum.cli import main as quantum_main
+            quantum_main(args)
         else:
             print(f"Unknown command: {args.command}")
             sys.exit(1)
