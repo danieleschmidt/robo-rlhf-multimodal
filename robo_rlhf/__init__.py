@@ -14,10 +14,29 @@ from robo_rlhf.preference import PreferencePairGenerator, PreferenceServer
 from robo_rlhf.algorithms import MultimodalRLHF
 from robo_rlhf.models import VisionLanguageActor
 
+# Quantum-inspired autonomous capabilities
+from robo_rlhf.quantum import (
+    QuantumTaskPlanner,
+    QuantumDecisionEngine,
+    QuantumOptimizer,
+    MultiObjectiveOptimizer,
+    AutonomousSDLCExecutor,
+    PredictiveAnalytics,
+    ResourcePredictor
+)
+
 __all__ = [
     "TeleOpCollector",
     "PreferencePairGenerator", 
     "PreferenceServer",
     "MultimodalRLHF",
     "VisionLanguageActor",
+    # Quantum capabilities
+    "QuantumTaskPlanner",
+    "QuantumDecisionEngine",
+    "QuantumOptimizer", 
+    "MultiObjectiveOptimizer",
+    "AutonomousSDLCExecutor",
+    "PredictiveAnalytics",
+    "ResourcePredictor",
 ]
