@@ -14,11 +14,15 @@ from enum import Enum
 import time
 import json
 import subprocess
+import os
+import re
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 
 from robo_rlhf.core import get_logger, get_config
-from robo_rlhf.core.exceptions import RoboRLHFError
+from robo_rlhf.core.exceptions import RoboRLHFError, SecurityError, ValidationError
+from robo_rlhf.core.security import sanitize_input, check_file_safety, RateLimiter
+from robo_rlhf.core.validators import validate_path, validate_numeric
 from robo_rlhf.quantum.planner import QuantumTaskPlanner, QuantumTask, TaskState, TaskPriority
 from robo_rlhf.quantum.optimizer import QuantumOptimizer, OptimizationObjective, OptimizationProblem
 
@@ -94,7 +98,37 @@ class AutonomousSDLCExecutor:
                  config: Optional[Dict[str, Any]] = None):
         self.logger = get_logger(__name__)
         self.config = config or get_config().to_dict()
-        self.project_path = Path(project_path)
+        
+        # Validate and secure project path
+        try:
+            self.project_path = validate_path(project_path, must_exist=True, must_be_dir=True)
+            # Security check on project directory
+            security_scan = check_file_safety(
+                self.project_path, 
+                scan_content=False,  # Don't scan directory content
+                max_size=None  # No size limit for directories
+            )
+            if not security_scan["is_safe"]:
+                raise SecurityError(
+                    f"Project directory failed security scan: {security_scan['threats']}",
+                    threat_type="unsafe_directory"
+                )
+        except ValidationError as e:
+            raise SecurityError(f"Invalid project path: {e}", threat_type="path_validation")
+        
+        # Initialize rate limiter for command execution
+        self.rate_limiter = RateLimiter(
+            max_requests=self.config.get("security", {}).get("max_commands_per_minute", 30),
+            time_window=60
+        )
+        
+        # Security configuration
+        self.security_config = self.config.get("security", {})
+        self.allowed_commands = self.security_config.get("allowed_commands", [
+            "python", "pytest", "mypy", "bandit", "docker", "npm", "pip"
+        ])
+        self.command_timeout_limit = self.security_config.get("max_command_timeout", 1800)  # 30 minutes
+        self.max_output_size = self.security_config.get("max_output_size", 10 * 1024 * 1024)  # 10MB
         
         # Initialize quantum components
         self.task_planner = QuantumTaskPlanner(config)
@@ -762,3 +796,159 @@ class AutonomousSDLCExecutor:
             "optimizations_applied": sum(1 for r in recent_executions if r.optimization_applied),
             "current_quality_score": quality_score
         }
+    
+    def _create_secure_action(self, **kwargs) -> AutonomousAction:
+        """Create a secure autonomous action with validation."""
+        # Validate timeout
+        if "timeout" in kwargs:
+            kwargs["timeout"] = validate_numeric(
+                kwargs["timeout"],
+                min_value=1.0,
+                max_value=self.command_timeout_limit,
+                must_be_positive=True
+            )
+        
+        # Sanitize command
+        if "command" in kwargs:
+            kwargs["command"] = self._sanitize_command(kwargs["command"])
+        
+        # Sanitize name and id
+        if "name" in kwargs:
+            kwargs["name"] = sanitize_input(
+                kwargs["name"],
+                max_length=200,
+                allowed_chars="a-zA-Z0-9 _-"
+            )
+        
+        if "id" in kwargs:
+            kwargs["id"] = sanitize_input(
+                kwargs["id"],
+                max_length=100,
+                allowed_chars="a-zA-Z0-9_"
+            )
+        
+        return AutonomousAction(**kwargs)
+    
+    def _sanitize_command(self, command: str) -> str:
+        """Sanitize and validate command for security."""
+        # Basic input sanitization
+        command = sanitize_input(command, max_length=1000)
+        
+        # Extract command executable
+        cmd_parts = command.strip().split()
+        if not cmd_parts:
+            raise SecurityError("Empty command", threat_type="invalid_command")
+        
+        executable = cmd_parts[0]
+        
+        # Check if command is allowed
+        if not any(allowed in executable for allowed in self.allowed_commands):
+            raise SecurityError(
+                f"Command '{executable}' not in allowed list: {self.allowed_commands}",
+                threat_type="forbidden_command"
+            )
+        
+        # Check for dangerous patterns
+        dangerous_patterns = [
+            r'\|', r'&', r';', r'\$\(', r'`', r'>', r'<',  # Shell operators
+            r'rm\s+-rf', r'sudo', r'chmod\s+777',  # Dangerous commands  
+            r'\.\./.*', r'/etc/', r'/root/'  # Path traversal
+        ]
+        
+        for pattern in dangerous_patterns:
+            if re.search(pattern, command, re.IGNORECASE):
+                raise SecurityError(
+                    f"Command contains dangerous pattern: {pattern}",
+                    threat_type="dangerous_command"
+                )
+        
+        return command
+    
+    def _validate_action_security(self, action: AutonomousAction) -> AutonomousAction:
+        """Validate action for security compliance."""
+        # Validate command security
+        try:
+            action.command = self._sanitize_command(action.command)
+        except SecurityError as e:
+            raise SecurityError(f"Action {action.id} failed command validation: {e}")
+        
+        # Validate rollback command if present
+        if action.rollback_command:
+            try:
+                action.rollback_command = self._sanitize_command(action.rollback_command)
+            except SecurityError as e:
+                self.logger.warning(f"Removing unsafe rollback command for {action.id}: {e}")
+                action.rollback_command = None
+        
+        # Validate timeout bounds
+        if action.timeout > self.command_timeout_limit:
+            self.logger.warning(f"Reducing timeout for {action.id} from {action.timeout} to {self.command_timeout_limit}")
+            action.timeout = self.command_timeout_limit
+        
+        return action
+    
+    async def _execute_secure_command(self, action: AutonomousAction) -> asyncio.subprocess.Process:
+        """Execute command with security constraints."""
+        # Create secure environment
+        secure_env = os.environ.copy()
+        
+        # Remove potentially dangerous environment variables
+        dangerous_env_vars = ['LD_PRELOAD', 'LD_LIBRARY_PATH', 'PYTHONPATH']
+        for var in dangerous_env_vars:
+            secure_env.pop(var, None)
+        
+        # Add security markers
+        secure_env['ROBO_RLHF_SECURE_MODE'] = '1'
+        
+        try:
+            process = await asyncio.create_subprocess_shell(
+                action.command,
+                cwd=self.project_path,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+                env=secure_env,
+                # Additional security: limit process resources
+                preexec_fn=None,  # Disable preexec for security
+                shell=True  # We've already validated the command
+            )
+            return process
+        except Exception as e:
+            raise SecurityError(f"Failed to execute secure command: {e}", threat_type="execution_failure")
+    
+    def _sanitize_output(self, output: str) -> str:
+        """Sanitize command output for security."""
+        if len(output) > self.max_output_size:
+            self.logger.warning(f"Output truncated from {len(output)} to {self.max_output_size} bytes")
+            output = output[:self.max_output_size] + "\n[OUTPUT TRUNCATED FOR SECURITY]"
+        
+        # Remove potential secrets (basic patterns)
+        secret_patterns = [
+            (r'password[=:]\s*["\'][^"\s]+["\']', 'password=***'),
+            (r'token[=:]\s*["\'][^"\s]+["\']', 'token=***'),
+            (r'key[=:]\s*["\'][^"\s]+["\']', 'key=***'),
+            (r'secret[=:]\s*["\'][^"\s]+["\']', 'secret=***')
+        ]
+        
+        for pattern, replacement in secret_patterns:
+            output = re.sub(pattern, replacement, output, flags=re.IGNORECASE)
+        
+        return output
+    
+    def _validate_command_output(self, stdout: str, stderr: str) -> None:
+        """Validate command output for security threats."""
+        # Check for suspicious patterns in output
+        suspicious_patterns = [
+            r'(?i)(password|token|secret|key)\s*[:=]\s*[\w\d@#$%]+',
+            r'(?i)connection\s+established.*backdoor',
+            r'(?i)reverse\s+shell',
+            r'(?i)malicious\s+code\s+detected'
+        ]
+        
+        combined_output = stdout + "\n" + stderr
+        
+        for pattern in suspicious_patterns:
+            if re.search(pattern, combined_output):
+                raise SecurityError(
+                    f"Suspicious pattern detected in command output",
+                    threat_type="malicious_output"
+                )

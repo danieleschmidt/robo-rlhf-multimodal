@@ -18,6 +18,10 @@ from abc import ABC, abstractmethod
 
 from robo_rlhf.core import get_logger, get_config
 from robo_rlhf.core.exceptions import RoboRLHFError
+from robo_rlhf.core.performance import (
+    measure_async_time, cached, timer, get_performance_monitor, 
+    ThreadPool, BatchProcessor, optimize_memory
+)
 
 
 class OptimizationObjective(Enum):
@@ -91,20 +95,36 @@ class QuantumOptimizer:
         self.best_solutions: List[OptimizationSolution] = []
         self.optimization_history: List[Dict[str, Any]] = []
         
-        self.logger.info("QuantumOptimizer initialized with quantum annealing capabilities")
+        # Performance optimization
+        self.thread_pool = ThreadPool(max_workers=self.config.get("optimization", {}).get("max_workers", 4))
+        self.batch_processor = BatchProcessor(
+            batch_size=self.config.get("optimization", {}).get("batch_size", 16),
+            max_wait_time=self.config.get("optimization", {}).get("batch_wait_time", 0.1)
+        )
+        self.performance_monitor = get_performance_monitor()
+        
+        # Caching for expensive operations
+        self.solution_cache_size = self.config.get("optimization", {}).get("cache_size", 1000)
+        
+        self.logger.info("QuantumOptimizer initialized with quantum annealing and performance optimizations")
     
+    @measure_async_time
     async def optimize(self, problem: OptimizationProblem) -> List[OptimizationSolution]:
-        """Optimize using quantum-inspired algorithms."""
+        """Optimize using quantum-inspired algorithms with performance monitoring."""
         self.logger.info(f"Starting quantum optimization: {problem.name}")
+        self.performance_monitor.increment_counter("optimization_runs")
         
-        # Initialize quantum population
-        population = self._initialize_quantum_population(problem)
+        # Initialize quantum population with performance tracking
+        with timer("population_initialization"):
+            population = self._initialize_quantum_population(problem)
         
-        # Quantum optimization loop
+        # Quantum optimization loop with performance monitoring
         best_fitness_history = []
         convergence_count = 0
+        generation_times = []
         
         for generation in range(problem.max_generations):
+            generation_start = time.time()
             # Update quantum temperature (simulated annealing)
             current_temperature = self._update_quantum_temperature(generation, problem.max_generations)
             
@@ -126,23 +146,55 @@ class QuantumOptimizer:
                 else:
                     convergence_count = 0
             
-            # Quantum evolution step
-            population = await self._quantum_evolution_step(
-                population, problem, current_temperature, generation
-            )
+            # Quantum evolution step with performance tracking
+            with timer("quantum_evolution"):
+                population = await self._quantum_evolution_step(
+                    population, problem, current_temperature, generation
+                )
+            
+            generation_time = time.time() - generation_start
+            generation_times.append(generation_time)
+            self.performance_monitor.increment_counter("generations_processed")
             
             # Log progress
             if generation % 50 == 0:
                 avg_fitness = np.mean([sol.fitness_score for sol in population])
                 self.logger.debug(f"Generation {generation}: best={best_fitness:.4f}, avg={avg_fitness:.4f}, temp={current_temperature:.4f}")
         
-        # Select final solutions
-        final_solutions = self._select_pareto_optimal_solutions(population, problem)
+        # Select final solutions with performance tracking
+        with timer("pareto_selection"):
+            final_solutions = self._select_pareto_optimal_solutions(population, problem)
         
+        # Store results and performance metrics
         self.current_solutions = population
         self.best_solutions = final_solutions
         
-        self.logger.info(f"Quantum optimization completed: {len(final_solutions)} Pareto-optimal solutions found")
+        # Performance statistics
+        total_time = sum(generation_times)
+        avg_generation_time = np.mean(generation_times) if generation_times else 0
+        
+        # Memory optimization after intensive computation
+        memory_stats = optimize_memory()
+        
+        # Store optimization run statistics
+        optimization_stats = {
+            "problem_name": problem.name,
+            "total_generations": generation,
+            "total_time": total_time,
+            "avg_generation_time": avg_generation_time,
+            "final_solutions_count": len(final_solutions),
+            "convergence_generation": generation - convergence_count if convergence_count >= 5 else -1,
+            "memory_optimized_mb": memory_stats["memory_mb"],
+            "objects_collected": memory_stats["collected_objects"]
+        }
+        
+        self.optimization_history.append(optimization_stats)
+        
+        self.logger.info(
+            f"Quantum optimization completed: {len(final_solutions)} Pareto-optimal solutions, "
+            f"avg generation time: {avg_generation_time:.3f}s, "
+            f"memory usage: {memory_stats['memory_mb']:.1f}MB"
+        )
         return final_solutions
     
     def _initialize_quantum_population(self, problem: OptimizationProblem) -> List[OptimizationSolution]:
@@ -172,15 +224,21 @@ class QuantumOptimizer:
         return population
     
     async def _evaluate_population(self, population: List[OptimizationSolution], problem: OptimizationProblem) -> None:
-        """Evaluate population fitness using quantum measurement."""
-        tasks = []
-        
-        for solution in population:
-            task = asyncio.create_task(self._evaluate_solution(solution, problem))
-            tasks.append(task)
-        
-        # Wait for all evaluations
-        await asyncio.gather(*tasks)
+        """Evaluate population fitness using quantum measurement with performance optimization."""
+        with timer("population_evaluation"):
+            # Use concurrent evaluation with controlled parallelism
+            semaphore = asyncio.Semaphore(self.thread_pool.max_workers)
+            
+            async def evaluate_with_semaphore(solution):
+                async with semaphore:
+                    return await self._evaluate_solution(solution, problem)
+            
+            # Batch evaluate solutions
+            tasks = [evaluate_with_semaphore(solution) for solution in population]
+            await asyncio.gather(*tasks)
+            
+            self.performance_monitor.increment_counter("population_evaluations")
+            self.performance_monitor.increment_counter("solution_evaluations", len(population))
     
     async def _evaluate_solution(self, solution: OptimizationSolution, problem: OptimizationProblem) -> None:
         """Evaluate individual solution using quantum measurement."""
@@ -260,10 +318,13 @@ class QuantumOptimizer:
         
         return True
     
+    @cached(maxsize=1000, ttl=300)  # Cache for 5 minutes
     def _calculate_quantum_fitness(self, solution: OptimizationSolution, problem: OptimizationProblem) -> float:
-        """Calculate fitness using quantum measurement principles."""
+        """Calculate fitness using quantum measurement principles with caching."""
         if not solution.constraints_satisfied:
             return -float('inf')  # Heavily penalize constraint violations
+        
+        self.performance_monitor.increment_counter("fitness_calculations")
         
         # Multi-objective fitness calculation
         weighted_objectives = 0.0
@@ -444,6 +505,72 @@ class QuantumOptimizer:
         )
         
         return mutated_solution
+    
+    def get_performance_stats(self) -> Dict[str, Any]:
+        """Get comprehensive performance statistics."""
+        perf_metrics = self.performance_monitor.get_metrics()
+        
+        # Optimization-specific stats
+        if self.optimization_history:
+            recent_runs = self.optimization_history[-10:]
+            avg_run_time = np.mean([run["total_time"] for run in recent_runs])
+            avg_generations = np.mean([run["total_generations"] for run in recent_runs])
+            avg_solutions = np.mean([run["final_solutions_count"] for run in recent_runs])
+        else:
+            avg_run_time = avg_generations = avg_solutions = 0
+        
+        # Thread pool stats
+        thread_stats = self.thread_pool.executor._threads if hasattr(self.thread_pool.executor, '_threads') else []
+        
+        return {
+            **perf_metrics,
+            "optimization_runs": len(self.optimization_history),
+            "avg_run_time": avg_run_time,
+            "avg_generations": avg_generations,
+            "avg_solutions_found": avg_solutions,
+            "thread_pool_size": self.thread_pool.max_workers,
+            "active_threads": len(thread_stats),
+            "cache_hit_rate": self._get_cache_hit_rate(),
+            "current_solutions_count": len(self.current_solutions),
+            "best_solutions_count": len(self.best_solutions)
+        }
+    
+    def _get_cache_hit_rate(self) -> float:
+        """Calculate cache hit rate from performance counters."""
+        fitness_calculations = self.performance_monitor.counters.get("fitness_calculations", 0)
+        cache_hits = self.performance_monitor.counters.get("_calculate_quantum_fitness_cache_hits", 0)
+        
+        if fitness_calculations > 0:
+            return cache_hits / fitness_calculations
+        return 0.0
+    
+    def cleanup(self) -> None:
+        """Clean up resources and shut down thread pools."""
+        self.logger.info("Cleaning up QuantumOptimizer resources")
+        
+        try:
+            self.thread_pool.shutdown(wait=True)
+            self.batch_processor.shutdown()
+        except Exception as e:
+            self.logger.warning(f"Error during cleanup: {e}")
+        
+        # Clear large data structures to free memory
+        self.current_solutions.clear()
+        self.best_solutions.clear()
+        
+        # Keep only recent history
+        if len(self.optimization_history) > 100:
+            self.optimization_history = self.optimization_history[-50:]
+        
+        # Force garbage collection
+        optimize_memory()
+    
+    def __del__(self):
+        """Destructor to ensure cleanup."""
+        try:
+            self.cleanup()
+        except:
+            pass  # Ignore errors during destruction
     
     def _update_quantum_temperature(self, generation: int, max_generations: int) -> float:
         """Update quantum temperature for simulated annealing."""

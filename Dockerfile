@@ -108,8 +108,8 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 # Expose application port
 EXPOSE 8080
 
-# Production command
-CMD ["python", "-m", "robo_rlhf.preference.server"]
+# Production command - Start quantum SDLC system
+CMD ["python", "-m", "robo_rlhf.quantum.cli", "--mode", "autonomous", "--config", "/workspace/configs/rlhf_config.yaml"]
 
 # ============================================================================
 # GPU stage - extends production with CUDA support

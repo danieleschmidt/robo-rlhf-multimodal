@@ -14,13 +14,15 @@ from enum import Enum
 import time
 import json
 from collections import deque, defaultdict
+import re
 from sklearn.ensemble import RandomForestRegressor, IsolationForest
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 
 from robo_rlhf.core import get_logger, get_config
-from robo_rlhf.core.exceptions import RoboRLHFError
+from robo_rlhf.core.exceptions import RoboRLHFError, ValidationError, SecurityError
+from robo_rlhf.core.validators import validate_numeric
 
 
 class PredictionType(Enum):
@@ -89,6 +91,16 @@ class Alert:
     actions_taken: List[str] = field(default_factory=list)
 
 
+@dataclass 
+class CircuitBreakerState:
+    """Circuit breaker state for fault tolerance."""
+    is_open: bool = False
+    failure_count: int = 0
+    last_failure_time: float = 0.0
+    success_count: int = 0
+    half_open_test_time: Optional[float] = None
+
+
 class PredictiveAnalytics:
     """Predictive analytics engine for autonomous SDLC."""
     
@@ -120,25 +132,82 @@ class PredictiveAnalytics:
         self.pattern_clusters = {}
         self.cluster_models: Dict[str, KMeans] = {}
         
-        self.logger.info("PredictiveAnalytics initialized with ML-based forecasting")
+        # Circuit breakers for fault tolerance
+        self.circuit_breakers: Dict[str, CircuitBreakerState] = {}
+        self.circuit_breaker_config = {
+            "failure_threshold": self.config.get("circuit_breaker", {}).get("failure_threshold", 5),
+            "recovery_timeout": self.config.get("circuit_breaker", {}).get("recovery_timeout", 60.0),
+            "half_open_max_calls": self.config.get("circuit_breaker", {}).get("half_open_calls", 3)
+        }
+        
+        # Health monitoring
+        self.system_health = {
+            "model_errors": 0,
+            "prediction_errors": 0,
+            "anomaly_errors": 0,
+            "last_error_time": 0.0,
+            "error_recovery_count": 0
+        }
+        
+        self.logger.info("PredictiveAnalytics initialized with ML-based forecasting and fault tolerance")
     
     async def ingest_metrics(self, metrics: Dict[str, float], source: str = "system") -> None:
-        """Ingest real-time metrics for analysis."""
-        timestamp = time.time()
-        
-        for metric_name, value in metrics.items():
-            sample = MetricSample(
-                timestamp=timestamp,
-                value=value,
-                source=source,
-                metadata={"ingestion_time": timestamp}
-            )
+        """Ingest real-time metrics with comprehensive validation."""
+        try:
+            # Validate input parameters
+            if not isinstance(metrics, dict):
+                raise ValidationError("Metrics must be a dictionary", field="metrics")
             
-            self.metrics_buffer[metric_name].append(sample)
-        
-        # Trigger analysis if buffer is full
-        if any(len(buffer) >= self.window_size for buffer in self.metrics_buffer.values()):
-            await self._trigger_analysis()
+            if not metrics:
+                raise ValidationError("Metrics cannot be empty", field="metrics")
+            
+            source = self._validate_source(source)
+            timestamp = time.time()
+            
+            # Validate each metric
+            validated_metrics = {}
+            for metric_name, value in metrics.items():
+                try:
+                    validated_name = self._validate_metric_name(metric_name)
+                    validated_value = validate_numeric(
+                        value,
+                        must_be_positive=False,  # Allow negative values for some metrics
+                        must_be_integer=False
+                    )
+                    validated_metrics[validated_name] = validated_value
+                except (ValidationError, ValueError) as e:
+                    self.logger.warning(f"Skipping invalid metric {metric_name}: {e}")
+                    continue
+            
+            if not validated_metrics:
+                raise ValidationError("No valid metrics found after validation")
+            
+            # Ingest validated metrics
+            for metric_name, value in validated_metrics.items():
+                sample = MetricSample(
+                    timestamp=timestamp,
+                    value=value,
+                    source=source,
+                    metadata={
+                        "ingestion_time": timestamp,
+                        "validation_passed": True
+                    }
+                )
+                
+                self.metrics_buffer[metric_name].append(sample)
+            
+            # Trigger analysis if buffer is full
+            if any(len(buffer) >= self.window_size for buffer in self.metrics_buffer.values()):
+                await self._safe_trigger_analysis()
+                
+        except ValidationError as e:
+            self.logger.error(f"Metrics ingestion validation failed: {e}")
+            self._record_error("ingestion_error", str(e))
+            raise
+        except Exception as e:
+            self.logger.error(f"Unexpected error in metrics ingestion: {e}")
+            self._record_error("ingestion_error", str(e))
+            raise RoboRLHFError(f"Metrics ingestion failed: {e}") from e
     
     async def predict(self, 
                      prediction_type: PredictionType,
@@ -907,3 +976,163 @@ class ResourcePredictor:
             plan["cost_impact"] = "high"
         
         return plan
+    
+    def _validate_source(self, source: str) -> str:
+        """Validate metric source string."""
+        if not isinstance(source, str):
+            raise ValidationError(f"Source must be a string, got {type(source)}")
+        
+        # Sanitize source string
+        source = source.strip()
+        if not source:
+            raise ValidationError("Source cannot be empty")
+        
+        if len(source) > 100:
+            raise ValidationError(f"Source too long: {len(source)} > 100 characters")
+        
+        # Check for valid characters (alphanumeric, underscore, hyphen)
+        if not re.match(r'^[a-zA-Z0-9_-]+$', source):
+            raise ValidationError("Source can only contain alphanumeric characters, underscores, and hyphens")
+        
+        return source
+    
+    def _validate_metric_name(self, metric_name: str) -> str:
+        """Validate metric name string."""
+        if not isinstance(metric_name, str):
+            raise ValidationError(f"Metric name must be a string, got {type(metric_name)}")
+        
+        # Sanitize metric name
+        metric_name = metric_name.strip()
+        if not metric_name:
+            raise ValidationError("Metric name cannot be empty")
+        
+        if len(metric_name) > 200:
+            raise ValidationError(f"Metric name too long: {len(metric_name)} > 200 characters")
+        
+        # Check for valid characters and format
+        if not re.match(r'^[a-zA-Z][a-zA-Z0-9_]*$', metric_name):
+            raise ValidationError("Metric name must start with letter and contain only alphanumeric characters and underscores")
+        
+        return metric_name
+    
+    def _record_error(self, error_type: str, error_message: str) -> None:
+        """Record error for health monitoring."""
+        current_time = time.time()
+        self.system_health["last_error_time"] = current_time
+        
+        if error_type == "model_error":
+            self.system_health["model_errors"] += 1
+        elif error_type == "prediction_error":
+            self.system_health["prediction_errors"] += 1
+        elif error_type == "anomaly_error":
+            self.system_health["anomaly_errors"] += 1
+    
+    async def _safe_trigger_analysis(self) -> None:
+        """Safely trigger analysis with circuit breaker protection."""
+        circuit_breaker_key = "analysis_trigger"
+        
+        if self._is_circuit_open(circuit_breaker_key):
+            self.logger.warning("Analysis circuit breaker is open, skipping trigger")
+            return
+        
+        try:
+            await self._trigger_analysis()
+            self._record_success(circuit_breaker_key)
+        except Exception as e:
+            self.logger.error(f"Analysis trigger failed: {e}")
+            self._record_failure(circuit_breaker_key)
+            self._record_error("analysis_error", str(e))
+    
+    def _is_circuit_open(self, key: str) -> bool:
+        """Check if circuit breaker is open."""
+        if key not in self.circuit_breakers:
+            self.circuit_breakers[key] = CircuitBreakerState()
+        
+        breaker = self.circuit_breakers[key]
+        current_time = time.time()
+        
+        if breaker.is_open:
+            # Check if recovery timeout has passed
+            if current_time - breaker.last_failure_time > self.circuit_breaker_config["recovery_timeout"]:
+                # Enter half-open state
+                breaker.half_open_test_time = current_time
+                return False
+            return True
+        
+        return False
+    
+    def _record_success(self, key: str) -> None:
+        """Record successful operation for circuit breaker."""
+        if key not in self.circuit_breakers:
+            self.circuit_breakers[key] = CircuitBreakerState()
+        
+        breaker = self.circuit_breakers[key]
+        breaker.success_count += 1
+        breaker.failure_count = 0  # Reset failure count on success
+        
+        # If we were in half-open state, close the circuit
+        if breaker.half_open_test_time:
+            breaker.is_open = False
+            breaker.half_open_test_time = None
+            self.system_health["error_recovery_count"] += 1
+            self.logger.info(f"Circuit breaker {key} closed after successful recovery")
+    
+    def _record_failure(self, key: str) -> None:
+        """Record failed operation for circuit breaker."""
+        if key not in self.circuit_breakers:
+            self.circuit_breakers[key] = CircuitBreakerState()
+        
+        breaker = self.circuit_breakers[key]
+        breaker.failure_count += 1
+        breaker.last_failure_time = time.time()
+        
+        # Open circuit if failure threshold exceeded
+        if breaker.failure_count >= self.circuit_breaker_config["failure_threshold"]:
+            breaker.is_open = True
+            breaker.half_open_test_time = None
+            self.logger.warning(f"Circuit breaker {key} opened after {breaker.failure_count} failures")
+    
+    def get_system_health(self) -> Dict[str, Any]:
+        """Get current system health metrics."""
+        current_time = time.time()
+        
+        # Calculate error rates
+        total_errors = (
+            self.system_health["model_errors"] + 
+            self.system_health["prediction_errors"] + 
+            self.system_health["anomaly_errors"]
+        )
+        
+        # Time since last error
+        time_since_error = current_time - self.system_health["last_error_time"]
+        
+        # Circuit breaker states
+        circuit_states = {
+            key: {
+                "is_open": breaker.is_open,
+                "failure_count": breaker.failure_count,
+                "success_count": breaker.success_count
+            }
+            for key, breaker in self.circuit_breakers.items()
+        }
+        
+        # Overall health score (0-100)
+        open_circuits = sum(1 for breaker in self.circuit_breakers.values() if breaker.is_open)
+        error_penalty = min(50, total_errors * 5)  # Max 50 points penalty
+        circuit_penalty = open_circuits * 20  # 20 points per open circuit
+        
+        health_score = max(0, 100 - error_penalty - circuit_penalty)
+        
+        return {
+            "health_score": health_score,
+            "total_errors": total_errors,
+            "error_breakdown": {
+                "model_errors": self.system_health["model_errors"],
+                "prediction_errors": self.system_health["prediction_errors"],
+                "anomaly_errors": self.system_health["anomaly_errors"]
+            },
+            "time_since_last_error": time_since_error,
+            "circuit_breakers": circuit_states,
+            "recovery_count": self.system_health["error_recovery_count"],
+            "system_status": "healthy" if health_score > 80 else "degraded" if health_score > 50 else "unhealthy"
+        }
