@@ -1,0 +1,260 @@
+# Production Deployment Configuration for Autonomous SDLC
+# Robo-RLHF-Multimodal: Quantum-Inspired Autonomous SDLC System
+
+version: '3.8'
+
+services:
+  # Main Autonomous SDLC Executor
+  autonomous-sdlc-executor:
+    build:
+      context: ../
+      dockerfile: deployment/Dockerfile.autonomous
+    container_name: robo-rlhf-autonomous-executor
+    restart: unless-stopped
+    environment:
+      - ROBO_RLHF_ENV=production
+      - ROBO_RLHF_LOG_LEVEL=INFO
+      - ROBO_RLHF_SECURITY_ENABLED=true
+      - ROBO_RLHF_QUANTUM_OPTIMIZATION=true
+      - ROBO_RLHF_AUTO_SCALING=true
+      - ROBO_RLHF_MONITORING_ENABLED=true
+      - POSTGRES_HOST=postgres
+      - REDIS_HOST=redis
+      - PROMETHEUS_HOST=prometheus
+    volumes:
+      - autonomous_logs:/app/logs
+      - autonomous_data:/app/data
+      - autonomous_cache:/app/cache
+      - /var/run/docker.sock:/var/run/docker.sock  # For Docker-in-Docker builds
+    ports:
+      - "8080:8080"  # Health check and metrics endpoint
+      - "8081:8081"  # Autonomous execution API
+    networks:
+      - autonomous-network
+    depends_on:
+      - postgres
+      - redis
+      - prometheus
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 4G
+        reservations:
+          cpus: '1.0'
+          memory: 2G
+
+  # PostgreSQL Database for SDLC execution history
+  postgres:
+    image: postgres:15-alpine
+    container_name: robo-rlhf-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=autonomous_sdlc
+      - POSTGRES_USER=sdlc_user
+      - POSTGRES_PASSWORD=sdlc_secure_password_2025
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../robo_rlhf/database/migrations:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+    networks:
+      - autonomous-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sdlc_user -d autonomous_sdlc"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+
+  # Redis for caching and session management
+  redis:
+    image: redis:7-alpine
+    container_name: robo-rlhf-redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass redis_secure_password_2025
+    volumes:
+      - redis_data:/data
+      - ../configs/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - "6379:6379"
+    networks:
+      - autonomous-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+
+  # Prometheus for metrics collection
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: robo-rlhf-prometheus
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=15d'
+      - '--web.enable-lifecycle'
+      - '--web.enable-admin-api'
+    volumes:
+      - ../configs/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - autonomous-network
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 1G
+
+  # Grafana for monitoring dashboards
+  grafana:
+    image: grafana/grafana:latest
+    container_name: robo-rlhf-grafana
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=grafana_admin_password_2025
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ../configs/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ../configs/grafana/datasources:/etc/grafana/provisioning/datasources
+    ports:
+      - "3000:3000"
+    networks:
+      - autonomous-network
+    depends_on:
+      - prometheus
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+
+  # Jaeger for distributed tracing
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: robo-rlhf-jaeger
+    restart: unless-stopped
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "16686:16686"  # Jaeger UI
+      - "14268:14268"  # Jaeger collector HTTP
+      - "6831:6831/udp"  # Jaeger agent UDP
+    networks:
+      - autonomous-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+
+  # NGINX reverse proxy and load balancer
+  nginx:
+    image: nginx:alpine
+    container_name: robo-rlhf-nginx
+    restart: unless-stopped
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - autonomous_logs:/var/log/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - autonomous-network
+    depends_on:
+      - autonomous-sdlc-executor
+      - grafana
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 128M
+
+  # Log aggregation with Fluentd
+  fluentd:
+    image: fluentd:v1.16-1
+    container_name: robo-rlhf-fluentd
+    restart: unless-stopped
+    volumes:
+      - ./fluentd.conf:/fluentd/etc/fluent.conf
+      - autonomous_logs:/var/log/autonomous
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    networks:
+      - autonomous-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  autonomous_logs:
+    driver: local
+  autonomous_data:
+    driver: local
+  autonomous_cache:
+    driver: local
+
+networks:
+  autonomous-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
