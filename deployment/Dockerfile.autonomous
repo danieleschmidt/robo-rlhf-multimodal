@@ -1,0 +1,108 @@
+# Production Dockerfile for Autonomous SDLC Executor
+# Multi-stage build for optimized production image
+
+# Build stage
+FROM python:3.11-slim as builder
+
+# Set build arguments
+ARG DEBIAN_FRONTEND=noninteractive
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VERSION
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user for building
+RUN useradd --create-home --shell /bin/bash builder
+USER builder
+WORKDIR /home/builder
+
+# Set up Python virtual environment
+ENV VIRTUAL_ENV=/home/builder/venv
+RUN python -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Copy requirements first for better layer caching
+COPY --chown=builder:builder pyproject.toml ./
+COPY --chown=builder:builder README.md ./
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir -e .[full]
+
+# Copy application code
+COPY --chown=builder:builder robo_rlhf/ ./robo_rlhf/
+COPY --chown=builder:builder examples/ ./examples/
+COPY --chown=builder:builder configs/ ./configs/
+
+# Production stage
+FROM python:3.11-slim as production
+
+# Set metadata labels
+LABEL maintainer="Daniel Schmidt <daniel@terragonlabs.com>"
+LABEL org.opencontainers.image.title="Robo-RLHF Autonomous SDLC"
+LABEL org.opencontainers.image.description="Quantum-inspired autonomous SDLC execution system"
+LABEL org.opencontainers.image.version=${VERSION}
+LABEL org.opencontainers.image.created=${BUILD_DATE}
+LABEL org.opencontainers.image.revision=${VCS_REF}
+LABEL org.opencontainers.image.source="https://github.com/danieleschmidt/robo-rlhf-multimodal"
+
+# Install runtime dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    docker.io \
+    git \
+    postgresql-client \
+    redis-tools \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create application user
+RUN groupadd --gid 1000 appgroup && \
+    useradd --uid 1000 --gid appgroup --shell /bin/bash --create-home appuser
+
+# Set up application directory
+WORKDIR /app
+RUN chown appuser:appgroup /app
+
+# Copy virtual environment from builder
+COPY --from=builder --chown=appuser:appgroup /home/builder/venv /app/venv
+
+# Copy application files
+COPY --from=builder --chown=appuser:appgroup /home/builder/robo_rlhf /app/robo_rlhf
+COPY --from=builder --chown=appuser:appgroup /home/builder/examples /app/examples
+COPY --from=builder --chown=appuser:appgroup /home/builder/configs /app/configs
+
+# Copy deployment scripts
+COPY --chown=appuser:appgroup deployment/scripts/ /app/scripts/
+RUN chmod +x /app/scripts/*.sh
+
+# Create necessary directories
+RUN mkdir -p /app/logs /app/data /app/cache && \
+    chown -R appuser:appgroup /app/logs /app/data /app/cache
+
+# Set environment variables
+ENV PATH="/app/venv/bin:$PATH"
+ENV PYTHONPATH="/app:$PYTHONPATH"
+ENV ROBO_RLHF_ENV=production
+ENV ROBO_RLHF_LOG_LEVEL=INFO
+ENV ROBO_RLHF_DATA_DIR=/app/data
+ENV ROBO_RLHF_LOG_DIR=/app/logs
+ENV ROBO_RLHF_CACHE_DIR=/app/cache
+
+# Switch to non-root user
+USER appuser
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+  CMD curl -f http://localhost:8080/health || exit 1
+
+# Expose ports
+EXPOSE 8080 8081
+
+# Default command
+CMD ["/app/scripts/start_autonomous_sdlc.sh"]
