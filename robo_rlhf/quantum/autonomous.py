@@ -102,16 +102,23 @@ class AutonomousSDLCExecutor:
         # Validate and secure project path
         try:
             self.project_path = validate_path(project_path, must_exist=True, must_be_dir=True)
-            # Security check on project directory
-            security_scan = check_file_safety(
-                self.project_path, 
-                scan_content=False,  # Don't scan directory content
-                max_size=None  # No size limit for directories
-            )
-            if not security_scan["is_safe"]:
+            # Security check on project directory - skip for directories
+            if self.project_path.is_file():
+                security_scan = check_file_safety(
+                    self.project_path, 
+                    scan_content=False,
+                    max_size=None
+                )
+                if not security_scan["is_safe"]:
+                    raise SecurityError(
+                        f"Project directory failed security scan: {security_scan['threats']}",
+                        threat_type="unsafe_directory"
+                    )
+            # For directories, just validate they exist and are readable
+            elif not (self.project_path.exists() and os.access(self.project_path, os.R_OK)):
                 raise SecurityError(
-                    f"Project directory failed security scan: {security_scan['threats']}",
-                    threat_type="unsafe_directory"
+                    f"Project directory not accessible: {self.project_path}",
+                    threat_type="inaccessible_directory"
                 )
         except ValidationError as e:
             raise SecurityError(f"Invalid project path: {e}", threat_type="path_validation")
