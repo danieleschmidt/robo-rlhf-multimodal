@@ -382,3 +382,44 @@ def validate_numeric(
         )
     
     return value
+
+
+def validate_dict(data: Any, required_keys: Optional[List[str]] = None, 
+                 optional_keys: Optional[List[str]] = None) -> bool:
+    """
+    Validate dictionary structure.
+    
+    Args:
+        data: Data to validate
+        required_keys: Keys that must be present
+        optional_keys: Keys that may be present
+        
+    Returns:
+        True if valid
+        
+    Raises:
+        ValidationError: If validation fails
+    """
+    if not isinstance(data, dict):
+        raise ValidationError(f"Expected dict, got {type(data)}", field="data")
+    
+    if required_keys:
+        missing_keys = set(required_keys) - set(data.keys())
+        if missing_keys:
+            raise ValidationError(
+                f"Missing required keys: {missing_keys}",
+                field="data",
+                details={"missing_keys": list(missing_keys)}
+            )
+    
+    if optional_keys is not None:
+        allowed_keys = set(required_keys or []) | set(optional_keys)
+        extra_keys = set(data.keys()) - allowed_keys
+        if extra_keys:
+            raise ValidationError(
+                f"Unexpected keys: {extra_keys}",
+                field="data", 
+                details={"extra_keys": list(extra_keys)}
+            )
+    
+    return True
