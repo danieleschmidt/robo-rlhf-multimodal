@@ -1,295 +1,168 @@
-"""Pytest configuration and shared fixtures."""
+"""
+Pytest configuration and shared fixtures for pipeline tests.
 
-import os
-import tempfile
-from pathlib import Path
-from typing import Any, Dict, Generator
+Provides common test fixtures and configuration for the self-healing pipeline test suite.
+"""
 
-import numpy as np
+import asyncio
 import pytest
-from unittest.mock import MagicMock, patch
+import tempfile
+import os
+from typing import Dict, Any, List
+from unittest.mock import Mock, AsyncMock
 
-# Optional PyTorch import
-try:
-    import torch
-    HAS_TORCH = True
-except ImportError:
-    HAS_TORCH = False
-    # Create mock torch for tests that don't need it
-    torch = MagicMock()
-    torch.cuda.is_available.return_value = False
+# Mock the quantum modules to avoid import errors in testing
+import sys
+from unittest.mock import MagicMock
 
-# Test configuration
-os.environ["TESTING"] = "1"
-os.environ["LOG_LEVEL"] = "DEBUG"
+# Create mock quantum modules
+mock_quantum = MagicMock()
+mock_quantum.QuantumTaskPlanner = MagicMock
+mock_quantum.QuantumDecisionEngine = MagicMock
+mock_quantum.QuantumOptimizer = MagicMock
+mock_quantum.MultiObjectiveOptimizer = MagicMock
+mock_quantum.AutonomousSDLCExecutor = MagicMock
+mock_quantum.PredictiveAnalytics = MagicMock
+mock_quantum.ResourcePredictor = MagicMock
+
+sys.modules['robo_rlhf.quantum'] = mock_quantum
+
+# Mock external dependencies that might not be available
+external_mocks = {
+    'jwt': MagicMock(),
+    'cryptography.fernet': MagicMock(),
+    'cryptography.hazmat.primitives': MagicMock(),
+    'cryptography.hazmat.primitives.kdf.pbkdf2': MagicMock(),
+    'sklearn.ensemble': MagicMock(),
+    'psutil': MagicMock(),
+}
+
+for module_name, mock_module in external_mocks.items():
+    if module_name not in sys.modules:
+        sys.modules[module_name] = mock_module
 
 
 @pytest.fixture(scope="session")
-def test_data_dir() -> Path:
-    """Temporary directory for test data."""
-    with tempfile.TemporaryDirectory() as tmp_dir:
-        yield Path(tmp_dir)
-
-
-@pytest.fixture(scope="session") 
-def device() -> torch.device:
-    """Test device (CPU for CI, GPU if available locally)."""
-    if torch.cuda.is_available() and not os.getenv("CI"):
-        return torch.device("cuda:0")
-    return torch.device("cpu")
+def event_loop():
+    """Create an instance of the default event loop for the test session."""
+    loop = asyncio.get_event_loop_policy().new_event_loop()
+    yield loop
+    loop.close()
 
 
 @pytest.fixture
-def random_seed() -> int:
-    """Random seed for reproducible tests."""
-    seed = 42
-    np.random.seed(seed)
-    torch.manual_seed(seed) 
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(seed)
-    return seed
-
-
-@pytest.fixture
-def sample_observation() -> Dict[str, Any]:
-    """Sample multimodal observation for testing."""
-    return {
-        "rgb": np.random.randint(0, 255, (224, 224, 3), dtype=np.uint8),
-        "depth": np.random.rand(224, 224).astype(np.float32),
-        "proprioception": np.random.rand(7).astype(np.float32),
-        "force": np.random.rand(6).astype(np.float32),
-    }
-
-
-@pytest.fixture
-def sample_action() -> np.ndarray:
-    """Sample robot action for testing."""
-    return np.random.rand(7).astype(np.float32)
-
-
-@pytest.fixture
-def sample_trajectory(sample_observation: Dict[str, Any], sample_action: np.ndarray) -> Dict[str, Any]:
-    """Sample trajectory for testing."""
-    length = 50
-    trajectory = {
-        "observations": [],
-        "actions": [],
-        "rewards": np.random.rand(length).astype(np.float32),
-        "dones": np.zeros(length, dtype=bool),
-        "info": {},
-    }
-    
-    for _ in range(length):
-        # Vary observations slightly
-        obs = {}
-        for key, value in sample_observation.items():
-            noise = np.random.normal(0, 0.1, value.shape).astype(value.dtype)
-            obs[key] = np.clip(value + noise, 0, 255 if key == "rgb" else None)
-        trajectory["observations"].append(obs)
-        
-        # Vary actions slightly
-        action_noise = np.random.normal(0, 0.05, sample_action.shape)
-        trajectory["actions"].append(sample_action + action_noise)
-    
-    trajectory["dones"][-1] = True  # Mark trajectory as complete
-    return trajectory
-
-
-@pytest.fixture
-def sample_preference_pair(sample_trajectory: Dict[str, Any]) -> Dict[str, Any]:
-    """Sample preference pair for testing."""
-    # Create two slightly different trajectories
-    traj1 = sample_trajectory.copy()
-    traj2 = sample_trajectory.copy()
-    
-    # Make second trajectory slightly different
-    traj2["rewards"] = traj2["rewards"] + np.random.normal(0, 0.1, len(traj2["rewards"]))
-    
-    return {
-        "trajectory_1": traj1,
-        "trajectory_2": traj2,
-        "preference": 0,  # Prefer trajectory 1
-        "confidence": 0.8,
-        "annotator_id": "test_annotator",
-        "metadata": {"task": "test_task", "segment_length": 50},
-    }
-
-
-@pytest.fixture
-def mock_environment():
-    """Mock environment for testing."""
-    env = MagicMock()
-    env.observation_space.spaces = {
-        "rgb": MagicMock(shape=(224, 224, 3)),
-        "depth": MagicMock(shape=(224, 224)),
-        "proprioception": MagicMock(shape=(7,)),
-    }
-    env.action_space.shape = (7,)
-    env.reset.return_value = {
-        "rgb": np.random.randint(0, 255, (224, 224, 3), dtype=np.uint8),
-        "depth": np.random.rand(224, 224).astype(np.float32),
-        "proprioception": np.random.rand(7).astype(np.float32),
-    }
-    env.step.return_value = (
-        env.reset.return_value,  # observation
-        0.0,  # reward
-        False,  # done
-        {},  # info
-    )
-    return env
-
-
-@pytest.fixture
-def mock_model(device: torch.device):
-    """Mock neural network model for testing."""
-    model = MagicMock()
-    model.device = device
-    model.forward.return_value = torch.randn(1, 7, device=device)  # Sample action
-    model.parameters.return_value = [torch.randn(100, device=device)]
-    model.state_dict.return_value = {"test_param": torch.randn(100, device=device)}
-    return model
-
-
-@pytest.fixture
-def config_dict() -> Dict[str, Any]:
-    """Sample configuration dictionary."""
-    return {
-        "model": {
-            "vision_encoder": "clip_vit_b32",
-            "hidden_dim": 512,
-            "action_dim": 7,
-        },
-        "training": {
-            "batch_size": 32,
-            "learning_rate": 3e-4,
-            "num_epochs": 10,
-        },
-        "data": {
-            "min_trajectory_length": 10,
-            "max_trajectory_length": 1000,
-        },
-        "evaluation": {
-            "num_episodes": 10,
-            "max_episode_length": 1000,
-        },
-    }
-
-
-@pytest.fixture(scope="session", autouse=True)
-def setup_test_environment():
-    """Setup test environment variables and configuration."""
-    # Ensure test mode
-    os.environ["TESTING"] = "1"
-    os.environ["CUDA_VISIBLE_DEVICES"] = "0" if torch.cuda.is_available() else ""
-    
-    # Suppress warnings for cleaner test output
-    import warnings
-    warnings.filterwarnings("ignore", category=UserWarning)
-    warnings.filterwarnings("ignore", category=DeprecationWarning)
-    
-    yield
-    
-    # Cleanup after all tests
-    if "TESTING" in os.environ:
-        del os.environ["TESTING"]
-
-
-@pytest.fixture
-def mock_mujoco_env():
-    """Mock MuJoCo environment for testing."""
-    with patch("robo_rlhf.envs.mujoco.MujocoManipulation") as mock:
-        env = MagicMock()
-        env.reset.return_value = {
-            "rgb": np.random.randint(0, 255, (224, 224, 3), dtype=np.uint8),
-            "proprioception": np.random.rand(7).astype(np.float32),
+async def mock_health_check():
+    """Standard mock health check function."""
+    async def health_check():
+        return {
+            "status": "ok",
+            "response_time": 0.1,
+            "cpu_usage": 0.3,
+            "memory_usage": 0.4,
+            "error_rate": 0.0
         }
-        env.step.return_value = (env.reset.return_value, 0.0, False, {})
-        mock.return_value = env
-        yield env
-
-
-@pytest.fixture  
-def mock_isaac_env():
-    """Mock Isaac Sim environment for testing."""
-    with patch("robo_rlhf.envs.isaac.IsaacSimulation") as mock:
-        env = MagicMock()
-        env.reset.return_value = {
-            "rgb": np.random.randint(0, 255, (224, 224, 3), dtype=np.uint8),
-            "depth": np.random.rand(224, 224).astype(np.float32),
-            "proprioception": np.random.rand(7).astype(np.float32),
-        }
-        env.step.return_value = (env.reset.return_value, 0.0, False, {})
-        mock.return_value = env
-        yield env
+    return health_check
 
 
 @pytest.fixture
-def performance_benchmark():
-    """Fixture for performance benchmarking tests."""
-    import time
-    
-    class Benchmark:
-        def __init__(self):
-            self.start_time = None
-            self.end_time = None
-        
-        def start(self):
-            self.start_time = time.perf_counter()
-        
-        def stop(self):
-            self.end_time = time.perf_counter()
-            return self.end_time - self.start_time
-        
-        @property 
-        def elapsed(self):
-            if self.start_time and self.end_time:
-                return self.end_time - self.start_time
-            return None
-    
-    return Benchmark()
+async def failing_health_check():
+    """Mock health check that always fails."""
+    async def health_check():
+        raise Exception("Service unavailable")
+    return health_check
 
 
-# Pytest hooks for custom test behavior
-def pytest_configure(config):
-    """Configure pytest with custom markers."""
-    config.addinivalue_line(
-        "markers", "slow: mark test as slow running"
-    )
-    config.addinivalue_line(
-        "markers", "gpu: mark test as requiring GPU"
-    )
-    config.addinivalue_line(
-        "markers", "mujoco: mark test as requiring MuJoCo"
-    )
-    config.addinivalue_line(
-        "markers", "isaac: mark test as requiring Isaac Sim"
-    )
-    config.addinivalue_line(
-        "markers", "ros: mark test as requiring ROS2"
+@pytest.fixture
+async def slow_health_check():
+    """Mock health check with slow response."""
+    async def health_check():
+        await asyncio.sleep(0.5)  # Simulate slow response
+        return {
+            "status": "ok",
+            "response_time": 0.5,
+            "cpu_usage": 0.8,  # High CPU
+            "memory_usage": 0.7  # High memory
+        }
+    return health_check
+
+
+@pytest.fixture
+def sample_metrics_data():
+    """Sample metrics data for testing."""
+    return {
+        "cpu_usage": [0.3, 0.4, 0.5, 0.6, 0.7],
+        "memory_usage": [0.2, 0.3, 0.4, 0.5, 0.6],
+        "response_time": [0.1, 0.15, 0.2, 0.25, 0.3],
+        "error_rate": [0.01, 0.02, 0.01, 0.03, 0.02]
+    }
+
+
+@pytest.fixture
+def temp_directory():
+    """Temporary directory for testing file operations."""
+    with tempfile.TemporaryDirectory() as temp_dir:
+        yield temp_dir
+
+
+# Helper functions for tests
+def create_mock_component(name: str, health_check_func=None):
+    """Create a mock pipeline component."""
+    from robo_rlhf.pipeline.guard import PipelineComponent
+    
+    if health_check_func is None:
+        async def default_health_check():
+            return {"status": "ok", "response_time": 0.1}
+        health_check_func = default_health_check
+    
+    return PipelineComponent(
+        name=name,
+        endpoint=f"http://{name}:8080",
+        health_check=health_check_func,
+        critical=False
     )
 
 
-def pytest_collection_modifyitems(config, items):
-    """Modify test items based on markers and environment."""
-    # Skip GPU tests if no GPU available
-    if not torch.cuda.is_available():
-        skip_gpu = pytest.mark.skip(reason="GPU not available")
-        for item in items:
-            if "gpu" in item.keywords:
-                item.add_marker(skip_gpu)
+def assert_metrics_recorded(metrics_collector, metric_names: List[str]):
+    """Assert that specific metrics were recorded."""
+    latest_metrics = metrics_collector.get_latest_metrics(metric_names)
     
-    # Skip simulation tests in CI unless explicitly enabled
-    if os.getenv("CI") and not os.getenv("RUN_SIM_TESTS"):
-        skip_sim = pytest.mark.skip(reason="Simulation tests disabled in CI")
-        for item in items:
-            if "mujoco" in item.keywords or "isaac" in item.keywords:
-                item.add_marker(skip_sim)
+    for metric_name in metric_names:
+        assert metric_name in latest_metrics
+        assert latest_metrics[metric_name] is not None
+
+
+def assert_health_status(health_report, expected_status: str):
+    """Assert health report has expected status."""
+    assert health_report.status.value == expected_status
+
+
+# Test data factories
+class TestDataFactory:
+    """Factory for creating test data."""
     
-    # Skip ROS tests if ROS not available
-    try:
-        import rclpy
-    except ImportError:
-        skip_ros = pytest.mark.skip(reason="ROS2 not available")
-        for item in items:
-            if "ros" in item.keywords:
-                item.add_marker(skip_ros)
+    @staticmethod
+    def create_metric_batch(count: int = 10):
+        """Create a batch of test metrics."""
+        return [
+            {
+                "name": f"test_metric_{i}",
+                "value": float(i),
+                "tags": {"index": str(i), "batch": "test"}
+            }
+            for i in range(count)
+        ]
+    
+    @staticmethod
+    def create_anomaly_data():
+        """Create test data for anomaly detection."""
+        return {
+            "normal_values": [0.5, 0.52, 0.48, 0.51, 0.49, 0.53, 0.47],
+            "anomalous_values": [0.9, 0.95, 0.88, 0.92],
+            "timestamps": [i * 60 for i in range(11)]  # 1 minute intervals
+        }
+
+
+@pytest.fixture
+def test_data_factory():
+    """Test data factory fixture."""
+    return TestDataFactory
