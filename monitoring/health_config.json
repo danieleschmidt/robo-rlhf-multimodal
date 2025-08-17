@@ -1,0 +1,16 @@
+{
+  "health_checks": {
+    "disk_space": {
+      "threshold": "1GB",
+      "interval": "5m"
+    },
+    "memory_usage": {
+      "threshold": "80%",
+      "interval": "1m"
+    },
+    "response_time": {
+      "threshold": "500ms",
+      "interval": "30s"
+    }
+  }
+}
