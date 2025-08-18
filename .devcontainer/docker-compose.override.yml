@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  dev:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: development
+    volumes:
+      - ..:/workspace:cached
+      - vscode-server:/home/vscode/.vscode-server
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: sleep infinity
+    environment:
+      - DISPLAY=${DISPLAY}
+      - PYTHONPATH=/workspace
+      - CUDA_VISIBLE_DEVICES=0
+    stdin_open: true
+    tty: true
+    ports:
+      - "8080:8080"   # Preference UI
+      - "3000:3000"   # Grafana
+      - "9090:9090"   # Prometheus
+      - "8888:8888"   # Jupyter
+      - "6006:6006"   # TensorBoard
+      - "8000:8000"   # API Server
+    privileged: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  vscode-server:
