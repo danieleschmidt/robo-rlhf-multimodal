@@ -1,0 +1,294 @@
+# Prometheus Alerting Rules for Robo-RLHF-Multimodal
+groups:
+  # Application Health Alerts
+  - name: application_health
+    rules:
+      - alert: ApplicationDown
+        expr: up{job="robo-rlhf-app"} == 0
+        for: 30s
+        labels:
+          severity: critical
+          service: robo-rlhf
+        annotations:
+          summary: "Robo-RLHF application is down"
+          description: "The main Robo-RLHF application has been down for more than 30 seconds."
+          runbook_url: "https://github.com/danieleschmidt/robo-rlhf-multimodal/wiki/runbooks/application-down"
+
+      - alert: HighResponseTime
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 0.5
+        for: 2m
+        labels:
+          severity: warning
+          service: robo-rlhf
+        annotations:
+          summary: "High response time detected"
+          description: "95th percentile response time is {{ $value }}s, above the 500ms threshold."
+
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) / rate(http_requests_total[5m]) > 0.05
+        for: 1m
+        labels:
+          severity: critical
+          service: robo-rlhf
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value | humanizePercentage }}, above the 5% threshold."
+
+  # Training and ML Alerts
+  - name: training_alerts
+    rules:
+      - alert: TrainingStalled
+        expr: increase(training_steps_total[10m]) == 0 and training_active == 1
+        for: 5m
+        labels:
+          severity: warning
+          service: training
+        annotations:
+          summary: "Training appears to be stalled"
+          description: "No training steps have been recorded in the last 10 minutes while training is active."
+
+      - alert: TrainingLossAnomaly
+        expr: |
+          (
+            training_loss > 
+            (
+              avg_over_time(training_loss[1h]) + 
+              3 * stddev_over_time(training_loss[1h])
+            )
+          ) 
+          and training_active == 1
+        for: 3m
+        labels:
+          severity: warning
+          service: training
+        annotations:
+          summary: "Training loss anomaly detected"
+          description: "Training loss ({{ $value }}) is significantly higher than expected."
+
+      - alert: LowGPUUtilization
+        expr: nvidia_gpu_utilization_percent < 50 and training_active == 1
+        for: 5m
+        labels:
+          severity: warning
+          service: gpu
+        annotations:
+          summary: "Low GPU utilization during training"
+          description: "GPU utilization is {{ $value }}%, which is low for active training."
+
+      - alert: GPUMemoryExhaustion
+        expr: nvidia_gpu_memory_used_percent > 95
+        for: 1m
+        labels:
+          severity: critical
+          service: gpu
+        annotations:
+          summary: "GPU memory exhaustion"
+          description: "GPU memory usage is {{ $value }}%, close to exhaustion."
+
+  # Resource Alerts
+  - name: resource_alerts
+    rules:
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 2m
+        labels:
+          severity: warning
+          service: system
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is {{ $value }}% on {{ $labels.instance }}."
+
+      - alert: HighMemoryUsage
+        expr: (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 85
+        for: 2m
+        labels:
+          severity: warning
+          service: system
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is {{ $value }}% on {{ $labels.instance }}."
+
+      - alert: LowDiskSpace
+        expr: (1 - (node_filesystem_free_bytes / node_filesystem_size_bytes)) * 100 > 90
+        for: 1m
+        labels:
+          severity: critical
+          service: system
+        annotations:
+          summary: "Low disk space"
+          description: "Disk usage is {{ $value }}% on {{ $labels.instance }}:{{ $labels.mountpoint }}."
+
+      - alert: DiskSpaceExhaustion
+        expr: predict_linear(node_filesystem_free_bytes[6h], 24*60*60) < 0
+        for: 5m
+        labels:
+          severity: warning
+          service: system
+        annotations:
+          summary: "Disk space will be exhausted soon"
+          description: "Disk space on {{ $labels.instance }}:{{ $labels.mountpoint }} is predicted to run out in 24 hours."
+
+  # Database Alerts
+  - name: database_alerts
+    rules:
+      - alert: MongoDBDown
+        expr: up{job="mongodb"} == 0
+        for: 30s
+        labels:
+          severity: critical
+          service: database
+        annotations:
+          summary: "MongoDB is down"
+          description: "MongoDB has been down for more than 30 seconds."
+
+      - alert: RedisDown
+        expr: up{job="redis"} == 0
+        for: 30s
+        labels:
+          severity: critical
+          service: database
+        annotations:
+          summary: "Redis is down"
+          description: "Redis has been down for more than 30 seconds."
+
+      - alert: HighMongoDBConnections
+        expr: mongodb_connections{state="current"} / mongodb_connections{state="available"} > 0.8
+        for: 2m
+        labels:
+          severity: warning
+          service: database
+        annotations:
+          summary: "High MongoDB connection usage"
+          description: "MongoDB connection usage is {{ $value | humanizePercentage }}."
+
+      - alert: MongoDBReplicationLag
+        expr: mongodb_replset_member_optime_date{state="SECONDARY"} - mongodb_replset_member_optime_date{state="PRIMARY"} > 10
+        for: 1m
+        labels:
+          severity: warning
+          service: database
+        annotations:
+          summary: "MongoDB replication lag detected"
+          description: "MongoDB replication lag is {{ $value }} seconds."
+
+  # Business Logic Alerts
+  - name: business_alerts
+    rules:
+      - alert: LowPreferenceCollectionRate
+        expr: rate(preferences_collected_total[1h]) < 10
+        for: 15m
+        labels:
+          severity: warning
+          service: preferences
+        annotations:
+          summary: "Low preference collection rate"
+          description: "Preference collection rate is {{ $value }}/hour, below expected threshold."
+
+      - alert: HighAnnotationRejectionRate
+        expr: rate(preference_annotations_rejected_total[1h]) / rate(preference_annotations_total[1h]) > 0.3
+        for: 10m
+        labels:
+          severity: warning
+          service: preferences
+        annotations:
+          summary: "High annotation rejection rate"
+          description: "Annotation rejection rate is {{ $value | humanizePercentage }}."
+
+      - alert: ModelQualityDegradation
+        expr: model_accuracy < 0.8
+        for: 5m
+        labels:
+          severity: warning
+          service: model
+        annotations:
+          summary: "Model quality degradation detected"
+          description: "Model accuracy has dropped to {{ $value | humanizePercentage }}."
+
+  # Security Alerts
+  - name: security_alerts
+    rules:
+      - alert: SuspiciousLoginActivity
+        expr: rate(authentication_failures_total[5m]) > 5
+        for: 1m
+        labels:
+          severity: warning
+          service: security
+        annotations:
+          summary: "Suspicious login activity detected"
+          description: "High rate of authentication failures: {{ $value }}/sec."
+
+      - alert: UnauthorizedAPIAccess
+        expr: rate(http_requests_total{status="401"}[5m]) > 2
+        for: 2m
+        labels:
+          severity: warning
+          service: security
+        annotations:
+          summary: "High rate of unauthorized API access"
+          description: "Unauthorized API access rate: {{ $value }}/sec."
+
+  # Data Pipeline Alerts
+  - name: pipeline_alerts
+    rules:
+      - alert: DataIngestionStalled
+        expr: increase(data_samples_processed_total[15m]) == 0
+        for: 10m
+        labels:
+          severity: warning
+          service: pipeline
+        annotations:
+          summary: "Data ingestion appears stalled"
+          description: "No data samples have been processed in the last 15 minutes."
+
+      - alert: HighDataProcessingLatency
+        expr: histogram_quantile(0.95, rate(data_processing_duration_seconds_bucket[5m])) > 30
+        for: 3m
+        labels:
+          severity: warning
+          service: pipeline
+        annotations:
+          summary: "High data processing latency"
+          description: "95th percentile data processing latency is {{ $value }}s."
+
+      - alert: DataQualityIssue
+        expr: rate(data_validation_failures_total[10m]) / rate(data_samples_total[10m]) > 0.1
+        for: 5m
+        labels:
+          severity: warning
+          service: pipeline
+        annotations:
+          summary: "Data quality issues detected"
+          description: "Data validation failure rate is {{ $value | humanizePercentage }}."
+
+  # Autonomous SDLC Alerts
+  - name: autonomous_sdlc_alerts
+    rules:
+      - alert: SDLCExecutionFailure
+        expr: rate(sdlc_execution_failures_total[10m]) > 0.1
+        for: 2m
+        labels:
+          severity: critical
+          service: autonomous-sdlc
+        annotations:
+          summary: "SDLC execution failures detected"
+          description: "SDLC execution failure rate: {{ $value }}/sec."
+
+      - alert: PipelineHealingFrequent
+        expr: rate(pipeline_healing_attempts_total[30m]) > 5
+        for: 5m
+        labels:
+          severity: warning
+          service: autonomous-sdlc
+        annotations:
+          summary: "Frequent pipeline healing attempts"
+          description: "Pipeline healing rate: {{ $value }}/30min, indicating system instability."
+
+      - alert: QuantumOptimizationStuck
+        expr: quantum_optimization_duration_seconds > 300
+        for: 2m
+        labels:
+          severity: warning
+          service: quantum-optimization
+        annotations:
+          summary: "Quantum optimization taking too long"
+          description: "Quantum optimization has been running for {{ $value }}s."
