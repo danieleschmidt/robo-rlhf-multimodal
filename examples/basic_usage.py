@@ -19,9 +19,9 @@ from robo_rlhf import (
     PreferencePairGenerator, 
     PreferenceServer,
     MultimodalRLHF,
-    VisionLanguageActor,
-    make_env
+    VisionLanguageActor
 )
+# from robo_rlhf.envs.base import BaseRobotEnv  # Mock environment for demo
 
 
 def main():

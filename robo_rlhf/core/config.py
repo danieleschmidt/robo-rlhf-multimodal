@@ -120,8 +120,8 @@ class Config:
     
     def __post_init__(self):
         """Validate configuration after initialization."""
-        if self.environment not in ["development", "staging", "production"]:
-            raise ConfigurationError("environment must be development, staging, or production")
+        if self.environment not in ["development", "staging", "production", "testing"]:
+            raise ConfigurationError("environment must be development, staging, production, or testing")
     
     @classmethod
     def from_dict(cls, config_dict: Dict[str, Any]) -> 'Config':

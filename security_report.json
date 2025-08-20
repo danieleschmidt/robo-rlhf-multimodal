@@ -1,0 +1,4223 @@
+{
+  "errors": [
+    {
+      "filename": "robo_rlhf/pipeline/reliability.py",
+      "reason": "syntax error while parsing AST from file"
+    }
+  ],
+  "generated_at": "2025-08-20T00:13:49Z",
+  "metrics": {
+    "_totals": {
+      "CONFIDENCE.HIGH": 131,
+      "CONFIDENCE.LOW": 3,
+      "CONFIDENCE.MEDIUM": 2,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 6,
+      "SEVERITY.LOW": 116,
+      "SEVERITY.MEDIUM": 14,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 29813,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 35,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/algorithms/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 21,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/algorithms/ppo.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 109,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/algorithms/reward_learning.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 64,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/algorithms/rlhf.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 308,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/cli.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 186,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/collectors/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 18,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/collectors/base.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 226,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/collectors/devices.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 279,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/collectors/optimized.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 443,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/collectors/recorder.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 276,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 34,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/advanced_monitoring.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 621,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/auto_scaling.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 654,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/config.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 224,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/exceptions.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 94,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/globalization.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 648,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/logging.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 170,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/performance.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 449,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/quantum_error_correction.py": {
+      "CONFIDENCE.HIGH": 5,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 5,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 522,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/quantum_optimization.py": {
+      "CONFIDENCE.HIGH": 5,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 1,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 3,
+      "SEVERITY.MEDIUM": 3,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 848,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/security.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 628,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/core/validators.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 336,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/database/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 26,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/database/connection.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 243,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/database/models.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 200,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/database/repositories.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 362,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/database/seeds/demo_seed.py": {
+      "CONFIDENCE.HIGH": 57,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 57,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 227,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/envs/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 159,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/envs/base.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 199,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/envs/mujoco_envs.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 276,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/models/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 29,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/models/actors.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 255,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/models/encoders.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 283,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 38,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/caching.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 611,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/detector.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 571,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/global_ops.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 628,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/guard.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 298,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/healer.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 440,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/monitor.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 382,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/orchestrator.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 517,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/reliability.py": {
+      "loc": 434,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/scaling.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 725,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/pipeline/security.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 422,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/preference/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 18,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/preference/models.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 216,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/preference/pair_generator.py": {
+      "CONFIDENCE.HIGH": 11,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 10,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 368,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/preference/server.py": {
+      "CONFIDENCE.HIGH": 2,
+      "CONFIDENCE.LOW": 2,
+      "CONFIDENCE.MEDIUM": 1,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 4,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 589,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 18,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/advanced_security.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 963,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/analytics.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 835,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/autonomous.py": {
+      "CONFIDENCE.HIGH": 4,
+      "CONFIDENCE.LOW": 1,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 4,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 716,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/cli.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 109,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/cognitive_automation.py": {
+      "CONFIDENCE.HIGH": 2,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 2,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 716,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/experimental_validation.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1055,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/global_intelligence.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 1,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 963,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/hybrid_qcnas.py": {
+      "CONFIDENCE.HIGH": 8,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 8,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1043,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/neural_evolution.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 1,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 558,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/optimizer.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 621,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/planner.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 538,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/production_excellence.py": {
+      "CONFIDENCE.HIGH": 3,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 2,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 712,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/quantum_algorithms.py": {
+      "CONFIDENCE.HIGH": 7,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 7,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1182,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/quantum_causal_inference.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1004,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/quantum_pareto_optimizer.py": {
+      "CONFIDENCE.HIGH": 6,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 6,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 1190,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/quantum/temporal_quantum_memory.py": {
+      "CONFIDENCE.HIGH": 5,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 5,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 825,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/research/validation_framework.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 758,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/scripts/__init__.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 0,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/scripts/collect_demos.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 43,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/scripts/evaluate.py": {
+      "CONFIDENCE.HIGH": 1,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 117,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/scripts/generate_preferences.py": {
+      "CONFIDENCE.HIGH": 0,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 0,
+      "SEVERITY.MEDIUM": 0,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 36,
+      "nosec": 0,
+      "skipped_tests": 0
+    },
+    "robo_rlhf/scripts/train_rlhf.py": {
+      "CONFIDENCE.HIGH": 2,
+      "CONFIDENCE.LOW": 0,
+      "CONFIDENCE.MEDIUM": 0,
+      "CONFIDENCE.UNDEFINED": 0,
+      "SEVERITY.HIGH": 0,
+      "SEVERITY.LOW": 1,
+      "SEVERITY.MEDIUM": 1,
+      "SEVERITY.UNDEFINED": 0,
+      "loc": 102,
+      "nosec": 0,
+      "skipped_tests": 0
+    }
+  },
+  "results": [
+    {
+      "code": "388         \"\"\"Load training checkpoint.\"\"\"\n389         checkpoint = torch.load(checkpoint_path, map_location=self.device)\n390         \n",
+      "col_offset": 21,
+      "end_col_offset": 74,
+      "filename": "robo_rlhf/algorithms/rlhf.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Use of unsafe PyTorch load",
+      "line_number": 389,
+      "line_range": [
+        389
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b614_pytorch_load.html",
+      "test_id": "B614",
+      "test_name": "pytorch_load"
+    },
+    {
+      "code": "822             self.stop_monitoring()\n823         except:\n824             pass\n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "robo_rlhf/core/advanced_monitoring.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 823,
+      "line_range": [
+        823,
+        824
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "883             self.stop_autoscaling()\n884         except:\n885             pass\n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "robo_rlhf/core/auto_scaling.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 884,
+      "line_range": [
+        884,
+        885
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "271             # Default syndrome measurement\n272             syndrome_bits = [random.randint(0, 1) for _ in range(6)]  # Simplified\n273         \n",
+      "col_offset": 29,
+      "end_col_offset": 49,
+      "filename": "robo_rlhf/core/quantum_error_correction.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 272,
+      "line_range": [
+        272
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "305             # Add measurement error\n306             if random.random() < self.error_model.measurement_error_rate:\n307                 syndrome_bit = 1 - syndrome_bit\n",
+      "col_offset": 15,
+      "end_col_offset": 30,
+      "filename": "robo_rlhf/core/quantum_error_correction.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 306,
+      "line_range": [
+        306
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "321             # Add measurement error\n322             if random.random() < self.error_model.measurement_error_rate:\n323                 syndrome_bit = 1 - syndrome_bit\n",
+      "col_offset": 15,
+      "end_col_offset": 30,
+      "filename": "robo_rlhf/core/quantum_error_correction.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 322,
+      "line_range": [
+        322
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "339             # Add measurement error\n340             if random.random() < self.error_model.measurement_error_rate:\n341                 syndrome_bit = 1 - syndrome_bit\n",
+      "col_offset": 15,
+      "end_col_offset": 30,
+      "filename": "robo_rlhf/core/quantum_error_correction.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 340,
+      "line_range": [
+        340
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "713                 error_rate = self.error_model.error_rates.get(error_type, 0.001)\n714                 if random.random() < error_rate:\n715                     # Simulate error injection\n",
+      "col_offset": 19,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/core/quantum_error_correction.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 714,
+      "line_range": [
+        714
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "18 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, Future\n19 import pickle\n20 import hashlib\n",
+      "col_offset": 0,
+      "end_col_offset": 13,
+      "filename": "robo_rlhf/core/quantum_optimization.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with pickle module.",
+      "line_number": 19,
+      "line_range": [
+        19
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b403-import-pickle",
+      "test_id": "B403",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "114         # L3 Cache (Disk)\n115         self.disk_cache_dir = Path(self.config.get(\"cache\", {}).get(\"disk_cache_dir\", \"/tmp/quantum_cache\"))\n116         self.disk_cache_dir.mkdir(parents=True, exist_ok=True)\n",
+      "col_offset": 86,
+      "end_col_offset": 106,
+      "filename": "robo_rlhf/core/quantum_optimization.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 377,
+        "link": "https://cwe.mitre.org/data/definitions/377.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Probable insecure usage of temp file/directory.",
+      "line_number": 115,
+      "line_range": [
+        115
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b108_hardcoded_tmp_directory.html",
+      "test_id": "B108",
+      "test_name": "hardcoded_tmp_directory"
+    },
+    {
+      "code": "304             if data:\n305                 return pickle.loads(data)\n306             return None\n",
+      "col_offset": 23,
+      "end_col_offset": 41,
+      "filename": "robo_rlhf/core/quantum_optimization.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+      "line_number": 305,
+      "line_range": [
+        305
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b301-pickle",
+      "test_id": "B301",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "337                 with open(cache_file, 'rb') as f:\n338                     return pickle.load(f)\n339             \n",
+      "col_offset": 27,
+      "end_col_offset": 41,
+      "filename": "robo_rlhf/core/quantum_optimization.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+      "line_number": 338,
+      "line_range": [
+        338
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b301-pickle",
+      "test_id": "B301",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "595             self.process_pool.shutdown(wait=False)\n596         except:\n597             pass\n598 \n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "robo_rlhf/core/quantum_optimization.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 596,
+      "line_range": [
+        596,
+        597
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "1148             pass\n1149         except:\n1150             pass\n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "robo_rlhf/core/quantum_optimization.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 1149,
+      "line_range": [
+        1149,
+        1150
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "36         # Generate random demo data\n37         task = random.choice(tasks)\n38         device = random.choice(devices)\n",
+      "col_offset": 15,
+      "end_col_offset": 35,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 37,
+      "line_range": [
+        37
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "37         task = random.choice(tasks)\n38         device = random.choice(devices)\n39         annotator = random.choice(annotators) if random.random() > 0.3 else None\n",
+      "col_offset": 17,
+      "end_col_offset": 39,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 38,
+      "line_range": [
+        38
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "38         device = random.choice(devices)\n39         annotator = random.choice(annotators) if random.random() > 0.3 else None\n40         \n",
+      "col_offset": 49,
+      "end_col_offset": 64,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 39,
+      "line_range": [
+        39
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "38         device = random.choice(devices)\n39         annotator = random.choice(annotators) if random.random() > 0.3 else None\n40         \n",
+      "col_offset": 20,
+      "end_col_offset": 45,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 39,
+      "line_range": [
+        39
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "42         if annotator and \"expert\" in annotator:\n43             success = random.random() > 0.2  # 80% success\n44         else:\n",
+      "col_offset": 22,
+      "end_col_offset": 37,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 43,
+      "line_range": [
+        43
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "44         else:\n45             success = random.random() > 0.5  # 50% success\n46         \n",
+      "col_offset": 22,
+      "end_col_offset": 37,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 45,
+      "line_range": [
+        45
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "49             episode_id=f\"demo_{i:05d}_{datetime.now().strftime('%Y%m%d')}\",\n50             timestamp=datetime.utcnow() - timedelta(hours=random.randint(0, 720)),\n51             environment=\"mujoco\",\n",
+      "col_offset": 58,
+      "end_col_offset": 80,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 50,
+      "line_range": [
+        50
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "53             success=success,\n54             episode_length=random.randint(50, 500),\n55             total_reward=random.uniform(-10, 100) if success else random.uniform(-50, 10),\n",
+      "col_offset": 27,
+      "end_col_offset": 50,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 54,
+      "line_range": [
+        54
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "54             episode_length=random.randint(50, 500),\n55             total_reward=random.uniform(-10, 100) if success else random.uniform(-50, 10),\n56             duration_seconds=random.uniform(10, 120),\n",
+      "col_offset": 25,
+      "end_col_offset": 49,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 55,
+      "line_range": [
+        55
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "54             episode_length=random.randint(50, 500),\n55             total_reward=random.uniform(-10, 100) if success else random.uniform(-50, 10),\n56             duration_seconds=random.uniform(10, 120),\n",
+      "col_offset": 66,
+      "end_col_offset": 89,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 55,
+      "line_range": [
+        55
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "55             total_reward=random.uniform(-10, 100) if success else random.uniform(-50, 10),\n56             duration_seconds=random.uniform(10, 120),\n57             data_path=f\"/data/demonstrations/demo_{i:05d}\",\n",
+      "col_offset": 29,
+      "end_col_offset": 52,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 56,
+      "line_range": [
+        56
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "57             data_path=f\"/data/demonstrations/demo_{i:05d}\",\n58             video_path=f\"/data/videos/demo_{i:05d}.mp4\" if random.random() > 0.5 else None,\n59             annotator_id=annotator,\n",
+      "col_offset": 59,
+      "end_col_offset": 74,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 58,
+      "line_range": [
+        58
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "62             metadata={\n63                 \"seed\": random.randint(0, 1000000),\n64                 \"fps\": 30,\n",
+      "col_offset": 24,
+      "end_col_offset": 50,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 63,
+      "line_range": [
+        63
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "95         # Select two random demonstrations\n96         demo_a, demo_b = random.sample(demos, 2)\n97         \n",
+      "col_offset": 25,
+      "end_col_offset": 48,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 96,
+      "line_range": [
+        96
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "98         # Multiple annotations per pair (1-3)\n99         num_annotations = random.randint(1, 3)\n100         \n",
+      "col_offset": 26,
+      "end_col_offset": 46,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 99,
+      "line_range": [
+        99
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "101         for j in range(num_annotations):\n102             annotator = random.choice(annotators)\n103             \n",
+      "col_offset": 24,
+      "end_col_offset": 49,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 102,
+      "line_range": [
+        102
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "108             # Generate preference\n109             choice = random.choices(choices, weights=choice_weights)[0]\n110             \n",
+      "col_offset": 21,
+      "end_col_offset": 68,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 109,
+      "line_range": [
+        109
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "112             if \"expert\" in annotator:\n113                 confidence = random.uniform(0.7, 1.0)\n114                 time_taken = random.uniform(5, 20)\n",
+      "col_offset": 29,
+      "end_col_offset": 53,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 113,
+      "line_range": [
+        113
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "113                 confidence = random.uniform(0.7, 1.0)\n114                 time_taken = random.uniform(5, 20)\n115             else:\n",
+      "col_offset": 29,
+      "end_col_offset": 50,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 114,
+      "line_range": [
+        114
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "115             else:\n116                 confidence = random.uniform(0.4, 0.9)\n117                 time_taken = random.uniform(10, 40)\n",
+      "col_offset": 29,
+      "end_col_offset": 53,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 116,
+      "line_range": [
+        116
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "116                 confidence = random.uniform(0.4, 0.9)\n117                 time_taken = random.uniform(10, 40)\n118             \n",
+      "col_offset": 29,
+      "end_col_offset": 51,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 117,
+      "line_range": [
+        117
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "120                 pair_id=f\"pair_{i:05d}_ann_{j}\",\n121                 timestamp=datetime.utcnow() - timedelta(hours=random.randint(0, 168)),\n122                 segment_a_demo_id=demo_a.id,\n",
+      "col_offset": 62,
+      "end_col_offset": 84,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 121,
+      "line_range": [
+        121
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "122                 segment_a_demo_id=demo_a.id,\n123                 segment_a_start=random.randint(0, 50),\n124                 segment_a_end=random.randint(51, 100),\n",
+      "col_offset": 32,
+      "end_col_offset": 53,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 123,
+      "line_range": [
+        123
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "123                 segment_a_start=random.randint(0, 50),\n124                 segment_a_end=random.randint(51, 100),\n125                 segment_b_demo_id=demo_b.id,\n",
+      "col_offset": 30,
+      "end_col_offset": 53,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 124,
+      "line_range": [
+        124
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "125                 segment_b_demo_id=demo_b.id,\n126                 segment_b_start=random.randint(0, 50),\n127                 segment_b_end=random.randint(51, 100),\n",
+      "col_offset": 32,
+      "end_col_offset": 53,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 126,
+      "line_range": [
+        126
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "126                 segment_b_start=random.randint(0, 50),\n127                 segment_b_end=random.randint(51, 100),\n128                 annotator_id=annotator,\n",
+      "col_offset": 30,
+      "end_col_offset": 53,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 127,
+      "line_range": [
+        127
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "134                     \"interface_version\": \"1.0\",\n135                     \"browser\": random.choice([\"Chrome\", \"Firefox\", \"Safari\"])\n136                 }\n",
+      "col_offset": 31,
+      "end_col_offset": 77,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 135,
+      "line_range": [
+        135
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "155     for i in range(num_runs):\n156         model_type = random.choice(model_types)\n157         algorithm = random.choice(algorithms)\n",
+      "col_offset": 21,
+      "end_col_offset": 47,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 156,
+      "line_range": [
+        156
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "156         model_type = random.choice(model_types)\n157         algorithm = random.choice(algorithms)\n158         status = random.choice(statuses)\n",
+      "col_offset": 20,
+      "end_col_offset": 45,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 157,
+      "line_range": [
+        157
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "157         algorithm = random.choice(algorithms)\n158         status = random.choice(statuses)\n159         \n",
+      "col_offset": 17,
+      "end_col_offset": 40,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 158,
+      "line_range": [
+        158
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "160         # Create training run\n161         start_time = datetime.utcnow() - timedelta(days=random.randint(1, 30))\n162         \n",
+      "col_offset": 56,
+      "end_col_offset": 77,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 161,
+      "line_range": [
+        161
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "163         if status == \"completed\":\n164             end_time = start_time + timedelta(hours=random.uniform(2, 48))\n165             current_epoch = 100\n",
+      "col_offset": 52,
+      "end_col_offset": 73,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 164,
+      "line_range": [
+        164
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "165             current_epoch = 100\n166             best_val = random.uniform(0.6, 0.95)\n167             final_test = best_val - random.uniform(0, 0.1)\n",
+      "col_offset": 23,
+      "end_col_offset": 48,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 166,
+      "line_range": [
+        166
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "166             best_val = random.uniform(0.6, 0.95)\n167             final_test = best_val - random.uniform(0, 0.1)\n168         elif status == \"running\":\n",
+      "col_offset": 36,
+      "end_col_offset": 58,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 167,
+      "line_range": [
+        167
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "169             end_time = None\n170             current_epoch = random.randint(1, 99)\n171             best_val = random.uniform(0.3, 0.7)\n",
+      "col_offset": 28,
+      "end_col_offset": 49,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 170,
+      "line_range": [
+        170
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "170             current_epoch = random.randint(1, 99)\n171             best_val = random.uniform(0.3, 0.7)\n172             final_test = None\n",
+      "col_offset": 23,
+      "end_col_offset": 47,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 171,
+      "line_range": [
+        171
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "173         else:  # failed\n174             end_time = start_time + timedelta(hours=random.uniform(0.5, 5))\n175             current_epoch = random.randint(1, 50)\n",
+      "col_offset": 52,
+      "end_col_offset": 74,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 174,
+      "line_range": [
+        174
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "174             end_time = start_time + timedelta(hours=random.uniform(0.5, 5))\n175             current_epoch = random.randint(1, 50)\n176             best_val = random.uniform(0.1, 0.5)\n",
+      "col_offset": 28,
+      "end_col_offset": 49,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 175,
+      "line_range": [
+        175
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "175             current_epoch = random.randint(1, 50)\n176             best_val = random.uniform(0.1, 0.5)\n177             final_test = None\n",
+      "col_offset": 23,
+      "end_col_offset": 47,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 176,
+      "line_range": [
+        176
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "185             hyperparameters={\n186                 \"learning_rate\": random.choice([1e-3, 3e-4, 1e-4]),\n187                 \"batch_size\": random.choice([16, 32, 64]),\n",
+      "col_offset": 33,
+      "end_col_offset": 66,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 186,
+      "line_range": [
+        186
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "186                 \"learning_rate\": random.choice([1e-3, 3e-4, 1e-4]),\n187                 \"batch_size\": random.choice([16, 32, 64]),\n188                 \"hidden_dim\": random.choice([256, 512, 1024]),\n",
+      "col_offset": 30,
+      "end_col_offset": 57,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 187,
+      "line_range": [
+        187
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "187                 \"batch_size\": random.choice([16, 32, 64]),\n188                 \"hidden_dim\": random.choice([256, 512, 1024]),\n189                 \"num_layers\": random.randint(2, 6)\n",
+      "col_offset": 30,
+      "end_col_offset": 61,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 188,
+      "line_range": [
+        188
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "188                 \"hidden_dim\": random.choice([256, 512, 1024]),\n189                 \"num_layers\": random.randint(2, 6)\n190             },\n",
+      "col_offset": 30,
+      "end_col_offset": 50,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 189,
+      "line_range": [
+        189
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "190             },\n191             num_demonstrations=random.randint(100, 1000),\n192             num_preferences=random.randint(200, 2000),\n",
+      "col_offset": 31,
+      "end_col_offset": 56,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 191,
+      "line_range": [
+        191
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "191             num_demonstrations=random.randint(100, 1000),\n192             num_preferences=random.randint(200, 2000),\n193             data_split={\n",
+      "col_offset": 28,
+      "end_col_offset": 53,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 192,
+      "line_range": [
+        192
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "203             metrics_history={\n204                 \"train_loss\": [random.uniform(0.5, 2.0) for _ in range(current_epoch)],\n205                 \"val_loss\": [random.uniform(0.4, 1.8) for _ in range(current_epoch)]\n",
+      "col_offset": 31,
+      "end_col_offset": 55,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 204,
+      "line_range": [
+        204
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "204                 \"train_loss\": [random.uniform(0.5, 2.0) for _ in range(current_epoch)],\n205                 \"val_loss\": [random.uniform(0.4, 1.8) for _ in range(current_epoch)]\n206             },\n",
+      "col_offset": 29,
+      "end_col_offset": 53,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 205,
+      "line_range": [
+        205
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "206             },\n207             gpu_hours=random.uniform(2, 100) if status == \"completed\" else None,\n208             peak_memory_gb=random.uniform(4, 32),\n",
+      "col_offset": 22,
+      "end_col_offset": 44,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 207,
+      "line_range": [
+        207
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "207             gpu_hours=random.uniform(2, 100) if status == \"completed\" else None,\n208             peak_memory_gb=random.uniform(4, 32),\n209             checkpoint_path=f\"/checkpoints/run_{i:03d}/best.pt\",\n",
+      "col_offset": 27,
+      "end_col_offset": 48,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 208,
+      "line_range": [
+        208
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "210             tensorboard_path=f\"/tensorboard/run_{i:03d}\",\n211             wandb_run_id=f\"wandb_{i:08x}\" if random.random() > 0.5 else None,\n212             git_commit=\"a\" * 40,\n",
+      "col_offset": 45,
+      "end_col_offset": 60,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 211,
+      "line_range": [
+        211
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "215                 \"pytorch_version\": \"2.0.1\",\n216                 \"num_gpus\": random.choice([1, 2, 4, 8])\n217             },\n",
+      "col_offset": 28,
+      "end_col_offset": 55,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 216,
+      "line_range": [
+        216
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "229                     timestamp=start_time + timedelta(hours=epoch/5),\n230                     validation_score=random.uniform(0.5, best_val),\n231                     training_loss=random.uniform(0.1, 0.5),\n",
+      "col_offset": 37,
+      "end_col_offset": 66,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 230,
+      "line_range": [
+        230
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "230                     validation_score=random.uniform(0.5, best_val),\n231                     training_loss=random.uniform(0.1, 0.5),\n232                     metrics={\n",
+      "col_offset": 34,
+      "end_col_offset": 58,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 231,
+      "line_range": [
+        231
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "232                     metrics={\n233                         \"accuracy\": random.uniform(0.6, 0.95),\n234                         \"precision\": random.uniform(0.6, 0.95),\n",
+      "col_offset": 36,
+      "end_col_offset": 61,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 233,
+      "line_range": [
+        233
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "233                         \"accuracy\": random.uniform(0.6, 0.95),\n234                         \"precision\": random.uniform(0.6, 0.95),\n235                         \"recall\": random.uniform(0.6, 0.95)\n",
+      "col_offset": 37,
+      "end_col_offset": 62,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 234,
+      "line_range": [
+        234
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "234                         \"precision\": random.uniform(0.6, 0.95),\n235                         \"recall\": random.uniform(0.6, 0.95)\n236                     },\n",
+      "col_offset": 34,
+      "end_col_offset": 59,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 235,
+      "line_range": [
+        235
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "237                     file_path=f\"/checkpoints/run_{i:03d}/epoch_{epoch}.pt\",\n238                     file_size_mb=random.uniform(100, 500),\n239                     is_deployed=(epoch == 100 and i < 3),  # Deploy best from first 3 runs\n",
+      "col_offset": 33,
+      "end_col_offset": 57,
+      "filename": "robo_rlhf/database/seeds/demo_seed.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 238,
+      "line_range": [
+        238
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "67             from transformers import AutoModel\n68             self.language_encoder = AutoModel.from_pretrained(\"bert-base-uncased\")\n69             self.language_proj = nn.Linear(768, hidden_dim)\n",
+      "col_offset": 36,
+      "end_col_offset": 82,
+      "filename": "robo_rlhf/models/actors.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 494,
+        "link": "https://cwe.mitre.org/data/definitions/494.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Unsafe Hugging Face Hub download without revision pinning in from_pretrained()",
+      "line_number": 68,
+      "line_range": [
+        68
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b615_huggingface_unsafe_download.html",
+      "test_id": "B615",
+      "test_name": "huggingface_unsafe_download"
+    },
+    {
+      "code": "11 import json\n12 import pickle\n13 from typing import Dict, List, Any, Optional, Union, Callable, Tuple\n",
+      "col_offset": 0,
+      "end_col_offset": 13,
+      "filename": "robo_rlhf/pipeline/caching.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with pickle module.",
+      "line_number": 12,
+      "line_range": [
+        12
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b403-import-pickle",
+      "test_id": "B403",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "429             import random\n430             if random.random() < 0.05:  # 5% failure rate\n431                 return False\n",
+      "col_offset": 15,
+      "end_col_offset": 30,
+      "filename": "robo_rlhf/pipeline/scaling.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 430,
+      "line_range": [
+        430
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "10 from datetime import datetime\n11 import pickle\n12 \n",
+      "col_offset": 0,
+      "end_col_offset": 13,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with pickle module.",
+      "line_number": 11,
+      "line_range": [
+        11
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b403-import-pickle",
+      "test_id": "B403",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "152             if len(self.demonstrations) < 2:\n153                 demo1 = demo2 = random.choice(self.demonstrations)\n154             else:\n",
+      "col_offset": 32,
+      "end_col_offset": 66,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 153,
+      "line_range": [
+        153
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "154             else:\n155                 demo1, demo2 = random.sample(self.demonstrations, 2)\n156             \n",
+      "col_offset": 31,
+      "end_col_offset": 68,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 155,
+      "line_range": [
+        155
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "194             for _ in range(100):  # Sample candidates\n195                 demo1 = random.choice(self.demonstrations)\n196                 demo2 = random.choice(self.demonstrations)\n",
+      "col_offset": 24,
+      "end_col_offset": 58,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 195,
+      "line_range": [
+        195
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "195                 demo1 = random.choice(self.demonstrations)\n196                 demo2 = random.choice(self.demonstrations)\n197                 \n",
+      "col_offset": 24,
+      "end_col_offset": 58,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 196,
+      "line_range": [
+        196
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "245             if len(high_variance_demos) >= 2:\n246                 demo1, demo2 = random.sample(high_variance_demos, 2)\n247             else:\n",
+      "col_offset": 31,
+      "end_col_offset": 68,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 246,
+      "line_range": [
+        246
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "247             else:\n248                 demo1 = demo2 = random.choice(self.demonstrations)\n249             \n",
+      "col_offset": 32,
+      "end_col_offset": 66,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 248,
+      "line_range": [
+        248
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "282             \n283             demo1 = random.choice(self.demonstrations)\n284             demo2 = random.choice(self.demonstrations)\n",
+      "col_offset": 20,
+      "end_col_offset": 54,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 283,
+      "line_range": [
+        283
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "283             demo1 = random.choice(self.demonstrations)\n284             demo2 = random.choice(self.demonstrations)\n285             \n",
+      "col_offset": 20,
+      "end_col_offset": 54,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 284,
+      "line_range": [
+        284
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "343         else:\n344             start_idx = random.randint(0, max_start)\n345         \n",
+      "col_offset": 24,
+      "end_col_offset": 52,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 344,
+      "line_range": [
+        344
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "474         with open(path, 'rb') as f:\n475             pairs = pickle.load(f)\n476         \n",
+      "col_offset": 20,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/preference/pair_generator.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+      "line_number": 475,
+      "line_range": [
+        475
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b301-pickle",
+      "test_id": "B301",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "6 import json\n7 import pickle\n8 import uuid\n",
+      "col_offset": 0,
+      "end_col_offset": 13,
+      "filename": "robo_rlhf/preference/server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with pickle module.",
+      "line_number": 7,
+      "line_range": [
+        7
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b403-import-pickle",
+      "test_id": "B403",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "211         \"\"\"Generate HTML interface for preference annotation.\"\"\"\n212         html = \"\"\"\n213 <!DOCTYPE html>\n214 <html>\n215 <head>\n216     <title>Robo-RLHF Preference Collection</title>\n217     <style>\n218         body {\n219             font-family: Arial, sans-serif;\n220             margin: 20px;\n221             background-color: #f5f5f5;\n222         }\n223         .container {\n224             max-width: 1200px;\n225             margin: 0 auto;\n226             background: white;\n227             padding: 20px;\n228             border-radius: 10px;\n229             box-shadow: 0 2px 10px rgba(0,0,0,0.1);\n230         }\n231         .header {\n232             text-align: center;\n233             margin-bottom: 30px;\n234         }\n235         .comparison {\n236             display: flex;\n237             gap: 20px;\n238             margin-bottom: 30px;\n239         }\n240         .segment {\n241             flex: 1;\n242             border: 2px solid #ddd;\n243             border-radius: 10px;\n244             padding: 20px;\n245             text-align: center;\n246         }\n247         .segment.selected {\n248             border-color: #007bff;\n249             background-color: #f0f8ff;\n250         }\n251         .segment h3 {\n252             margin-top: 0;\n253             color: #333;\n254         }\n255         .trajectory-info {\n256             background: #f8f9fa;\n257             padding: 15px;\n258             border-radius: 5px;\n259             margin: 10px 0;\n260             text-align: left;\n261         }\n262         .controls {\n263             text-align: center;\n264             padding: 20px;\n265             background: #f8f9fa;\n266             border-radius: 10px;\n267         }\n268         .button-group {\n269             margin: 10px;\n270         }\n271         button {\n272             padding: 10px 20px;\n273             margin: 5px;\n274             border: none;\n275             border-radius: 5px;\n276             cursor: pointer;\n277             font-size: 16px;\n278         }\n279         .btn-primary {\n280             background: #007bff;\n281             color: white;\n282         }\n283         .btn-success {\n284             background: #28a745;\n285             color: white;\n286         }\n287         .btn-warning {\n288             background: #ffc107;\n289             color: black;\n290         }\n291         .btn-secondary {\n292             background: #6c757d;\n293             color: white;\n294         }\n295         button:hover {\n296             opacity: 0.8;\n297         }\n298         .slider-container {\n299             margin: 20px 0;\n300         }\n301         .slider {\n302             width: 300px;\n303             margin: 10px;\n304         }\n305         .stats {\n306             background: #e9ecef;\n307             padding: 15px;\n308             border-radius: 5px;\n309             margin-top: 20px;\n310         }\n311         .progress-bar {\n312             background: #e9ecef;\n313             border-radius: 10px;\n314             height: 20px;\n315             margin: 10px 0;\n316         }\n317         .progress-fill {\n318             background: #28a745;\n319             height: 100%;\n320             border-radius: 10px;\n321             transition: width 0.3s;\n322         }\n323     </style>\n324 </head>\n325 <body>\n326     <div class=\"container\">\n327         <div class=\"header\">\n328             <h1>\ud83e\udd16 Robo-RLHF Preference Collection</h1>\n329             <p>Compare robot trajectories and indicate which one you prefer</p>\n330         </div>\n331         \n332         <div id=\"stats-panel\" class=\"stats\">\n333             <h3>Progress</h3>\n334             <div class=\"progress-bar\">\n335                 <div id=\"progress-fill\" class=\"progress-fill\" style=\"width: 0%\"></div>\n336             </div>\n337             <p id=\"progress-text\">Loading...</p>\n338         </div>\n339         \n340         <div id=\"comparison-panel\" class=\"comparison\">\n341             <div id=\"segment-a\" class=\"segment\">\n342                 <h3>Trajectory A</h3>\n343                 <div class=\"trajectory-info\">\n344                     <p><strong>Episode:</strong> <span id=\"episode-a\">-</span></p>\n345                     <p><strong>Duration:</strong> <span id=\"duration-a\">-</span> steps</p>\n346                     <p><strong>Success:</strong> <span id=\"success-a\">-</span></p>\n347                     <p><strong>Actions:</strong> <span id=\"actions-a\">-</span></p>\n348                 </div>\n349             </div>\n350             \n351             <div id=\"segment-b\" class=\"segment\">\n352                 <h3>Trajectory B</h3>\n353                 <div class=\"trajectory-info\">\n354                     <p><strong>Episode:</strong> <span id=\"episode-b\">-</span></p>\n355                     <p><strong>Duration:</strong> <span id=\"duration-b\">-</span> steps</p>\n356                     <p><strong>Success:</strong> <span id=\"success-b\">-</span></p>\n357                     <p><strong>Actions:</strong> <span id=\"actions-b\">-</span></p>\n358                 </div>\n359             </div>\n360         </div>\n361         \n362         <div class=\"controls\">\n363             <div class=\"button-group\">\n364                 <h3>Which trajectory do you prefer?</h3>\n365                 <button id=\"prefer-a\" class=\"btn-primary\" onclick=\"selectPreference('A')\">\n366                     \ud83c\udd70\ufe0f Prefer A\n367                 </button>\n368                 <button id=\"prefer-equal\" class=\"btn-warning\" onclick=\"selectPreference('equal')\">\n369                     \u2696\ufe0f Equal\n370                 </button>\n371                 <button id=\"prefer-b\" class=\"btn-primary\" onclick=\"selectPreference('B')\">\n372                     \ud83c\udd71\ufe0f Prefer B\n373                 </button>\n374             </div>\n375             \n376             <div class=\"slider-container\">\n377                 <label for=\"confidence\">Confidence Level:</label><br>\n378                 <input type=\"range\" id=\"confidence\" class=\"slider\" min=\"0\" max=\"100\" value=\"50\">\n379                 <span id=\"confidence-value\">50%</span>\n380             </div>\n381             \n382             <div>\n383                 <label for=\"annotator\">Annotator:</label>\n384                 <select id=\"annotator\">\"\"\" + \"\".join([f'<option value=\"{ann}\">{ann}</option>' for ann in self.annotators]) + \"\"\"</select>\n385             </div>\n",
+      "col_offset": 15,
+      "end_col_offset": 42,
+      "filename": "robo_rlhf/preference/server.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 212,
+      "line_range": [
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297,
+        298,
+        299,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372,
+        373,
+        374,
+        375,
+        376,
+        377,
+        378,
+        379,
+        380,
+        381,
+        382,
+        383,
+        384
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "383                 <label for=\"annotator\">Annotator:</label>\n384                 <select id=\"annotator\">\"\"\" + \"\".join([f'<option value=\"{ann}\">{ann}</option>' for ann in self.annotators]) + \"\"\"</select>\n385             </div>\n386             \n387             <div style=\"margin-top: 20px;\">\n388                 <textarea id=\"comments\" placeholder=\"Optional comments...\" rows=\"3\" cols=\"50\"></textarea>\n389             </div>\n390             \n391             <div class=\"button-group\" style=\"margin-top: 20px;\">\n392                 <button id=\"submit-btn\" class=\"btn-success\" onclick=\"submitAnnotation()\" disabled>\n393                     \u2705 Submit Annotation\n394                 </button>\n395                 <button class=\"btn-secondary\" onclick=\"skipPair()\">\n396                     \u23ed\ufe0f Skip\n397                 </button>\n398                 <button class=\"btn-secondary\" onclick=\"exportResults()\">\n399                     \ud83d\udce5 Export Results\n400                 </button>\n401             </div>\n402         </div>\n403     </div>\n404 \n405     <script>\n406         let currentPairIndex = 0;\n407         let pairs = [];\n408         let selectedChoice = null;\n409         \n410         // Load pairs and initialize\n411         async function initialize() {\n412             try {\n413                 const response = await fetch('/api/pairs');\n414                 pairs = await response.json();\n415                 updateStats();\n416                 loadCurrentPair();\n417             } catch (error) {\n418                 console.error('Failed to load pairs:', error);\n419                 alert('Failed to load preference pairs');\n420             }\n421         }\n422         \n423         function loadCurrentPair() {\n424             if (currentPairIndex >= pairs.length) {\n425                 alert('All pairs completed! \ud83c\udf89');\n426                 return;\n427             }\n428             \n429             const pair = pairs[currentPairIndex];\n430             \n431             // Update segment A\n432             document.getElementById('episode-a').textContent = pair.segment_a.episode_id;\n433             document.getElementById('duration-a').textContent = pair.segment_a.actions.length;\n434             document.getElementById('success-a').textContent = pair.segment_a.metadata?.success ? 'Yes' : 'No';\n435             document.getElementById('actions-a').textContent = `[${pair.segment_a.actions.slice(0, 3).map(a => a.toFixed(2)).join(', ')}...]`;\n436             \n437             // Update segment B\n438             document.getElementById('episode-b').textContent = pair.segment_b.episode_id;\n439             document.getElementById('duration-b').textContent = pair.segment_b.actions.length;\n440             document.getElementById('success-b').textContent = pair.segment_b.metadata?.success ? 'Yes' : 'No';\n441             document.getElementById('actions-b').textContent = `[${pair.segment_b.actions.slice(0, 3).map(a => a.toFixed(2)).join(', ')}...]`;\n442             \n443             // Reset selection\n444             resetSelection();\n445         }\n446         \n447         function selectPreference(choice) {\n448             selectedChoice = choice;\n449             \n450             // Update UI\n451             document.getElementById('segment-a').classList.toggle('selected', choice === 'A');\n452             document.getElementById('segment-b').classList.toggle('selected', choice === 'B');\n453             document.getElementById('submit-btn').disabled = false;\n454             \n455             // Update buttons\n456             document.getElementById('prefer-a').style.background = choice === 'A' ? '#0056b3' : '#007bff';\n457             document.getElementById('prefer-b').style.background = choice === 'B' ? '#0056b3' : '#007bff';\n458             document.getElementById('prefer-equal').style.background = choice === 'equal' ? '#e69500' : '#ffc107';\n459         }\n460         \n461         function resetSelection() {\n462             selectedChoice = null;\n463             document.getElementById('segment-a').classList.remove('selected');\n464             document.getElementById('segment-b').classList.remove('selected');\n465             document.getElementById('submit-btn').disabled = true;\n466             document.getElementById('confidence').value = 50;\n467             document.getElementById('confidence-value').textContent = '50%';\n468             document.getElementById('comments').value = '';\n469             \n470             // Reset button colors\n471             document.getElementById('prefer-a').style.background = '#007bff';\n472             document.getElementById('prefer-b').style.background = '#007bff';\n473             document.getElementById('prefer-equal').style.background = '#ffc107';\n474         }\n475         \n476         async function submitAnnotation() {\n477             if (!selectedChoice) {\n478                 alert('Please select a preference first');\n479                 return;\n480             }\n481             \n482             const pair = pairs[currentPairIndex];\n483             const confidence = parseInt(document.getElementById('confidence').value) / 100.0;\n484             const annotator = document.getElementById('annotator').value;\n485             const comments = document.getElementById('comments').value;\n486             \n487             const formData = new FormData();\n488             formData.append('pair_id', pair.id);\n489             formData.append('choice', selectedChoice);\n490             formData.append('confidence', confidence.toString());\n491             formData.append('annotator', annotator);\n492             if (comments) formData.append('comments', comments);\n493             \n494             try {\n495                 const response = await fetch('/api/annotate', {\n496                     method: 'POST',\n497                     body: formData\n498                 });\n499                 \n500                 if (response.ok) {\n501                     currentPairIndex++;\n502                     updateStats();\n503                     loadCurrentPair();\n504                 } else {\n505                     const error = await response.json();\n506                     alert(`Error: ${error.detail}`);\n507                 }\n508             } catch (error) {\n509                 console.error('Submission failed:', error);\n510                 alert('Failed to submit annotation');\n511             }\n512         }\n513         \n514         function skipPair() {\n515             currentPairIndex++;\n516             updateStats();\n517             loadCurrentPair();\n518         }\n519         \n520         async function updateStats() {\n521             try {\n522                 const response = await fetch('/api/stats');\n523                 const stats = await response.json();\n524                 \n525                 const progress = (currentPairIndex / pairs.length) * 100;\n526                 document.getElementById('progress-fill').style.width = `${progress}%`;\n527                 document.getElementById('progress-text').textContent = \n528                     `${currentPairIndex}/${pairs.length} pairs completed (${progress.toFixed(1)}%) - ${stats.total_annotations} total annotations`;\n529             } catch (error) {\n530                 console.error('Failed to update stats:', error);\n531             }\n532         }\n533         \n534         async function exportResults() {\n535             try {\n536                 const response = await fetch('/api/export');\n537                 const data = await response.json();\n538                 \n539                 const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});\n540                 const url = URL.createObjectURL(blob);\n541                 const a = document.createElement('a');\n542                 a.href = url;\n543                 a.download = 'preferences.json';\n544                 a.click();\n545                 URL.revokeObjectURL(url);\n546             } catch (error) {\n547                 console.error('Export failed:', error);\n548                 alert('Failed to export results');\n549             }\n550         }\n551         \n552         // Update confidence display\n553         document.getElementById('confidence').oninput = function() {\n554             document.getElementById('confidence-value').textContent = this.value + '%';\n555         };\n556         \n557         // Initialize on load\n558         initialize();\n559     </script>\n560 </body>\n561 </html>\n562         \"\"\"\n563         return html\n564     \n565     def _serialize_segment(self, segment) -> Dict[str, Any]:\n566         \"\"\"Convert segment to JSON-serializable format.\"\"\"\n567         return {\n568             \"episode_id\": segment.episode_id,\n569             \"start_frame\": segment.start_frame,\n570             \"end_frame\": segment.end_frame,\n571             \"actions\": segment.actions.tolist() if hasattr(segment.actions, 'tolist') else segment.actions,\n572             \"metadata\": segment.metadata or {}\n573         }\n574     \n575     def _find_pair(self, pair_id: str) -> Optional[PreferencePair]:\n576         \"\"\"Find preference pair by ID.\"\"\"\n577         for pair in self.pairs:\n578             if pair.pair_id == pair_id:\n579                 return pair\n580         return None\n581     \n582     def _calculate_agreement(self) -> float:\n583         \"\"\"Calculate inter-annotator agreement score.\"\"\"\n584         if len(self.annotators) < 2:\n585             return 1.0\n586         \n587         # Group annotations by pair\n588         pair_annotations = {}\n589         for ann in self.annotations:\n590             if ann.pair_id not in pair_annotations:\n591                 pair_annotations[ann.pair_id] = []\n592             pair_annotations[ann.pair_id].append(ann)\n593         \n594         # Calculate agreement for pairs with multiple annotations\n595         agreements = []\n596         for pair_id, anns in pair_annotations.items():\n597             if len(anns) >= 2:\n598                 # Simple agreement: all annotators chose the same option\n599                 choices = [ann.choice for ann in anns]\n600                 if len(set(choices)) == 1:\n601                     agreements.append(1.0)\n602                 else:\n603                     agreements.append(0.0)\n604         \n605         return sum(agreements) / len(agreements) if agreements else 0.0\n606     \n607     def _load_existing_annotations(self) -> None:\n608         \"\"\"Load existing annotations from file.\"\"\"\n609         if self.output_file.exists():\n610             try:\n611                 with open(self.output_file, 'r') as f:\n612                     data = json.load(f)\n613                 \n614                 self.annotations = [\n615                     PreferenceAnnotation(**ann) for ann in data.get('annotations', [])\n616                 ]\n617                 \n618                 # Restore preferences to pairs\n619                 for ann in self.annotations:\n620                     pair = self._find_pair(ann.pair_id)\n621                     if pair:\n622                         choice_map = {\n623                             \"A\": PreferenceChoice.SEGMENT_A,\n624                             \"B\": PreferenceChoice.SEGMENT_B,\n625                             \"equal\": PreferenceChoice.EQUAL\n626                         }\n627                         pair.add_preference(\n628                             ann.annotator,\n629                             choice_map[ann.choice],\n630                             ann.confidence\n631                         )\n632                 \n633                 print(f\"Loaded {len(self.annotations)} existing annotations\")\n634             except Exception as e:\n635                 print(f\"Warning: Could not load existing annotations: {e}\")\n636     \n637     def _save_annotations(self) -> None:\n638         \"\"\"Save annotations to file.\"\"\"\n639         try:\n640             data = {\n641                 \"metadata\": {\n642                     \"created\": datetime.now().isoformat(),\n643                     \"total_pairs\": len(self.pairs),\n644                     \"annotators\": self.annotators\n645                 },\n646                 \"annotations\": [ann.dict() for ann in self.annotations]\n647             }\n648             \n649             self.output_file.parent.mkdir(parents=True, exist_ok=True)\n650             with open(self.output_file, 'w') as f:\n651                 json.dump(data, f, indent=2)\n652         \n653         except Exception as e:\n654             print(f\"Warning: Could not save annotations: {e}\")\n655     \n656     def run(self) -> None:\n657         \"\"\"Start the preference collection server.\"\"\"\n658         print(f\"Starting preference collection server on port {self.port}\")\n659         print(f\"Open http://localhost:{self.port} in your browser\")\n660         \n661         uvicorn.run(\n662             self.app,\n663             host=\"0.0.0.0\",\n664             port=self.port,\n665             log_level=\"info\"\n666         )\n667 \n668 \n669 def main(args: argparse.Namespace) -> None:\n670     \"\"\"Main server function.\"\"\"\n671     # Load preference pairs\n672     with open(args.pairs, 'rb') as f:\n673         pairs = pickle.load(f)\n674     \n675     # Create and run server\n676     server = PreferenceServer(\n677         pairs=pairs,\n678         port=args.port,\n679         annotators=args.annotators,\n680         output_file=args.output\n681     )\n682     \n683     server.run()\n684 \n685 \n686 if __name__ == \"__main__\":\n687     parser = argparse.ArgumentParser(description=\"Launch preference collection server\")\n688     parser.add_argument(\"--pairs\", required=True, help=\"Path to preference pairs file\")\n689     parser.add_argument(\"--port\", type=int, default=8080, help=\"Server port\")\n690     parser.add_argument(\"--output\", default=\"data/preferences.json\", help=\"Output file\")\n691     parser.add_argument(\"--annotators\", nargs=\"+\", help=\"List of annotator names\")\n692     \n693     args = parser.parse_args()\n694     main(args)\n",
+      "col_offset": 125,
+      "end_col_offset": 11,
+      "filename": "robo_rlhf/preference/server.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 89,
+        "link": "https://cwe.mitre.org/data/definitions/89.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible SQL injection vector through string-based query construction.",
+      "line_number": 384,
+      "line_range": [
+        212,
+        213,
+        214,
+        215,
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224,
+        225,
+        226,
+        227,
+        228,
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239,
+        240,
+        241,
+        242,
+        243,
+        244,
+        245,
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252,
+        253,
+        254,
+        255,
+        256,
+        257,
+        258,
+        259,
+        260,
+        261,
+        262,
+        263,
+        264,
+        265,
+        266,
+        267,
+        268,
+        269,
+        270,
+        271,
+        272,
+        273,
+        274,
+        275,
+        276,
+        277,
+        278,
+        279,
+        280,
+        281,
+        282,
+        283,
+        284,
+        285,
+        286,
+        287,
+        288,
+        289,
+        290,
+        291,
+        292,
+        293,
+        294,
+        295,
+        296,
+        297,
+        298,
+        299,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322,
+        323,
+        324,
+        325,
+        326,
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        335,
+        336,
+        337,
+        338,
+        339,
+        340,
+        341,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        356,
+        357,
+        358,
+        359,
+        360,
+        361,
+        362,
+        363,
+        364,
+        365,
+        366,
+        367,
+        368,
+        369,
+        370,
+        371,
+        372,
+        373,
+        374,
+        375,
+        376,
+        377,
+        378,
+        379,
+        380,
+        381,
+        382,
+        383,
+        384,
+        385,
+        386,
+        387,
+        388,
+        389,
+        390,
+        391,
+        392,
+        393,
+        394,
+        395,
+        396,
+        397,
+        398,
+        399,
+        400,
+        401,
+        402,
+        403,
+        404,
+        405,
+        406,
+        407,
+        408,
+        409,
+        410,
+        411,
+        412,
+        413,
+        414,
+        415,
+        416,
+        417,
+        418,
+        419,
+        420,
+        421,
+        422,
+        423,
+        424,
+        425,
+        426,
+        427,
+        428,
+        429,
+        430,
+        431,
+        432,
+        433,
+        434,
+        435,
+        436,
+        437,
+        438,
+        439,
+        440,
+        441,
+        442,
+        443,
+        444,
+        445,
+        446,
+        447,
+        448,
+        449,
+        450,
+        451,
+        452,
+        453,
+        454,
+        455,
+        456,
+        457,
+        458,
+        459,
+        460,
+        461,
+        462,
+        463,
+        464,
+        465,
+        466,
+        467,
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492,
+        493,
+        494,
+        495,
+        496,
+        497,
+        498,
+        499,
+        500,
+        501,
+        502,
+        503,
+        504,
+        505,
+        506,
+        507,
+        508,
+        509,
+        510,
+        511,
+        512,
+        513,
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525,
+        526,
+        527,
+        528,
+        529,
+        530,
+        531,
+        532,
+        533,
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        546,
+        547,
+        548,
+        549,
+        550,
+        551,
+        552,
+        553,
+        554,
+        555,
+        556,
+        557,
+        558,
+        559,
+        560,
+        561,
+        562
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html",
+      "test_id": "B608",
+      "test_name": "hardcoded_sql_expressions"
+    },
+    {
+      "code": "662             self.app,\n663             host=\"0.0.0.0\",\n664             port=self.port,\n",
+      "col_offset": 17,
+      "end_col_offset": 26,
+      "filename": "robo_rlhf/preference/server.py",
+      "issue_confidence": "MEDIUM",
+      "issue_cwe": {
+        "id": 605,
+        "link": "https://cwe.mitre.org/data/definitions/605.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Possible binding to all interfaces.",
+      "line_number": 663,
+      "line_range": [
+        663
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b104_hardcoded_bind_all_interfaces.html",
+      "test_id": "B104",
+      "test_name": "hardcoded_bind_all_interfaces"
+    },
+    {
+      "code": "672     with open(args.pairs, 'rb') as f:\n673         pairs = pickle.load(f)\n674     \n",
+      "col_offset": 16,
+      "end_col_offset": 30,
+      "filename": "robo_rlhf/preference/server.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+      "line_number": 673,
+      "line_range": [
+        673
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b301-pickle",
+      "test_id": "B301",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "15 import json\n16 import subprocess\n17 import os\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "robo_rlhf/quantum/autonomous.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 16,
+      "line_range": [
+        16
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "633                                     return False\n634                             except:\n635                                 pass\n636         \n",
+      "col_offset": 28,
+      "end_col_offset": 36,
+      "filename": "robo_rlhf/quantum/autonomous.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 634,
+      "line_range": [
+        634,
+        635
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "655                     metrics[\"tests_passed\"] = passed\n656                 except:\n657                     pass\n658             \n",
+      "col_offset": 16,
+      "end_col_offset": 24,
+      "filename": "robo_rlhf/quantum/autonomous.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 656,
+      "line_range": [
+        656,
+        657
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "662                     metrics[\"tests_failed\"] = failed\n663                 except:\n664                     pass\n665         \n",
+      "col_offset": 16,
+      "end_col_offset": 24,
+      "filename": "robo_rlhf/quantum/autonomous.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 663,
+      "line_range": [
+        663,
+        664
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "918                 preexec_fn=None,  # Disable preexec for security\n919                 shell=True  # We've already validated the command\n920             )\n921             return process\n922         except Exception as e:\n923             raise SecurityError(f\"Failed to execute secure command: {e}\", threat_type=\"execution_failure\")\n924     \n925     def _sanitize_output(self, output: str) -> str:\n926         \"\"\"Sanitize command output for security.\"\"\"\n927         if len(output) > self.max_output_size:\n928             self.logger.warning(f\"Output truncated from {len(output)} to {self.max_output_size} bytes\")\n929             output = output[:self.max_output_size] + \"\\n[OUTPUT TRUNCATED FOR SECURITY]\"\n",
+      "col_offset": 28,
+      "end_col_offset": 13,
+      "filename": "robo_rlhf/quantum/autonomous.py",
+      "issue_confidence": "LOW",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Function call with shell=True parameter identified, possible security issue.",
+      "line_number": 919,
+      "line_range": [
+        911,
+        912,
+        913,
+        914,
+        915,
+        916,
+        917,
+        918,
+        919,
+        920
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b604_any_other_function_with_shell_equals_true.html",
+      "test_id": "B604",
+      "test_name": "any_other_function_with_shell_equals_true"
+    },
+    {
+      "code": "649         memory = CognitiveMemory(\n650             experience_id=hashlib.md5(f\"{time.time()}_{decision_type}\".encode()).hexdigest()[:8],\n651             context=context.project_state.copy(),\n",
+      "col_offset": 26,
+      "end_col_offset": 80,
+      "filename": "robo_rlhf/quantum/cognitive_automation.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 650,
+      "line_range": [
+        650
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "881             action_key = str(option.get(\"action\", {}))\n882             action_hash = hashlib.md5(action_key.encode()).hexdigest()\n883             \n",
+      "col_offset": 26,
+      "end_col_offset": 58,
+      "filename": "robo_rlhf/quantum/cognitive_automation.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 882,
+      "line_range": [
+        882
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "453             strategy = GlobalDeploymentStrategy(\n454                 strategy_id=hashlib.md5(f\"{time.time()}_{primary_region}\".encode()).hexdigest()[:8],\n455                 primary_region=primary_region,\n",
+      "col_offset": 28,
+      "end_col_offset": 83,
+      "filename": "robo_rlhf/quantum/global_intelligence.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 454,
+      "line_range": [
+        454
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "350             for qubit in range(min(state.num_qubits, 8)):  # Limit for practical computation\n351                 if random.random() < 0.7:  # Probabilistic application\n352                     state = self.quantum_engine.apply_quantum_gate(\n",
+      "col_offset": 19,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/quantum/hybrid_qcnas.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 351,
+      "line_range": [
+        351
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "357             for qubit in range(state.num_qubits):\n358                 if random.random() < 0.5:\n359                     angle = np.random.uniform(0, 2 * np.pi)\n",
+      "col_offset": 19,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/quantum/hybrid_qcnas.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 358,
+      "line_range": [
+        358
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "359                     angle = np.random.uniform(0, 2 * np.pi)\n360                     gate_type = random.choice([\n361                         QuantumGate.ROTATION_X, \n362                         QuantumGate.ROTATION_Y, \n363                         QuantumGate.ROTATION_Z\n364                     ])\n365                     state = self.quantum_engine.apply_quantum_gate(\n",
+      "col_offset": 32,
+      "end_col_offset": 22,
+      "filename": "robo_rlhf/quantum/hybrid_qcnas.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 360,
+      "line_range": [
+        360,
+        361,
+        362,
+        363,
+        364
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "370             for _ in range(min(depth + 1, 4)):\n371                 qubit1 = random.randint(0, state.num_qubits - 2)\n372                 qubit2 = qubit1 + 1\n",
+      "col_offset": 25,
+      "end_col_offset": 64,
+      "filename": "robo_rlhf/quantum/hybrid_qcnas.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 371,
+      "line_range": [
+        371
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "432             classical_components=classical_components,\n433             superposition_weights={comp: random.random() for comp in classical_components},\n434             interference_score=measurement[\"probability\"]\n",
+      "col_offset": 41,
+      "end_col_offset": 56,
+      "filename": "robo_rlhf/quantum/hybrid_qcnas.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 433,
+      "line_range": [
+        433
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "1025                 # Calculate quantum-guided fitness\n1026                 combination_fitness = optimal_probability * random.uniform(0.8, 1.2)\n1027                 \n",
+      "col_offset": 60,
+      "end_col_offset": 84,
+      "filename": "robo_rlhf/quantum/hybrid_qcnas.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 1026,
+      "line_range": [
+        1026
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "1151             components = architecture[\"components\"]\n1152             comp_to_modify = random.choice(list(components.keys()))\n1153             \n",
+      "col_offset": 29,
+      "end_col_offset": 67,
+      "filename": "robo_rlhf/quantum/hybrid_qcnas.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 1152,
+      "line_range": [
+        1152
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "1158             # Try different value\n1159             new_value = random.choice(options)\n1160             if new_value != current_value:\n",
+      "col_offset": 24,
+      "end_col_offset": 46,
+      "filename": "robo_rlhf/quantum/hybrid_qcnas.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 1159,
+      "line_range": [
+        1159
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "15 import json\n16 import pickle\n17 from pathlib import Path\n",
+      "col_offset": 0,
+      "end_col_offset": 13,
+      "filename": "robo_rlhf/quantum/neural_evolution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with pickle module.",
+      "line_number": 16,
+      "line_range": [
+        16
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b403-import-pickle",
+      "test_id": "B403",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "663         context_str = json.dumps(project_context, sort_keys=True)\n664         return hashlib.md5(context_str.encode()).hexdigest()\n665     \n",
+      "col_offset": 15,
+      "end_col_offset": 48,
+      "filename": "robo_rlhf/quantum/neural_evolution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 664,
+      "line_range": [
+        664
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "704         with open(filepath, 'rb') as f:\n705             state = pickle.load(f)\n706         \n",
+      "col_offset": 20,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/quantum/neural_evolution.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+      "line_number": 705,
+      "line_range": [
+        705
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b301-pickle",
+      "test_id": "B301",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "571             self.cleanup()\n572         except:\n573             pass  # Ignore errors during destruction\n574     \n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "robo_rlhf/quantum/optimizer.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 572,
+      "line_range": [
+        572,
+        573
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "21 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor\n22 import subprocess\n23 import psutil\n",
+      "col_offset": 0,
+      "end_col_offset": 17,
+      "filename": "robo_rlhf/quantum/production_excellence.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 78,
+        "link": "https://cwe.mitre.org/data/definitions/78.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with the subprocess module.",
+      "line_number": 22,
+      "line_range": [
+        22
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b404-import-subprocess",
+      "test_id": "B404",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "930         \"\"\"Generate unique deployment ID.\"\"\"\n931         return f\"deploy_{int(time.time())}_{hashlib.md5(str(time.time()).encode()).hexdigest()[:8]}\"\n932     \n",
+      "col_offset": 44,
+      "end_col_offset": 82,
+      "filename": "robo_rlhf/quantum/production_excellence.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 931,
+      "line_range": [
+        931
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "934         \"\"\"Generate unique experiment ID.\"\"\"\n935         return f\"chaos_{int(time.time())}_{hashlib.md5(str(time.time()).encode()).hexdigest()[:8]}\"\n936     \n",
+      "col_offset": 43,
+      "end_col_offset": 81,
+      "filename": "robo_rlhf/quantum/production_excellence.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 327,
+        "link": "https://cwe.mitre.org/data/definitions/327.html"
+      },
+      "issue_severity": "HIGH",
+      "issue_text": "Use of weak MD5 hash for security. Consider usedforsecurity=False",
+      "line_number": 935,
+      "line_range": [
+        935
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b324_hashlib.html",
+      "test_id": "B324",
+      "test_name": "hashlib"
+    },
+    {
+      "code": "300         \n301         if random.random() < noise_rate:\n302             # Apply random phase noise\n",
+      "col_offset": 11,
+      "end_col_offset": 26,
+      "filename": "robo_rlhf/quantum/quantum_algorithms.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 301,
+      "line_range": [
+        301
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "328         # Apply measurement error\n329         if random.random() < self.noise_model[\"measurement_error_rate\"]:\n330             # Flip a random bit\n",
+      "col_offset": 11,
+      "end_col_offset": 26,
+      "filename": "robo_rlhf/quantum/quantum_algorithms.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 329,
+      "line_range": [
+        329
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "330             # Flip a random bit\n331             flip_index = random.randint(0, len(outcome_bits) - 1)\n332             outcome_bits[flip_index] = 1 - outcome_bits[flip_index]\n",
+      "col_offset": 25,
+      "end_col_offset": 65,
+      "filename": "robo_rlhf/quantum/quantum_algorithms.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 331,
+      "line_range": [
+        331
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "481             if (neighbor_cost < current_cost or \n482                 random.random() < np.exp(-(neighbor_cost - current_cost) / temperature) or\n483                 random.random() < tunneling_prob):\n",
+      "col_offset": 16,
+      "end_col_offset": 31,
+      "filename": "robo_rlhf/quantum/quantum_algorithms.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 482,
+      "line_range": [
+        482
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "482                 random.random() < np.exp(-(neighbor_cost - current_cost) / temperature) or\n483                 random.random() < tunneling_prob):\n484                 \n",
+      "col_offset": 16,
+      "end_col_offset": 31,
+      "filename": "robo_rlhf/quantum/quantum_algorithms.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 483,
+      "line_range": [
+        483
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "511         # Randomly modify one variable\n512         var_to_modify = random.choice(list(variables.keys()))\n513         perturbation = np.random.normal(0, 0.1)  # Small random change\n",
+      "col_offset": 24,
+      "end_col_offset": 61,
+      "filename": "robo_rlhf/quantum/quantum_algorithms.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 512,
+      "line_range": [
+        512
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "767                 # Simplified controlled phase gate\n768                 if random.random() > 0.5:  # Simulate control condition\n769                     state = self.apply_quantum_gate(\n",
+      "col_offset": 19,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/quantum/quantum_algorithms.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 768,
+      "line_range": [
+        768
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "1146                 correlation = np.corrcoef(lagged_cause, lagged_effect)[0, 1] if len(lagged_cause) == len(lagged_effect) else 0.0\n1147                 quantum_strength = abs(correlation) * (1.0 + 0.2 * random.random())  # Quantum enhancement\n1148                 \n",
+      "col_offset": 67,
+      "end_col_offset": 82,
+      "filename": "robo_rlhf/quantum/quantum_causal_inference.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 1147,
+      "line_range": [
+        1147
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "346             for qubit in range(min(state.num_qubits, 12)):\n347                 if random.random() < 0.6:  # Probabilistic application\n348                     state = self.quantum_engine.apply_quantum_gate(\n",
+      "col_offset": 19,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/quantum/quantum_pareto_optimizer.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 347,
+      "line_range": [
+        347
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "353             for qubit in range(state.num_qubits):\n354                 if random.random() < 0.4:\n355                     # Multi-objective specific rotation\n",
+      "col_offset": 19,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/quantum/quantum_pareto_optimizer.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 354,
+      "line_range": [
+        354
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "356                     angle = 2 * np.pi * (qubit + 1) / (len(self.objectives) + 1)\n357                     gate_type = random.choice([\n358                         QuantumGate.ROTATION_X, \n359                         QuantumGate.ROTATION_Y, \n360                         QuantumGate.ROTATION_Z\n361                     ])\n362                     state = self.quantum_engine.apply_quantum_gate(\n",
+      "col_offset": 32,
+      "end_col_offset": 22,
+      "filename": "robo_rlhf/quantum/quantum_pareto_optimizer.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 357,
+      "line_range": [
+        357,
+        358,
+        359,
+        360,
+        361
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "368                 if state.num_qubits >= 2:\n369                     qubit1 = random.randint(0, state.num_qubits - 2)\n370                     qubit2 = qubit1 + 1\n",
+      "col_offset": 29,
+      "end_col_offset": 68,
+      "filename": "robo_rlhf/quantum/quantum_pareto_optimizer.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 369,
+      "line_range": [
+        369
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "1078         for i in range(state.num_qubits - 1):\n1079             if random.random() < 0.8:  # High entanglement probability\n1080                 state = self.quantum_engine.apply_quantum_gate(\n",
+      "col_offset": 15,
+      "end_col_offset": 30,
+      "filename": "robo_rlhf/quantum/quantum_pareto_optimizer.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 1079,
+      "line_range": [
+        1079
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "1552             # Apply quantum-guided perturbation\n1553             perturbation = perturbation_strength * perturbation_direction * random.uniform(-1, 1)\n1554             neighbor_value = var_value + perturbation\n",
+      "col_offset": 76,
+      "end_col_offset": 97,
+      "filename": "robo_rlhf/quantum/quantum_pareto_optimizer.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 1553,
+      "line_range": [
+        1553
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "37 import hashlib\n38 import pickle\n39 import threading\n",
+      "col_offset": 0,
+      "end_col_offset": 13,
+      "filename": "robo_rlhf/quantum/temporal_quantum_memory.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with pickle module.",
+      "line_number": 38,
+      "line_range": [
+        38
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b403-import-pickle",
+      "test_id": "B403",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "370             for qubit in range(min(current_state.num_qubits, 8)):\n371                 if random.random() < 0.7:  # Probabilistic superposition\n372                     current_state = self.quantum_engine.apply_quantum_gate(\n",
+      "col_offset": 19,
+      "end_col_offset": 34,
+      "filename": "robo_rlhf/quantum/temporal_quantum_memory.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 371,
+      "line_range": [
+        371
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "408         # Create entanglements with up to 3 recent memories\n409         entanglement_partners = random.sample(candidates, min(3, len(candidates)))\n410         \n",
+      "col_offset": 32,
+      "end_col_offset": 82,
+      "filename": "robo_rlhf/quantum/temporal_quantum_memory.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 409,
+      "line_range": [
+        409
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "922                 # Small correction rotations\n923                 correction_angle = 0.01 * random.uniform(-1, 1)\n924                 current_state = self.quantum_engine.apply_quantum_gate(\n",
+      "col_offset": 42,
+      "end_col_offset": 63,
+      "filename": "robo_rlhf/quantum/temporal_quantum_memory.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 330,
+        "link": "https://cwe.mitre.org/data/definitions/330.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Standard pseudo-random generators are not suitable for security/cryptographic purposes.",
+      "line_number": 923,
+      "line_range": [
+        923
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b311-random",
+      "test_id": "B311",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "1187             self.shutdown()\n1188         except Exception:\n1189             pass  # Ignore errors during cleanup\n",
+      "col_offset": 8,
+      "end_col_offset": 16,
+      "filename": "robo_rlhf/quantum/temporal_quantum_memory.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Pass detected.",
+      "line_number": 1188,
+      "line_range": [
+        1188,
+        1189
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b110_try_except_pass.html",
+      "test_id": "B110",
+      "test_name": "try_except_pass"
+    },
+    {
+      "code": "779                     \n780             except:\n781                 continue\n782         \n",
+      "col_offset": 12,
+      "end_col_offset": 24,
+      "filename": "robo_rlhf/research/validation_framework.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 703,
+        "link": "https://cwe.mitre.org/data/definitions/703.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Try, Except, Continue detected.",
+      "line_number": 780,
+      "line_range": [
+        780,
+        781
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b112_try_except_continue.html",
+      "test_id": "B112",
+      "test_name": "try_except_continue"
+    },
+    {
+      "code": "24         self.policy = VisionLanguageActor()  # Would load from config\n25         checkpoint = torch.load(policy_path, map_location=\"cpu\")\n26         if \"policy_state\" in checkpoint:\n",
+      "col_offset": 21,
+      "end_col_offset": 64,
+      "filename": "robo_rlhf/scripts/evaluate.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Use of unsafe PyTorch load",
+      "line_number": 25,
+      "line_range": [
+        25
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/plugins/b614_pytorch_load.html",
+      "test_id": "B614",
+      "test_name": "pytorch_load"
+    },
+    {
+      "code": "6 import json\n7 import pickle\n8 from pathlib import Path\n",
+      "col_offset": 0,
+      "end_col_offset": 13,
+      "filename": "robo_rlhf/scripts/train_rlhf.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "LOW",
+      "issue_text": "Consider possible security implications associated with pickle module.",
+      "line_number": 7,
+      "line_range": [
+        7
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_imports.html#b403-import-pickle",
+      "test_id": "B403",
+      "test_name": "blacklist"
+    },
+    {
+      "code": "77         with open(args.preferences, 'rb') as f:\n78             preferences = pickle.load(f)\n79         print(f\"Loaded {len(preferences)} preference pairs from: {args.preferences}\")\n",
+      "col_offset": 26,
+      "end_col_offset": 40,
+      "filename": "robo_rlhf/scripts/train_rlhf.py",
+      "issue_confidence": "HIGH",
+      "issue_cwe": {
+        "id": 502,
+        "link": "https://cwe.mitre.org/data/definitions/502.html"
+      },
+      "issue_severity": "MEDIUM",
+      "issue_text": "Pickle and modules that wrap it can be unsafe when used to deserialize untrusted data, possible security issue.",
+      "line_number": 78,
+      "line_range": [
+        78
+      ],
+      "more_info": "https://bandit.readthedocs.io/en/1.8.6/blacklists/blacklist_calls.html#b301-pickle",
+      "test_id": "B301",
+      "test_name": "blacklist"
+    }
+  ]
+}
