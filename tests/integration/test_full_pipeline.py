@@ -15,9 +15,9 @@ from robo_rlhf import (
     TeleOpCollector,
     PreferencePairGenerator,
     MultimodalRLHF,
-    VisionLanguageActor,
-    make_env
+    VisionLanguageActor
 )
+from robo_rlhf.envs.base import RobotEnv
 from robo_rlhf.preference.models import PreferencePair, Segment, PreferenceChoice
 
 
