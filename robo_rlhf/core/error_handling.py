@@ -19,11 +19,11 @@ import inspect
 from functools import wraps
 import numpy as np
 
-from .logging import setup_logger
+from .logging import get_logger
 from .state_manager import PersistentStateManager, StateType
 
 
-logger = setup_logger(__name__)
+logger = get_logger(__name__)
 
 
 class ErrorSeverity(Enum):

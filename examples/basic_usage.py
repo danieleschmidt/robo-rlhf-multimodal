@@ -12,6 +12,8 @@ This example demonstrates the complete pipeline:
 
 import numpy as np
 from pathlib import Path
+import logging
+import traceback
 
 # Import core components
 from robo_rlhf import (
@@ -21,13 +23,19 @@ from robo_rlhf import (
     MultimodalRLHF,
     VisionLanguageActor
 )
-# from robo_rlhf.envs.base import BaseRobotEnv  # Mock environment for demo
+from robo_rlhf.envs import make_env
+from robo_rlhf.core.error_handling import RobustExecutor
+from robo_rlhf.core.monitoring import MetricsCollector
 
 
 def main():
-    """Run the complete RLHF pipeline."""
+    """Run the complete RLHF pipeline with robust error handling."""
     print("🤖 Robo-RLHF-Multimodal Basic Usage Example")
     print("=" * 50)
+    
+    # Initialize monitoring and error handling
+    metrics = MetricsCollector()
+    executor = RobustExecutor(max_retries=3, timeout=300)
     
     # Configuration
     env_name = "mujoco_manipulation"
@@ -36,38 +44,52 @@ def main():
     prefs_file = "data/preferences.json"
     checkpoint_dir = "checkpoints/"
     
-    # Step 1: Collect Demonstrations
-    print("\n📹 Step 1: Collecting Demonstrations")
-    print("-" * 30)
-    
-    # Create environment
-    env = make_env(env_name, task="pick_and_place")
-    print(f"Environment: {env_name}")
-    print(f"Action space: {env.action_space}")
-    print(f"Observation space: {env.observation_space}")
-    
-    # Create collector
-    collector = TeleOpCollector(
-        env=env,
-        modalities=["rgb", "proprioception"],
-        device="keyboard",  # Change to "spacemouse" or "vr" if available
-        recording_fps=30
-    )
-    
-    # Collect demonstrations (interactive)
-    print("Starting teleoperation collection...")
-    print("Use keyboard controls to demonstrate the task")
-    
-    demonstrations = collector.collect(
-        num_episodes=5,  # Start with a small number
-        save_dir=demo_dir,
-        render=True
-    )
-    
-    print(f"✅ Collected {len(demonstrations)} demonstrations")
-    
-    # Step 2: Generate Preference Pairs
-    print("\n🔗 Step 2: Generating Preference Pairs")
+    try:
+        # Step 1: Collect Demonstrations
+        print("\n📹 Step 1: Collecting Demonstrations")
+        print("-" * 30)
+        
+        # Create environment with error handling
+        try:
+            env = make_env(env_name, task="pick_and_place")
+            print(f"✅ Environment created: {env_name}")
+            print(f"Action space: {env.action_space}")
+            print(f"Observation space: {env.observation_space}")
+            metrics.record("environment_creation", 1, tags={"env": env_name})
+        except Exception as e:
+            print(f"❌ Error creating environment: {e}")
+            print("📝 Falling back to simple environment for demo...")
+            # Fallback to simple environment for demonstration
+            env = make_env("cartpole")
+            print(f"✅ Fallback environment: CartPole")
+            metrics.record("environment_fallback", 1, tags={"original": env_name})
+        
+        # Create collector with error handling
+        def collect_demonstrations():
+            collector = TeleOpCollector(
+                env=env,
+                modalities=["rgb", "proprioception"],
+                device="keyboard",  # Change to "spacemouse" or "vr" if available
+                recording_fps=30
+            )
+            
+            # Collect demonstrations (non-interactive for demo)
+            print("Creating synthetic demonstrations for demo...")
+            
+            demonstrations = collector.collect(
+                num_episodes=5,  # Start with a small number
+                save_dir=demo_dir,
+                render=False,  # Disable rendering for automated demo
+                interactive=False  # Disable interactive mode
+            )
+            return demonstrations
+            
+        demonstrations = executor.execute(collect_demonstrations)
+        print(f"✅ Collected {len(demonstrations)} demonstrations")
+        metrics.record("demonstrations_collected", len(demonstrations))
+        
+        # Step 2: Generate Preference Pairs
+        print("\n🔗 Step 2: Generating Preference Pairs")
     print("-" * 30)
     
     generator = PreferencePairGenerator(

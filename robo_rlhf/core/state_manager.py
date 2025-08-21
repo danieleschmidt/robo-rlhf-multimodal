@@ -19,11 +19,11 @@ import hashlib
 import threading
 from contextlib import asynccontextmanager
 
-from .logging import setup_logger
+from .logging import get_logger
 from .config import get_config
 
 
-logger = setup_logger(__name__)
+logger = get_logger(__name__)
 
 
 class StateType(Enum):
