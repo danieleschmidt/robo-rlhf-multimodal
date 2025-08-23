@@ -1,0 +1,47 @@
+services:
+  postgres:
+    environment:
+      POSTGRES_DB: robo_rlhf
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: user
+    image: postgres:14
+    volumes:
+    - postgres_data:/var/lib/postgresql/data
+  redis:
+    command: redis-server --appendonly yes
+    image: redis:7-alpine
+    volumes:
+    - redis_data:/data
+  robo-rlhf:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    depends_on:
+    - postgres
+    - redis
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: 500e-3
+          memory: 1GB
+    environment:
+      DATABASE_URL: postgresql://user:pass@postgres:5432/robo_rlhf
+      ENVIRONMENT: development
+      REDIS_URL: redis://redis:6379/0
+    healthcheck:
+      interval: 30s
+      retries: 3
+      test:
+      - CMD
+      - curl
+      - -f
+      - http://localhost:8000/health
+      timeout: 5s
+    ports:
+    - 8000:8000
+version: '3.8'
+volumes:
+  postgres_data: {}
+  redis_data: {}

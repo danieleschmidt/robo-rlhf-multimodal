@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: robo-rlhf-multimodal
+    env: staging
+    version: 1.0.0
+  name: robo-rlhf-staging
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: robo-rlhf-multimodal
+      env: staging
+  template:
+    metadata:
+      labels:
+        app: robo-rlhf-multimodal
+        env: staging
+    spec:
+      containers:
+      - env:
+        - name: ENVIRONMENT
+          value: staging
+        - name: LOG_LEVEL
+          value: INFO
+        image: robo-rlhf:latest-staging
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8000
+          initialDelaySeconds: 30
+          periodSeconds: 15
+        name: robo-rlhf
+        ports:
+        - containerPort: 8000
+        readinessProbe:
+          httpGet:
+            path: /health/ready
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          limits:
+            cpu: '1'
+            memory: 2Gi
+          requests:
+            cpu: '1'
+            memory: 2Gi
