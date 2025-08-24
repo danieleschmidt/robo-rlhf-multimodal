@@ -1,0 +1,30 @@
+apiVersion:
+  v1
+kind:
+  ConfigMap
+metadata:
+  name:
+    robo-rlhf-config
+  namespace:
+    robo-rlhf
+data:
+  QUANTUM_OPTIMIZATION_ENABLED:
+    true
+  AUTO_SCALING_ENABLED:
+    true
+  PERFORMANCE_MONITORING:
+    enabled
+  GLOBAL_DEPLOYMENT:
+    true
+  COMPLIANCE_VALIDATION:
+    strict
+  ERROR_RECOVERY_ENABLED:
+    true
+  CACHE_SIZE:
+    1GB
+  MAX_WORKERS:
+    10
+  TIMEOUT_SECONDS:
+    30
+  DATABASE_POOL_SIZE:
+    20
