@@ -1,0 +1,37 @@
+apiVersion:
+  v1
+kind:
+  Service
+metadata:
+  name:
+    robo-rlhf-service
+  namespace:
+    robo-rlhf
+  labels:
+    app:
+      robo-rlhf-multimodal
+spec:
+  type:
+    ClusterIP
+  ports:
+    -
+      port:
+        80
+      targetPort:
+        8000
+      protocol:
+        TCP
+      name:
+        http
+    -
+      port:
+        8080
+      targetPort:
+        8080
+      protocol:
+        TCP
+      name:
+        metrics
+  selector:
+    app:
+      robo-rlhf-multimodal
