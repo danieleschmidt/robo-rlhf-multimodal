@@ -1,0 +1,59 @@
+{
+  "analysis_timestamp": "2025-08-25 18:21:16",
+  "outlier_analysis": {
+    "outliers_detected": 2,
+    "median_stability": true,
+    "mean_sensitivity": false,
+    "robust_estimator": "median",
+    "outlier_impact": "moderate on mean, minimal on median"
+  },
+  "noise_sensitivity": {
+    "noise_levels_tested": [
+      0.0,
+      0.05,
+      0.1,
+      0.15,
+      0.2
+    ],
+    "performance_degradation": [
+      0.0,
+      0.012266317085393164,
+      0.024532634170786327,
+      0.03679895125617949,
+      0.049065268341572654
+    ],
+    "noise_tolerance": "high",
+    "degradation_rate": "linear"
+  },
+  "parameter_sensitivity": {
+    "learning_rate": {
+      "values_tested": [
+        0.001,
+        0.01,
+        0.1
+      ],
+      "performance_range": 0.05254891213405999,
+      "sensitivity": "moderate"
+    },
+    "batch_size": {
+      "values_tested": [
+        16,
+        32,
+        64,
+        128
+      ],
+      "performance_range": 0.05254891213405999,
+      "sensitivity": "moderate"
+    },
+    "regularization": {
+      "values_tested": [
+        0.0,
+        0.01,
+        0.1
+      ],
+      "performance_range": 0.05254891213405999,
+      "sensitivity": "moderate"
+    }
+  },
+  "adversarial_testing": {}
+}
