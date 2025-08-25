@@ -1,0 +1,12 @@
+{
+  "name": "cross_validation_results",
+  "title": "Cross-Validation Performance",
+  "description": "Box plots showing performance distribution across CV folds",
+  "file_format": [
+    "PDF",
+    "PNG",
+    "EPS"
+  ],
+  "resolution": "300 DPI",
+  "publication_ready": true
+}

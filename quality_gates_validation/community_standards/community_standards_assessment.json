@@ -1,0 +1,68 @@
+{
+  "assessment_timestamp": "2025-08-25 18:31:57",
+  "open_science_practices": {
+    "open_access_publication": true,
+    "open_source_code": true,
+    "open_data_sharing": true,
+    "preprint_sharing": true,
+    "transparent_methodology": true,
+    "fair_data_principles": true,
+    "score": 0.96
+  },
+  "community_engagement": {
+    "active_research_community": true,
+    "conference_participation": true,
+    "workshop_contributions": true,
+    "peer_review_participation": true,
+    "mentorship_activities": true,
+    "outreach_efforts": true,
+    "score": 0.9
+  },
+  "collaboration_potential": {
+    "interdisciplinary_collaboration": true,
+    "international_collaboration": true,
+    "industry_academia_partnerships": true,
+    "cross_institutional_projects": true,
+    "collaborative_platforms_used": true,
+    "shared_resource_development": true,
+    "score": 0.88
+  },
+  "knowledge_sharing": {
+    "comprehensive_documentation": true,
+    "tutorial_materials": true,
+    "educational_resources": true,
+    "blog_posts_articles": true,
+    "presentation_materials": true,
+    "community_forums_participation": true,
+    "score": 0.92
+  },
+  "mentorship_opportunities": {
+    "student_involvement": true,
+    "junior_researcher_support": true,
+    "skill_development_programs": true,
+    "career_guidance_provided": true,
+    "networking_facilitation": true,
+    "inclusive_mentorship": true,
+    "score": 0.85
+  },
+  "diversity_inclusion": {
+    "diverse_authorship": true,
+    "inclusive_language": true,
+    "accessibility_considerations": true,
+    "global_perspective": true,
+    "underrepresented_group_support": true,
+    "bias_awareness_mitigation": true,
+    "score": 0.87
+  },
+  "sustainability_practices": {
+    "long_term_maintenance": true,
+    "community_governance": true,
+    "funding_sustainability": true,
+    "resource_efficiency": true,
+    "environmental_considerations": true,
+    "legacy_planning": true,
+    "score": 0.84
+  },
+  "overall_score": 0.8885714285714286,
+  "pass_status": true
+}

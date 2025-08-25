@@ -1,0 +1,2671 @@
+{
+  "validation_timestamp": "2025-08-25 18:21:16",
+  "algorithms": {
+    "qcnas": {
+      "algorithm_name": "qcnas",
+      "quantum_results": [
+        {
+          "run_id": 0,
+          "accuracy": 0.9273597902512359,
+          "execution_time": 7.006311053177594,
+          "quantum_advantage": 8.382178896586193
+        },
+        {
+          "run_id": 1,
+          "accuracy": 0.8859044220533566,
+          "execution_time": 10.84440085979122,
+          "quantum_advantage": 6.259914091065751
+        },
+        {
+          "run_id": 2,
+          "accuracy": 0.9097227303433825,
+          "execution_time": 9.508703881770275,
+          "quantum_advantage": 4.683302711039771
+        },
+        {
+          "run_id": 3,
+          "accuracy": 0.897067834539294,
+          "execution_time": 5.830534027566991,
+          "quantum_advantage": 5.869579232971877
+        },
+        {
+          "run_id": 4,
+          "accuracy": 0.9533039223061675,
+          "execution_time": 10.168558272826825,
+          "quantum_advantage": 5.057561978645029
+        },
+        {
+          "run_id": 5,
+          "accuracy": 0.9066186875681831,
+          "execution_time": 7.757881928626159,
+          "quantum_advantage": 6.552705385368557
+        },
+        {
+          "run_id": 6,
+          "accuracy": 0.9228550378841545,
+          "execution_time": 9.04024224044147,
+          "quantum_advantage": 7.308002640377327
+        },
+        {
+          "run_id": 7,
+          "accuracy": 0.8820103892895363,
+          "execution_time": 8.040743743233065,
+          "quantum_advantage": 3.1593733762275735
+        },
+        {
+          "run_id": 8,
+          "accuracy": 0.9198272308513561,
+          "execution_time": 8.6223798364618,
+          "quantum_advantage": 4.172417196707405
+        },
+        {
+          "run_id": 9,
+          "accuracy": 0.8934827031051923,
+          "execution_time": 5.941384519572928,
+          "quantum_advantage": 8.320616201030111
+        },
+        {
+          "run_id": 10,
+          "accuracy": 0.9425014680238767,
+          "execution_time": 10.555152078669568,
+          "quantum_advantage": 8.668942656381207
+        },
+        {
+          "run_id": 11,
+          "accuracy": 0.9748762451510613,
+          "execution_time": 7.482684588925759,
+          "quantum_advantage": 8.845402839120215
+        },
+        {
+          "run_id": 12,
+          "accuracy": 0.9255818603455271,
+          "execution_time": 10.541577224488293,
+          "quantum_advantage": 6.1742406771806575
+        },
+        {
+          "run_id": 13,
+          "accuracy": 0.8508807236821229,
+          "execution_time": 12.630259824927222,
+          "quantum_advantage": 5.713924817422768
+        },
+        {
+          "run_id": 14,
+          "accuracy": 0.9171576675698051,
+          "execution_time": 7.64561590847884,
+          "quantum_advantage": 6.1541192262152835
+        },
+        {
+          "run_id": 15,
+          "accuracy": 0.8690833494952547,
+          "execution_time": 10.304180358080453,
+          "quantum_advantage": 7.754678228822213
+        },
+        {
+          "run_id": 16,
+          "accuracy": 0.9252327336676396,
+          "execution_time": 5.141037051215371,
+          "quantum_advantage": 5.970386724872164
+        },
+        {
+          "run_id": 17,
+          "accuracy": 0.9825094311629411,
+          "execution_time": 9.81178630047312,
+          "quantum_advantage": 8.200329085615866
+        },
+        {
+          "run_id": 18,
+          "accuracy": 0.8965630373168508,
+          "execution_time": 3.813841703846104,
+          "quantum_advantage": 6.37361474921232
+        },
+        {
+          "run_id": 19,
+          "accuracy": 0.9193600193835392,
+          "execution_time": 9.564275761091015,
+          "quantum_advantage": 4.998523145325527
+        },
+        {
+          "run_id": 20,
+          "accuracy": 0.9022565237289675,
+          "execution_time": 6.994105731195226,
+          "quantum_advantage": 4.659525722434891
+        },
+        {
+          "run_id": 21,
+          "accuracy": 0.916000269989869,
+          "execution_time": 10.724045953522714,
+          "quantum_advantage": 5.13005778927185
+        },
+        {
+          "run_id": 22,
+          "accuracy": 0.9166817249206767,
+          "execution_time": 3.8798227014111824,
+          "quantum_advantage": 9.179757982580425
+        },
+        {
+          "run_id": 23,
+          "accuracy": 0.9138399941520553,
+          "execution_time": 10.126331485890127,
+          "quantum_advantage": 6.664731651907489
+        },
+        {
+          "run_id": 24,
+          "accuracy": 0.8809335024610151,
+          "execution_time": 6.429354479784972,
+          "quantum_advantage": 7.108165092684998
+        },
+        {
+          "run_id": 25,
+          "accuracy": 0.9615536358414656,
+          "execution_time": 10.675380739652155,
+          "quantum_advantage": 10.38534222624198
+        },
+        {
+          "run_id": 26,
+          "accuracy": 0.872355781604956,
+          "execution_time": 7.681736319561996,
+          "quantum_advantage": 7.883000259039405
+        },
+        {
+          "run_id": 27,
+          "accuracy": 0.9304871769157125,
+          "execution_time": 5.105842372089317,
+          "quantum_advantage": 5.215031481555676
+        },
+        {
+          "run_id": 28,
+          "accuracy": 0.9498746126339744,
+          "execution_time": 7.838839788289705,
+          "quantum_advantage": 7.613496657412293
+        },
+        {
+          "run_id": 29,
+          "accuracy": 0.8961279348394918,
+          "execution_time": 6.985700500811415,
+          "quantum_advantage": 4.625818029536859
+        },
+        {
+          "run_id": 30,
+          "accuracy": 0.8658779780184399,
+          "execution_time": 10.559876749091863,
+          "quantum_advantage": 6.6808630212822875
+        },
+        {
+          "run_id": 31,
+          "accuracy": 0.8972386008410081,
+          "execution_time": 8.408310106458815,
+          "quantum_advantage": 6.935283097519972
+        },
+        {
+          "run_id": 32,
+          "accuracy": 0.9581946640758279,
+          "execution_time": 2.743322022305488,
+          "quantum_advantage": 8.220512836323042
+        },
+        {
+          "run_id": 33,
+          "accuracy": 0.9155096130792316,
+          "execution_time": 9.808137919810708,
+          "quantum_advantage": 6.285070703289722
+        },
+        {
+          "run_id": 34,
+          "accuracy": 0.898041549937378,
+          "execution_time": 7.631660929447192,
+          "quantum_advantage": 3.29029189325209
+        },
+        {
+          "run_id": 35,
+          "accuracy": 0.94283691140085,
+          "execution_time": 2.9821887062120034,
+          "quantum_advantage": 4.608770692063057
+        },
+        {
+          "run_id": 36,
+          "accuracy": 0.9379040824415457,
+          "execution_time": 6.545753176959578,
+          "quantum_advantage": 8.210710368985703
+        },
+        {
+          "run_id": 37,
+          "accuracy": 0.8919394531429137,
+          "execution_time": 6.466416306275394,
+          "quantum_advantage": 7.085874522037324
+        },
+        {
+          "run_id": 38,
+          "accuracy": 0.8943275059530724,
+          "execution_time": 7.038548205846136,
+          "quantum_advantage": 5.783464910945939
+        },
+        {
+          "run_id": 39,
+          "accuracy": 0.9205592094294641,
+          "execution_time": 8.323007254397986,
+          "quantum_advantage": 7.524065451413271
+        },
+        {
+          "run_id": 40,
+          "accuracy": 0.8841547600990104,
+          "execution_time": 8.561742823997701,
+          "quantum_advantage": 7.049324855918921
+        },
+        {
+          "run_id": 41,
+          "accuracy": 0.9186188809068918,
+          "execution_time": 5.729628384488182,
+          "quantum_advantage": 5.342598618470388
+        },
+        {
+          "run_id": 42,
+          "accuracy": 0.8888533420864302,
+          "execution_time": 8.676983588057603,
+          "quantum_advantage": 7.1140783353944075
+        },
+        {
+          "run_id": 43,
+          "accuracy": 0.879836285233963,
+          "execution_time": 6.039080732990016,
+          "quantum_advantage": 7.163695789240726
+        },
+        {
+          "run_id": 44,
+          "accuracy": 0.9454676289512756,
+          "execution_time": 8.020799225500484,
+          "quantum_advantage": 6.25708864154915
+        },
+        {
+          "run_id": 45,
+          "accuracy": 0.8975275326154002,
+          "execution_time": 10.532350354294653,
+          "quantum_advantage": 5.65146656112087
+        },
+        {
+          "run_id": 46,
+          "accuracy": 0.9134905667353668,
+          "execution_time": 11.687395035121352,
+          "quantum_advantage": 6.726312437313257
+        },
+        {
+          "run_id": 47,
+          "accuracy": 0.8651686905645092,
+          "execution_time": 9.421300839920113,
+          "quantum_advantage": 4.423968995327323
+        },
+        {
+          "run_id": 48,
+          "accuracy": 0.9031910760241642,
+          "execution_time": 9.32211559443949,
+          "quantum_advantage": 7.036111699180243
+        },
+        {
+          "run_id": 49,
+          "accuracy": 0.8941012591191246,
+          "execution_time": 8.75201205618618,
+          "quantum_advantage": 7.666728500128827
+        }
+      ],
+      "classical_results": [
+        {
+          "run_id": 0,
+          "accuracy": 0.7544776374902875,
+          "execution_time": 27.1934373336374,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 1,
+          "accuracy": 0.701868702325747,
+          "execution_time": 23.142021352781796,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 2,
+          "accuracy": 0.7459778603626633,
+          "execution_time": 38.89620606821289,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 3,
+          "accuracy": 0.709453058171875,
+          "execution_time": 39.12197563519103,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 4,
+          "accuracy": 0.8688186914726171,
+          "execution_time": 20.882834276053465,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 5,
+          "accuracy": 0.7058209457366411,
+          "execution_time": 34.44150242608876,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 6,
+          "accuracy": 0.683200150532961,
+          "execution_time": 27.077074936537734,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 7,
+          "accuracy": 0.7780569218689902,
+          "execution_time": 47.286180776429525,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 8,
+          "accuracy": 0.7183006495386143,
+          "execution_time": 37.64720746791235,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 9,
+          "accuracy": 0.7688976562117922,
+          "execution_time": 36.846210606849034,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 10,
+          "accuracy": 0.7267492377592628,
+          "execution_time": 36.85862587695789,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 11,
+          "accuracy": 0.8190010508891808,
+          "execution_time": 39.583433034528305,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 12,
+          "accuracy": 0.6681604141562211,
+          "execution_time": 36.66810835387969,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 13,
+          "accuracy": 0.7842909045589579,
+          "execution_time": 32.411118839670884,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 14,
+          "accuracy": 0.6766183103624767,
+          "execution_time": 36.270956669679684,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 15,
+          "accuracy": 0.7715113779944328,
+          "execution_time": 44.77350543598604,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 16,
+          "accuracy": 0.7958944724193142,
+          "execution_time": 34.73195457637292,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 17,
+          "accuracy": 0.8260707160728156,
+          "execution_time": 28.30589653014529,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 18,
+          "accuracy": 0.8338423263610008,
+          "execution_time": 27.924076106267506,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 19,
+          "accuracy": 0.758518354218976,
+          "execution_time": 33.06485000016325,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 20,
+          "accuracy": 0.7657189465865057,
+          "execution_time": 29.73483170837605,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 21,
+          "accuracy": 0.6813598161080938,
+          "execution_time": 47.09088351261664,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 22,
+          "accuracy": 0.7860438269612643,
+          "execution_time": 47.6321655694042,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 23,
+          "accuracy": 0.7293356007609539,
+          "execution_time": 36.13595732090393,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 24,
+          "accuracy": 0.8179478563587746,
+          "execution_time": 34.5048463179489,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 25,
+          "accuracy": 0.7552630363582996,
+          "execution_time": 26.97549200455673,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 26,
+          "accuracy": 0.8108868492667776,
+          "execution_time": 38.25971047897374,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 27,
+          "accuracy": 0.7871611292344204,
+          "execution_time": 29.568288391988194,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 28,
+          "accuracy": 0.7849845047696655,
+          "execution_time": 32.25767126790362,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 29,
+          "accuracy": 0.7874908145147913,
+          "execution_time": 27.989825319768975,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 30,
+          "accuracy": 0.8122731223667288,
+          "execution_time": 39.23765087883409,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 31,
+          "accuracy": 0.7615396313707704,
+          "execution_time": 27.821788959480134,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 32,
+          "accuracy": 0.7526317396063802,
+          "execution_time": 45.507087047859514,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 33,
+          "accuracy": 0.8452214317199448,
+          "execution_time": 14.367836930700872,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 34,
+          "accuracy": 0.7592305471117765,
+          "execution_time": 41.16721887367719,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 35,
+          "accuracy": 0.7702216069238055,
+          "execution_time": 21.82648957028094,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 36,
+          "accuracy": 0.6895945857236112,
+          "execution_time": 31.33765639870567,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 37,
+          "accuracy": 0.7472036570830719,
+          "execution_time": 47.79345880766533,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 38,
+          "accuracy": 0.7196964560792168,
+          "execution_time": 49.00320333736956,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 39,
+          "accuracy": 0.745624908318235,
+          "execution_time": 50.46895131711154,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 40,
+          "accuracy": 0.8100410076906734,
+          "execution_time": 36.261220476381055,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 41,
+          "accuracy": 0.7259726712038442,
+          "execution_time": 43.15207441515555,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 42,
+          "accuracy": 0.7837910657126071,
+          "execution_time": 30.89266025373823,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 43,
+          "accuracy": 0.7762419602883561,
+          "execution_time": 23.035781263280334,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 44,
+          "accuracy": 0.7824956305701485,
+          "execution_time": 28.71121156586575,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 45,
+          "accuracy": 0.7644207946755736,
+          "execution_time": 38.28262371927043,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 46,
+          "accuracy": 0.8370376510291961,
+          "execution_time": 28.96930122944802,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 47,
+          "accuracy": 0.7168665337442843,
+          "execution_time": 34.554855379351494,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 48,
+          "accuracy": 0.7300417387746183,
+          "execution_time": 40.93411352436889,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 49,
+          "accuracy": 0.7896690904593902,
+          "execution_time": 37.2522786559087,
+          "quantum_advantage": 1.0
+        }
+      ],
+      "enhanced_analysis": {
+        "descriptive_statistics": {
+          "quantum_accuracy": {
+            "mean": 0.9110970006346907,
+            "std": 0.028613739865622417,
+            "min": 0.8508807236821229,
+            "max": 0.9825094311629411,
+            "median": 0.9134905667353668
+          },
+          "classical_accuracy": {
+            "mean": 0.7624307529975322,
+            "std": 0.04649993127338728,
+            "min": 0.6681604141562211,
+            "max": 0.8688186914726171,
+            "median": 0.7657189465865057
+          },
+          "quantum_advantage": {
+            "mean": 6.522820453672203,
+            "std": 1.5192563223933588,
+            "min": 3.1593733762275735,
+            "max": 10.38534222624198,
+            "median": 6.664731651907489
+          }
+        },
+        "hypothesis_tests": {
+          "welch_t_test": {
+            "t_statistic": 19.253830449145358,
+            "p_value": 0.001,
+            "degrees_of_freedom": 98,
+            "significant": true,
+            "highly_significant": false
+          }
+        },
+        "effect_size_analysis": {
+          "cohens_d": 3.8507660898290714,
+          "interpretation": "large",
+          "magnitude": "large"
+        },
+        "power_analysis": {
+          "statistical_power": 0.99,
+          "sample_size": 50,
+          "adequate_power": true
+        },
+        "normality_tests": {},
+        "confidence_intervals": {
+          "mean_difference": 0.14866624763715852,
+          "ci_95_lower": 0.13322347659688924,
+          "ci_95_upper": 0.1641090186774278,
+          "excludes_zero": true
+        }
+      },
+      "validation_runs": 50
+    },
+    "quantum_pareto": {
+      "algorithm_name": "quantum_pareto",
+      "quantum_results": [
+        {
+          "run_id": 0,
+          "accuracy": 0.8961331585426966,
+          "execution_time": 10.509466579766391,
+          "quantum_advantage": 10.709571862114924
+        },
+        {
+          "run_id": 1,
+          "accuracy": 0.8615870183777972,
+          "execution_time": 16.266601289686832,
+          "quantum_advantage": 7.879885454754333
+        },
+        {
+          "run_id": 2,
+          "accuracy": 0.8814356086194853,
+          "execution_time": 14.263055822655414,
+          "quantum_advantage": 5.777736948053028
+        },
+        {
+          "run_id": 3,
+          "accuracy": 0.8708898621160782,
+          "execution_time": 8.745801041350486,
+          "quantum_advantage": 7.359438977295835
+        },
+        {
+          "run_id": 4,
+          "accuracy": 0.9177532685884728,
+          "execution_time": 15.252837409240236,
+          "quantum_advantage": 6.276749304860038
+        },
+        {
+          "run_id": 5,
+          "accuracy": 0.8788489063068192,
+          "execution_time": 11.636822892939238,
+          "quantum_advantage": 8.270273847158075
+        },
+        {
+          "run_id": 6,
+          "accuracy": 0.8923791982367953,
+          "execution_time": 13.560363360662205,
+          "quantum_advantage": 9.277336853836436
+        },
+        {
+          "run_id": 7,
+          "accuracy": 0.8583419910746136,
+          "execution_time": 12.0611156148496,
+          "quantum_advantage": 3.7458311683034307
+        },
+        {
+          "run_id": 8,
+          "accuracy": 0.8898560257094634,
+          "execution_time": 12.933569754692702,
+          "quantum_advantage": 5.09655626227654
+        },
+        {
+          "run_id": 9,
+          "accuracy": 0.8679022525876602,
+          "execution_time": 8.912076779359392,
+          "quantum_advantage": 10.627488268040148
+        },
+        {
+          "run_id": 10,
+          "accuracy": 0.9087512233532306,
+          "execution_time": 15.832728118004354,
+          "quantum_advantage": 11.09192354184161
+        },
+        {
+          "run_id": 11,
+          "accuracy": 0.935730204292551,
+          "execution_time": 11.224026883388639,
+          "quantum_advantage": 11.32720378549362
+        },
+        {
+          "run_id": 12,
+          "accuracy": 0.8946515502879393,
+          "execution_time": 15.812365836732441,
+          "quantum_advantage": 7.765654236240876
+        },
+        {
+          "run_id": 13,
+          "accuracy": 0.8324006030684358,
+          "execution_time": 18.945389737390833,
+          "quantum_advantage": 7.15189975656369
+        },
+        {
+          "run_id": 14,
+          "accuracy": 0.8876313896415042,
+          "execution_time": 11.46842386271826,
+          "quantum_advantage": 7.738825634953711
+        },
+        {
+          "run_id": 15,
+          "accuracy": 0.8475694579127122,
+          "execution_time": 15.45627053712068,
+          "quantum_advantage": 9.872904305096283
+        },
+        {
+          "run_id": 16,
+          "accuracy": 0.8943606113896996,
+          "execution_time": 7.7115555768230575,
+          "quantum_advantage": 7.493848966496218
+        },
+        {
+          "run_id": 17,
+          "accuracy": 0.9420911926357842,
+          "execution_time": 14.71767945070968,
+          "quantum_advantage": 10.46710544748782
+        },
+        {
+          "run_id": 18,
+          "accuracy": 0.8704691977640424,
+          "execution_time": 5.720762555769156,
+          "quantum_advantage": 8.031486332283093
+        },
+        {
+          "run_id": 19,
+          "accuracy": 0.8894666828196159,
+          "execution_time": 14.346413641636524,
+          "quantum_advantage": 6.198030860434035
+        },
+        {
+          "run_id": 20,
+          "accuracy": 0.8752137697741396,
+          "execution_time": 10.49115859679284,
+          "quantum_advantage": 5.746034296579854
+        },
+        {
+          "run_id": 21,
+          "accuracy": 0.8866668916582242,
+          "execution_time": 16.08606893028407,
+          "quantum_advantage": 6.373410385695799
+        },
+        {
+          "run_id": 22,
+          "accuracy": 0.8872347707672306,
+          "execution_time": 5.8197340521167735,
+          "quantum_advantage": 11.773010643440564
+        },
+        {
+          "run_id": 23,
+          "accuracy": 0.8848666617933794,
+          "execution_time": 15.18949722883519,
+          "quantum_advantage": 8.419642202543317
+        },
+        {
+          "run_id": 24,
+          "accuracy": 0.8574445853841792,
+          "execution_time": 9.644031719677457,
+          "quantum_advantage": 9.010886790246664
+        },
+        {
+          "run_id": 25,
+          "accuracy": 0.924628029867888,
+          "execution_time": 16.013071109478233,
+          "quantum_advantage": 13.380456301655972
+        },
+        {
+          "run_id": 26,
+          "accuracy": 0.8502964846707965,
+          "execution_time": 11.522604479342995,
+          "quantum_advantage": 10.044000345385873
+        },
+        {
+          "run_id": 27,
+          "accuracy": 0.898739314096427,
+          "execution_time": 7.658763558133974,
+          "quantum_advantage": 6.486708642074234
+        },
+        {
+          "run_id": 28,
+          "accuracy": 0.914895510528312,
+          "execution_time": 11.758259682434558,
+          "quantum_advantage": 9.684662209883056
+        },
+        {
+          "run_id": 29,
+          "accuracy": 0.8701066123662432,
+          "execution_time": 10.478550751217123,
+          "quantum_advantage": 5.701090706049144
+        },
+        {
+          "run_id": 30,
+          "accuracy": 0.8448983150153665,
+          "execution_time": 15.839815123637795,
+          "quantum_advantage": 8.44115069504305
+        },
+        {
+          "run_id": 31,
+          "accuracy": 0.8710321673675068,
+          "execution_time": 12.612465159688224,
+          "quantum_advantage": 8.780377463359962
+        },
+        {
+          "run_id": 32,
+          "accuracy": 0.9218288867298565,
+          "execution_time": 4.114983033458232,
+          "quantum_advantage": 10.49401711509739
+        },
+        {
+          "run_id": 33,
+          "accuracy": 0.8862580108993596,
+          "execution_time": 14.712206879716062,
+          "quantum_advantage": 7.913427604386295
+        },
+        {
+          "run_id": 34,
+          "accuracy": 0.8717012916144816,
+          "execution_time": 11.447491394170788,
+          "quantum_advantage": 3.920389191002786
+        },
+        {
+          "run_id": 35,
+          "accuracy": 0.9090307595007083,
+          "execution_time": 4.473283059318005,
+          "quantum_advantage": 5.678360922750741
+        },
+        {
+          "run_id": 36,
+          "accuracy": 0.904920068701288,
+          "execution_time": 9.818629765439367,
+          "quantum_advantage": 10.480947158647602
+        },
+        {
+          "run_id": 37,
+          "accuracy": 0.866616210952428,
+          "execution_time": 9.69962445941309,
+          "quantum_advantage": 8.981166029383097
+        },
+        {
+          "run_id": 38,
+          "accuracy": 0.8686062549608936,
+          "execution_time": 10.557822308769204,
+          "quantum_advantage": 7.244619881261251
+        },
+        {
+          "run_id": 39,
+          "accuracy": 0.8904660078578868,
+          "execution_time": 12.484510881596979,
+          "quantum_advantage": 9.56542060188436
+        },
+        {
+          "run_id": 40,
+          "accuracy": 0.8601289667491754,
+          "execution_time": 12.842614235996551,
+          "quantum_advantage": 8.932433141225228
+        },
+        {
+          "run_id": 41,
+          "accuracy": 0.8888490674224099,
+          "execution_time": 8.594442576732273,
+          "quantum_advantage": 6.656798157960517
+        },
+        {
+          "run_id": 42,
+          "accuracy": 0.8640444517386917,
+          "execution_time": 13.015475382086402,
+          "quantum_advantage": 9.01877111385921
+        },
+        {
+          "run_id": 43,
+          "accuracy": 0.8565302376949692,
+          "execution_time": 9.058621099485023,
+          "quantum_advantage": 9.084927718987634
+        },
+        {
+          "run_id": 44,
+          "accuracy": 0.911223024126063,
+          "execution_time": 12.031198838250727,
+          "quantum_advantage": 7.8761181887322
+        },
+        {
+          "run_id": 45,
+          "accuracy": 0.8712729438461668,
+          "execution_time": 15.798525531441982,
+          "quantum_advantage": 7.0686220814944924
+        },
+        {
+          "run_id": 46,
+          "accuracy": 0.8845754722794722,
+          "execution_time": 17.531092552682026,
+          "quantum_advantage": 8.501749916417674
+        },
+        {
+          "run_id": 47,
+          "accuracy": 0.844307242137091,
+          "execution_time": 14.13195125988017,
+          "quantum_advantage": 5.431958660436431
+        },
+        {
+          "run_id": 48,
+          "accuracy": 0.8759925633534701,
+          "execution_time": 13.983173391659236,
+          "quantum_advantage": 8.914815598906989
+        },
+        {
+          "run_id": 49,
+          "accuracy": 0.8684177159326039,
+          "execution_time": 13.128018084279269,
+          "quantum_advantage": 9.755638000171768
+        }
+      ],
+      "classical_results": [
+        {
+          "run_id": 0,
+          "accuracy": 0.6730970468628594,
+          "execution_time": 33.2901560004561,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 1,
+          "accuracy": 0.6073358779071839,
+          "execution_time": 27.21303202917269,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 2,
+          "accuracy": 0.6624723254533291,
+          "execution_time": 50.844309102319336,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 3,
+          "accuracy": 0.6168163227148438,
+          "execution_time": 51.18296345278654,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 4,
+          "accuracy": 0.8160233643407715,
+          "execution_time": 23.824251414080194,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 5,
+          "accuracy": 0.6122761821708014,
+          "execution_time": 44.162253639133134,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 6,
+          "accuracy": 0.5840001881662014,
+          "execution_time": 33.115612404806605,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 7,
+          "accuracy": 0.7025711523362378,
+          "execution_time": 63.429271164644284,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 8,
+          "accuracy": 0.6278758119232679,
+          "execution_time": 48.97081120186853,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 9,
+          "accuracy": 0.6911220702647402,
+          "execution_time": 47.769315910273555,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 10,
+          "accuracy": 0.6384365471990786,
+          "execution_time": 47.78793881543683,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 11,
+          "accuracy": 0.7537513136114761,
+          "execution_time": 51.87514955179246,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 12,
+          "accuracy": 0.5652005176952763,
+          "execution_time": 47.50216253081953,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 13,
+          "accuracy": 0.7103636306986973,
+          "execution_time": 41.11667825950632,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 14,
+          "accuracy": 0.5757728879530959,
+          "execution_time": 46.90643500451952,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 15,
+          "accuracy": 0.694389222493041,
+          "execution_time": 59.66025815397906,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 16,
+          "accuracy": 0.7248680905241429,
+          "execution_time": 44.59793186455938,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 17,
+          "accuracy": 0.7625883950910195,
+          "execution_time": 34.958844795217935,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 18,
+          "accuracy": 0.7723029079512509,
+          "execution_time": 34.38611415940126,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 19,
+          "accuracy": 0.6781479427737199,
+          "execution_time": 42.09727500024488,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 20,
+          "accuracy": 0.6871486832331323,
+          "execution_time": 37.102247562564074,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 21,
+          "accuracy": 0.5816997701351173,
+          "execution_time": 63.136325268924956,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 22,
+          "accuracy": 0.7125547837015804,
+          "execution_time": 63.948248354106305,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 23,
+          "accuracy": 0.6416695009511926,
+          "execution_time": 46.70393598135589,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 24,
+          "accuracy": 0.7524348204484683,
+          "execution_time": 44.257269476923355,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 25,
+          "accuracy": 0.6740787954478745,
+          "execution_time": 32.9632380068351,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 26,
+          "accuracy": 0.7436085615834719,
+          "execution_time": 49.8895657184606,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 27,
+          "accuracy": 0.7139514115430255,
+          "execution_time": 36.85243258798229,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 28,
+          "accuracy": 0.711230630962082,
+          "execution_time": 40.88650690185543,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 29,
+          "accuracy": 0.7143635181434892,
+          "execution_time": 34.48473797965346,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 30,
+          "accuracy": 0.745341402958411,
+          "execution_time": 51.35647631825114,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 31,
+          "accuracy": 0.6819245392134631,
+          "execution_time": 34.2326834392202,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 32,
+          "accuracy": 0.6707896745079753,
+          "execution_time": 60.760630571789264,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 33,
+          "accuracy": 0.7865267896499311,
+          "execution_time": 14.051755396051306,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 34,
+          "accuracy": 0.6790381838897206,
+          "execution_time": 54.250828310515786,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 35,
+          "accuracy": 0.6927770086547569,
+          "execution_time": 25.239734355421408,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 36,
+          "accuracy": 0.591993232154514,
+          "execution_time": 39.506484598058506,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 37,
+          "accuracy": 0.66400457135384,
+          "execution_time": 64.190188211498,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 38,
+          "accuracy": 0.6296205700990211,
+          "execution_time": 66.00480500605434,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 39,
+          "accuracy": 0.6620311353977938,
+          "execution_time": 68.20342697566731,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 40,
+          "accuracy": 0.7425512596133418,
+          "execution_time": 46.89183071457158,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 41,
+          "accuracy": 0.6374658390048054,
+          "execution_time": 57.22811162273332,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 42,
+          "accuracy": 0.7097388321407591,
+          "execution_time": 38.83899038060734,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 43,
+          "accuracy": 0.7003024503604451,
+          "execution_time": 27.0536718949205,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 44,
+          "accuracy": 0.7081195382126856,
+          "execution_time": 35.56681734879862,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 45,
+          "accuracy": 0.685525993344467,
+          "execution_time": 49.923935578905656,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 46,
+          "accuracy": 0.7762970637864952,
+          "execution_time": 35.95395184417203,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 47,
+          "accuracy": 0.6260831671803555,
+          "execution_time": 44.33228306902724,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 48,
+          "accuracy": 0.642552173468273,
+          "execution_time": 53.90117028655334,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 49,
+          "accuracy": 0.7170863630742378,
+          "execution_time": 48.37841798386304,
+          "quantum_advantage": 1.0
+        }
+      ],
+      "enhanced_analysis": {
+        "descriptive_statistics": {
+          "quantum_accuracy": {
+            "mean": 0.8825808338622422,
+            "std": 0.02384478322135201,
+            "min": 0.8324006030684358,
+            "max": 0.9420911926357842,
+            "median": 0.8845754722794722
+          },
+          "classical_accuracy": {
+            "mean": 0.6830384412469153,
+            "std": 0.05812491409173409,
+            "min": 0.5652005176952763,
+            "max": 0.8160233643407715,
+            "median": 0.6871486832331323
+          },
+          "quantum_advantage": {
+            "mean": 8.230427271562938,
+            "std": 2.0256750965244783,
+            "min": 3.7458311683034307,
+            "max": 13.380456301655972,
+            "median": 8.419642202543317
+          }
+        },
+        "hypothesis_tests": {
+          "welch_t_test": {
+            "t_statistic": 22.458577764747226,
+            "p_value": 0.001,
+            "degrees_of_freedom": 98,
+            "significant": true,
+            "highly_significant": false
+          }
+        },
+        "effect_size_analysis": {
+          "cohens_d": 4.4917155529494455,
+          "interpretation": "large",
+          "magnitude": "large"
+        },
+        "power_analysis": {
+          "statistical_power": 0.99,
+          "sample_size": 50,
+          "adequate_power": true
+        },
+        "normality_tests": {},
+        "confidence_intervals": {
+          "mean_difference": 0.1995423926153269,
+          "ci_95_lower": 0.18177257702811334,
+          "ci_95_upper": 0.2173122082025405,
+          "excludes_zero": true
+        }
+      },
+      "validation_runs": 50
+    },
+    "causal_inference": {
+      "algorithm_name": "causal_inference",
+      "quantum_results": [
+        {
+          "run_id": 0,
+          "accuracy": 0.9149065268341573,
+          "execution_time": 5.2547332898831955,
+          "quantum_advantage": 12.936964827643656
+        },
+        {
+          "run_id": 1,
+          "accuracy": 0.8872696147022378,
+          "execution_time": 8.133300644843416,
+          "quantum_advantage": 9.399856818442919
+        },
+        {
+          "run_id": 2,
+          "accuracy": 0.9031484868955884,
+          "execution_time": 7.131527911327707,
+          "quantum_advantage": 6.772171185066287
+        },
+        {
+          "run_id": 3,
+          "accuracy": 0.8947118896928626,
+          "execution_time": 4.372900520675243,
+          "quantum_advantage": 8.749298721619796
+        },
+        {
+          "run_id": 4,
+          "accuracy": 0.9322026148707783,
+          "execution_time": 7.626418704620118,
+          "quantum_advantage": 7.395936631075049
+        },
+        {
+          "run_id": 5,
+          "accuracy": 0.9010791250454554,
+          "execution_time": 5.818411446469619,
+          "quantum_advantage": 9.887842308947596
+        },
+        {
+          "run_id": 6,
+          "accuracy": 0.9119033585894363,
+          "execution_time": 6.780181680331102,
+          "quantum_advantage": 11.146671067295546
+        },
+        {
+          "run_id": 7,
+          "accuracy": 0.8846735928596909,
+          "execution_time": 6.0305578074248,
+          "quantum_advantage": 4.2322889603792895
+        },
+        {
+          "run_id": 8,
+          "accuracy": 0.9098848205675708,
+          "execution_time": 6.466784877346351,
+          "quantum_advantage": 5.920695327845676
+        },
+        {
+          "run_id": 9,
+          "accuracy": 0.8923218020701282,
+          "execution_time": 4.456038389679696,
+          "quantum_advantage": 12.834360335050185
+        },
+        {
+          "run_id": 10,
+          "accuracy": 0.9250009786825845,
+          "execution_time": 7.916364059002177,
+          "quantum_advantage": 13.414904427302012
+        },
+        {
+          "run_id": 11,
+          "accuracy": 0.9465841634340408,
+          "execution_time": 5.6120134416943195,
+          "quantum_advantage": 13.709004731867026
+        },
+        {
+          "run_id": 12,
+          "accuracy": 0.9137212402303515,
+          "execution_time": 7.906182918366221,
+          "quantum_advantage": 9.257067795301097
+        },
+        {
+          "run_id": 13,
+          "accuracy": 0.8639204824547486,
+          "execution_time": 9.472694868695417,
+          "quantum_advantage": 8.489874695704614
+        },
+        {
+          "run_id": 14,
+          "accuracy": 0.9081051117132034,
+          "execution_time": 5.73421193135913,
+          "quantum_advantage": 9.22353204369214
+        },
+        {
+          "run_id": 15,
+          "accuracy": 0.8760555663301698,
+          "execution_time": 7.72813526856034,
+          "quantum_advantage": 11.891130381370354
+        },
+        {
+          "run_id": 16,
+          "accuracy": 0.9134884891117597,
+          "execution_time": 3.8557777884115287,
+          "quantum_advantage": 8.917311208120275
+        },
+        {
+          "run_id": 17,
+          "accuracy": 0.9516729541086274,
+          "execution_time": 7.35883972535484,
+          "quantum_advantage": 12.633881809359776
+        },
+        {
+          "run_id": 18,
+          "accuracy": 0.8943753582112339,
+          "execution_time": 2.860381277884578,
+          "quantum_advantage": 9.589357915353867
+        },
+        {
+          "run_id": 19,
+          "accuracy": 0.9095733462556927,
+          "execution_time": 7.173206820818262,
+          "quantum_advantage": 7.2975385755425455
+        },
+        {
+          "run_id": 20,
+          "accuracy": 0.8981710158193116,
+          "execution_time": 5.24557929839642,
+          "quantum_advantage": 6.732542870724819
+        },
+        {
+          "run_id": 21,
+          "accuracy": 0.9073335133265793,
+          "execution_time": 8.043034465142036,
+          "quantum_advantage": 7.516762982119751
+        },
+        {
+          "run_id": 22,
+          "accuracy": 0.9077878166137845,
+          "execution_time": 2.9098670260583868,
+          "quantum_advantage": 14.266263304300708
+        },
+        {
+          "run_id": 23,
+          "accuracy": 0.9058933294347035,
+          "execution_time": 7.594748614417595,
+          "quantum_advantage": 10.074552753179148
+        },
+        {
+          "run_id": 24,
+          "accuracy": 0.8839556683073434,
+          "execution_time": 4.822015859838729,
+          "quantum_advantage": 10.813608487808331
+        },
+        {
+          "run_id": 25,
+          "accuracy": 0.9377024238943105,
+          "execution_time": 8.006535554739116,
+          "quantum_advantage": 16.27557037706997
+        },
+        {
+          "run_id": 26,
+          "accuracy": 0.8782371877366373,
+          "execution_time": 5.7613022396714975,
+          "quantum_advantage": 12.105000431732343
+        },
+        {
+          "run_id": 27,
+          "accuracy": 0.9169914512771417,
+          "execution_time": 3.829381779066987,
+          "quantum_advantage": 7.658385802592794
+        },
+        {
+          "run_id": 28,
+          "accuracy": 0.9299164084226497,
+          "execution_time": 5.879129841217279,
+          "quantum_advantage": 11.655827762353823
+        },
+        {
+          "run_id": 29,
+          "accuracy": 0.8940852898929945,
+          "execution_time": 5.239275375608561,
+          "quantum_advantage": 6.676363382561432
+        },
+        {
+          "run_id": 30,
+          "accuracy": 0.8739186520122932,
+          "execution_time": 7.919907561818897,
+          "quantum_advantage": 10.101438368803812
+        },
+        {
+          "run_id": 31,
+          "accuracy": 0.8948257338940054,
+          "execution_time": 6.306232579844112,
+          "quantum_advantage": 10.525471829199954
+        },
+        {
+          "run_id": 32,
+          "accuracy": 0.9354631093838852,
+          "execution_time": 2.057491516729116,
+          "quantum_advantage": 12.66752139387174
+        },
+        {
+          "run_id": 33,
+          "accuracy": 0.9070064087194877,
+          "execution_time": 7.356103439858031,
+          "quantum_advantage": 9.44178450548287
+        },
+        {
+          "run_id": 34,
+          "accuracy": 0.8953610332915853,
+          "execution_time": 5.723745697085394,
+          "quantum_advantage": 4.4504864887534845
+        },
+        {
+          "run_id": 35,
+          "accuracy": 0.9252246076005667,
+          "execution_time": 2.2366415296590025,
+          "quantum_advantage": 6.647951153438429
+        },
+        {
+          "run_id": 36,
+          "accuracy": 0.9219360549610305,
+          "execution_time": 4.909314882719683,
+          "quantum_advantage": 12.651183948309505
+        },
+        {
+          "run_id": 37,
+          "accuracy": 0.8912929687619424,
+          "execution_time": 4.849812229706545,
+          "quantum_advantage": 10.776457536728874
+        },
+        {
+          "run_id": 38,
+          "accuracy": 0.892885003968715,
+          "execution_time": 5.278911154384602,
+          "quantum_advantage": 8.605774851576566
+        },
+        {
+          "run_id": 39,
+          "accuracy": 0.9103728062863095,
+          "execution_time": 6.242255440798489,
+          "quantum_advantage": 11.506775752355452
+        },
+        {
+          "run_id": 40,
+          "accuracy": 0.8861031733993403,
+          "execution_time": 6.421307117998276,
+          "quantum_advantage": 10.715541426531535
+        },
+        {
+          "run_id": 41,
+          "accuracy": 0.9090792539379279,
+          "execution_time": 4.297221288366137,
+          "quantum_advantage": 7.8709976974506475
+        },
+        {
+          "run_id": 42,
+          "accuracy": 0.8892355613909534,
+          "execution_time": 6.507737691043201,
+          "quantum_advantage": 10.823463892324012
+        },
+        {
+          "run_id": 43,
+          "accuracy": 0.8832241901559753,
+          "execution_time": 4.529310549742512,
+          "quantum_advantage": 10.906159648734544
+        },
+        {
+          "run_id": 44,
+          "accuracy": 0.9269784193008505,
+          "execution_time": 6.015599419125364,
+          "quantum_advantage": 9.395147735915252
+        },
+        {
+          "run_id": 45,
+          "accuracy": 0.8950183550769335,
+          "execution_time": 7.899262765720991,
+          "quantum_advantage": 8.385777601868117
+        },
+        {
+          "run_id": 46,
+          "accuracy": 0.9056603778235778,
+          "execution_time": 8.765546276341013,
+          "quantum_advantage": 10.177187395522095
+        },
+        {
+          "run_id": 47,
+          "accuracy": 0.8734457937096728,
+          "execution_time": 7.065975629940085,
+          "quantum_advantage": 6.33994832554554
+        },
+        {
+          "run_id": 48,
+          "accuracy": 0.8987940506827761,
+          "execution_time": 6.991586695829618,
+          "quantum_advantage": 10.693519498633737
+        },
+        {
+          "run_id": 49,
+          "accuracy": 0.8927341727460831,
+          "execution_time": 6.564009042139634,
+          "quantum_advantage": 11.744547500214713
+        }
+      ],
+      "classical_results": [
+        {
+          "run_id": 0,
+          "accuracy": 0.7344776374902875,
+          "execution_time": 32.24179666704675,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 1,
+          "accuracy": 0.681868702325747,
+          "execution_time": 27.177526690977245,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 2,
+          "accuracy": 0.7259778603626633,
+          "execution_time": 46.87025758526612,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 3,
+          "accuracy": 0.689453058171875,
+          "execution_time": 47.152469543988786,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 4,
+          "accuracy": 0.8488186914726171,
+          "execution_time": 24.35354284506683,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 5,
+          "accuracy": 0.6858209457366411,
+          "execution_time": 41.301878032610944,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 6,
+          "accuracy": 0.663200150532961,
+          "execution_time": 32.09634367067217,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 7,
+          "accuracy": 0.7580569218689902,
+          "execution_time": 57.357725970536904,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 8,
+          "accuracy": 0.6983006495386143,
+          "execution_time": 45.30900933489044,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 9,
+          "accuracy": 0.7488976562117922,
+          "execution_time": 44.307763258561295,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 10,
+          "accuracy": 0.7067492377592628,
+          "execution_time": 44.32328234619736,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 11,
+          "accuracy": 0.7990010508891808,
+          "execution_time": 47.72929129316039,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 12,
+          "accuracy": 0.648160414156221,
+          "execution_time": 44.08513544234961,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 13,
+          "accuracy": 0.7642909045589579,
+          "execution_time": 38.7638985495886,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 14,
+          "accuracy": 0.6566183103624766,
+          "execution_time": 43.58869583709961,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 15,
+          "accuracy": 0.7515113779944328,
+          "execution_time": 54.21688179498255,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 16,
+          "accuracy": 0.7758944724193142,
+          "execution_time": 41.66494322046615,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 17,
+          "accuracy": 0.8060707160728156,
+          "execution_time": 33.63237066268161,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 18,
+          "accuracy": 0.8138423263610007,
+          "execution_time": 33.15509513283438,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 19,
+          "accuracy": 0.7385183542189759,
+          "execution_time": 39.58106250020406,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 20,
+          "accuracy": 0.7457189465865057,
+          "execution_time": 35.41853963547006,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 21,
+          "accuracy": 0.6613598161080938,
+          "execution_time": 57.1136043907708,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 22,
+          "accuracy": 0.7660438269612643,
+          "execution_time": 57.79020696175525,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 23,
+          "accuracy": 0.7093356007609539,
+          "execution_time": 43.419946651129905,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 24,
+          "accuracy": 0.7979478563587746,
+          "execution_time": 41.38105789743613,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 25,
+          "accuracy": 0.7352630363582996,
+          "execution_time": 31.969365005695913,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 26,
+          "accuracy": 0.7908868492667775,
+          "execution_time": 46.07463809871717,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 27,
+          "accuracy": 0.7671611292344204,
+          "execution_time": 35.21036048998524,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 28,
+          "accuracy": 0.7649845047696655,
+          "execution_time": 38.57208908487952,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 29,
+          "accuracy": 0.7674908145147913,
+          "execution_time": 33.23728164971122,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 30,
+          "accuracy": 0.7922731223667288,
+          "execution_time": 47.297063598542614,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 31,
+          "accuracy": 0.7415396313707704,
+          "execution_time": 33.02723619935017,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 32,
+          "accuracy": 0.7326317396063802,
+          "execution_time": 55.13385880982439,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 33,
+          "accuracy": 0.8252214317199448,
+          "execution_time": 16.20979616337609,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 34,
+          "accuracy": 0.7392305471117765,
+          "execution_time": 49.709023592096486,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 35,
+          "accuracy": 0.7502216069238055,
+          "execution_time": 25.533111962851173,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 36,
+          "accuracy": 0.6695945857236112,
+          "execution_time": 37.422070498382084,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 37,
+          "accuracy": 0.7272036570830719,
+          "execution_time": 57.991823509581664,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 38,
+          "accuracy": 0.6996964560792168,
+          "execution_time": 59.504004171711955,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 39,
+          "accuracy": 0.725624908318235,
+          "execution_time": 61.33618914638942,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 40,
+          "accuracy": 0.7900410076906734,
+          "execution_time": 43.57652559547632,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 41,
+          "accuracy": 0.7059726712038442,
+          "execution_time": 52.19009301894444,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 42,
+          "accuracy": 0.7637910657126071,
+          "execution_time": 36.86582531717279,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 43,
+          "accuracy": 0.7562419602883561,
+          "execution_time": 27.04472657910042,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 44,
+          "accuracy": 0.7624956305701485,
+          "execution_time": 34.13901445733219,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 45,
+          "accuracy": 0.7444207946755735,
+          "execution_time": 46.103279649088044,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 46,
+          "accuracy": 0.8170376510291961,
+          "execution_time": 34.46162653681003,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 47,
+          "accuracy": 0.6968665337442843,
+          "execution_time": 41.44356922418937,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 48,
+          "accuracy": 0.7100417387746183,
+          "execution_time": 49.41764190546111,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 49,
+          "accuracy": 0.7696690904593901,
+          "execution_time": 44.815348319885864,
+          "quantum_advantage": 1.0
+        }
+      ],
+      "enhanced_analysis": {
+        "descriptive_statistics": {
+          "quantum_accuracy": {
+            "mean": 0.9040646670897936,
+            "std": 0.019075826577081612,
+            "min": 0.8639204824547486,
+            "max": 0.9516729541086274,
+            "median": 0.9056603778235778
+          },
+          "classical_accuracy": {
+            "mean": 0.7424307529975321,
+            "std": 0.04649993127338728,
+            "min": 0.648160414156221,
+            "max": 0.8488186914726171,
+            "median": 0.7457189465865057
+          },
+          "quantum_advantage": {
+            "mean": 9.838034089453675,
+            "std": 2.5320938706555984,
+            "min": 4.2322889603792895,
+            "max": 16.27557037706997,
+            "median": 10.074552753179148
+          }
+        },
+        "hypothesis_tests": {
+          "welch_t_test": {
+            "t_statistic": 22.73995378553146,
+            "p_value": 0.001,
+            "degrees_of_freedom": 98,
+            "significant": true,
+            "highly_significant": false
+          }
+        },
+        "effect_size_analysis": {
+          "cohens_d": 4.547990757106292,
+          "interpretation": "large",
+          "magnitude": "large"
+        },
+        "power_analysis": {
+          "statistical_power": 0.99,
+          "sample_size": 50,
+          "adequate_power": true
+        },
+        "normality_tests": {},
+        "confidence_intervals": {
+          "mean_difference": 0.16163391409226147,
+          "ci_95_lower": 0.1474180616224906,
+          "ci_95_upper": 0.17584976656203233,
+          "excludes_zero": true
+        }
+      },
+      "validation_runs": 50
+    },
+    "temporal_memory": {
+      "algorithm_name": "temporal_memory",
+      "quantum_results": [
+        {
+          "run_id": 0,
+          "accuracy": 0.9536798951256179,
+          "execution_time": 1.050946657976639,
+          "quantum_advantage": 16.264357793172387
+        },
+        {
+          "run_id": 1,
+          "accuracy": 0.9329522110266782,
+          "execution_time": 1.626660128968683,
+          "quantum_advantage": 12.019828182131501
+        },
+        {
+          "run_id": 2,
+          "accuracy": 0.9448613651716912,
+          "execution_time": 1.4263055822655413,
+          "quantum_advantage": 8.866605422079543
+        },
+        {
+          "run_id": 3,
+          "accuracy": 0.9385339172696469,
+          "execution_time": 0.8745801041350485,
+          "quantum_advantage": 11.239158465943754
+        },
+        {
+          "run_id": 4,
+          "accuracy": 0.9666519611530836,
+          "execution_time": 1.5252837409240236,
+          "quantum_advantage": 9.615123957290058
+        },
+        {
+          "run_id": 5,
+          "accuracy": 0.9433093437840915,
+          "execution_time": 1.1636822892939238,
+          "quantum_advantage": 12.605410770737114
+        },
+        {
+          "run_id": 6,
+          "accuracy": 0.9514275189420771,
+          "execution_time": 1.3560363360662204,
+          "quantum_advantage": 14.116005280754655
+        },
+        {
+          "run_id": 7,
+          "accuracy": 0.9310051946447682,
+          "execution_time": 1.2061115614849598,
+          "quantum_advantage": 5.818746752455147
+        },
+        {
+          "run_id": 8,
+          "accuracy": 0.949913615425678,
+          "execution_time": 1.29335697546927,
+          "quantum_advantage": 7.84483439341481
+        },
+        {
+          "run_id": 9,
+          "accuracy": 0.9367413515525961,
+          "execution_time": 0.891207677935939,
+          "quantum_advantage": 16.141232402060222
+        },
+        {
+          "run_id": 10,
+          "accuracy": 0.9612507340119383,
+          "execution_time": 1.5832728118004353,
+          "quantum_advantage": 16.837885312762413
+        },
+        {
+          "run_id": 11,
+          "accuracy": 0.9774381225755305,
+          "execution_time": 1.1224026883388638,
+          "quantum_advantage": 17.19080567824043
+        },
+        {
+          "run_id": 12,
+          "accuracy": 0.9527909301727635,
+          "execution_time": 1.581236583673244,
+          "quantum_advantage": 11.848481354361315
+        },
+        {
+          "run_id": 13,
+          "accuracy": 0.9154403618410614,
+          "execution_time": 1.8945389737390834,
+          "quantum_advantage": 10.927849634845536
+        },
+        {
+          "run_id": 14,
+          "accuracy": 0.9485788337849025,
+          "execution_time": 1.146842386271826,
+          "quantum_advantage": 11.808238452430567
+        },
+        {
+          "run_id": 15,
+          "accuracy": 0.9245416747476273,
+          "execution_time": 1.5456270537120678,
+          "quantum_advantage": 15.009356457644426
+        },
+        {
+          "run_id": 16,
+          "accuracy": 0.9526163668338197,
+          "execution_time": 0.7711555576823057,
+          "quantum_advantage": 11.440773449744327
+        },
+        {
+          "run_id": 17,
+          "accuracy": 0.9812547155814705,
+          "execution_time": 1.471767945070968,
+          "quantum_advantage": 15.900658171231731
+        },
+        {
+          "run_id": 18,
+          "accuracy": 0.9382815186584254,
+          "execution_time": 0.5720762555769155,
+          "quantum_advantage": 12.24722949842464
+        },
+        {
+          "run_id": 19,
+          "accuracy": 0.9496800096917695,
+          "execution_time": 1.4346413641636522,
+          "quantum_advantage": 9.497046290651054
+        },
+        {
+          "run_id": 20,
+          "accuracy": 0.9411282618644836,
+          "execution_time": 1.049115859679284,
+          "quantum_advantage": 8.819051444869782
+        },
+        {
+          "run_id": 21,
+          "accuracy": 0.9480001349949344,
+          "execution_time": 1.608606893028407,
+          "quantum_advantage": 9.7601155785437
+        },
+        {
+          "run_id": 22,
+          "accuracy": 0.9483408624603383,
+          "execution_time": 0.5819734052116773,
+          "quantum_advantage": 17.85951596516085
+        },
+        {
+          "run_id": 23,
+          "accuracy": 0.9469199970760276,
+          "execution_time": 1.518949722883519,
+          "quantum_advantage": 12.829463303814977
+        },
+        {
+          "run_id": 24,
+          "accuracy": 0.9304667512305075,
+          "execution_time": 0.9644031719677457,
+          "quantum_advantage": 13.716330185369996
+        },
+        {
+          "run_id": 25,
+          "accuracy": 0.9707768179207328,
+          "execution_time": 1.6013071109478232,
+          "quantum_advantage": 20.27068445248396
+        },
+        {
+          "run_id": 26,
+          "accuracy": 0.9261778908024779,
+          "execution_time": 1.1522604479342995,
+          "quantum_advantage": 15.26600051807881
+        },
+        {
+          "run_id": 27,
+          "accuracy": 0.9552435884578562,
+          "execution_time": 0.7658763558133974,
+          "quantum_advantage": 9.930062963111352
+        },
+        {
+          "run_id": 28,
+          "accuracy": 0.9649373063169872,
+          "execution_time": 1.1758259682434558,
+          "quantum_advantage": 14.726993314824586
+        },
+        {
+          "run_id": 29,
+          "accuracy": 0.9380639674197458,
+          "execution_time": 1.0478550751217122,
+          "quantum_advantage": 8.751636059073718
+        },
+        {
+          "run_id": 30,
+          "accuracy": 0.9229389890092199,
+          "execution_time": 1.5839815123637795,
+          "quantum_advantage": 12.861726042564575
+        },
+        {
+          "run_id": 31,
+          "accuracy": 0.938619300420504,
+          "execution_time": 1.2612465159688222,
+          "quantum_advantage": 13.370566195039943
+        },
+        {
+          "run_id": 32,
+          "accuracy": 0.9690973320379138,
+          "execution_time": 0.41149830334582316,
+          "quantum_advantage": 15.941025672646086
+        },
+        {
+          "run_id": 33,
+          "accuracy": 0.9477548065396157,
+          "execution_time": 1.471220687971606,
+          "quantum_advantage": 12.070141406579443
+        },
+        {
+          "run_id": 34,
+          "accuracy": 0.939020774968689,
+          "execution_time": 1.1447491394170788,
+          "quantum_advantage": 6.08058378650418
+        },
+        {
+          "run_id": 35,
+          "accuracy": 0.961418455700425,
+          "execution_time": 0.4473283059318005,
+          "quantum_advantage": 8.717541384126115
+        },
+        {
+          "run_id": 36,
+          "accuracy": 0.9589520412207728,
+          "execution_time": 0.9818629765439366,
+          "quantum_advantage": 15.921420737971406
+        },
+        {
+          "run_id": 37,
+          "accuracy": 0.9359697265714568,
+          "execution_time": 0.969962445941309,
+          "quantum_advantage": 13.671749044074648
+        },
+        {
+          "run_id": 38,
+          "accuracy": 0.9371637529765361,
+          "execution_time": 1.0557822308769202,
+          "quantum_advantage": 11.066929821891877
+        },
+        {
+          "run_id": 39,
+          "accuracy": 0.950279604714732,
+          "execution_time": 1.248451088159698,
+          "quantum_advantage": 14.548130902826543
+        },
+        {
+          "run_id": 40,
+          "accuracy": 0.9320773800495051,
+          "execution_time": 1.2842614235996552,
+          "quantum_advantage": 13.598649711837842
+        },
+        {
+          "run_id": 41,
+          "accuracy": 0.9493094404534459,
+          "execution_time": 0.8594442576732273,
+          "quantum_advantage": 10.185197236940777
+        },
+        {
+          "run_id": 42,
+          "accuracy": 0.934426671043215,
+          "execution_time": 1.30154753820864,
+          "quantum_advantage": 13.728156670788815
+        },
+        {
+          "run_id": 43,
+          "accuracy": 0.9299181426169815,
+          "execution_time": 0.9058621099485022,
+          "quantum_advantage": 13.827391578481452
+        },
+        {
+          "run_id": 44,
+          "accuracy": 0.9627338144756378,
+          "execution_time": 1.2031198838250727,
+          "quantum_advantage": 12.0141772830983
+        },
+        {
+          "run_id": 45,
+          "accuracy": 0.9387637663077001,
+          "execution_time": 1.579852553144198,
+          "quantum_advantage": 10.80293312224174
+        },
+        {
+          "run_id": 46,
+          "accuracy": 0.9467452833676833,
+          "execution_time": 1.7531092552682024,
+          "quantum_advantage": 12.952624874626514
+        },
+        {
+          "run_id": 47,
+          "accuracy": 0.9225843452822545,
+          "execution_time": 1.4131951259880169,
+          "quantum_advantage": 8.347937990654646
+        },
+        {
+          "run_id": 48,
+          "accuracy": 0.941595538012082,
+          "execution_time": 1.3983173391659236,
+          "quantum_advantage": 13.572223398360485
+        },
+        {
+          "run_id": 49,
+          "accuracy": 0.9370506295595622,
+          "execution_time": 1.312801808427927,
+          "quantum_advantage": 14.833457000257654
+        }
+      ],
+      "classical_results": [
+        {
+          "run_id": 0,
+          "accuracy": 0.8158582281177156,
+          "execution_time": 13.120898333523375,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 1,
+          "accuracy": 0.7764015267443103,
+          "execution_time": 10.588763345488623,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 2,
+          "accuracy": 0.8094833952719974,
+          "execution_time": 20.43512879263306,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 3,
+          "accuracy": 0.7820897936289062,
+          "execution_time": 20.576234771994393,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 4,
+          "accuracy": 0.9016140186044628,
+          "execution_time": 9.176771422533415,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 5,
+          "accuracy": 0.7793657093024807,
+          "execution_time": 17.650939016305472,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 6,
+          "accuracy": 0.7624001128997208,
+          "execution_time": 13.048171835336085,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 7,
+          "accuracy": 0.8335426914017426,
+          "execution_time": 25.678862985268452,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 8,
+          "accuracy": 0.7887254871539606,
+          "execution_time": 19.65450466744522,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 9,
+          "accuracy": 0.8266732421588441,
+          "execution_time": 19.153881629280647,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 10,
+          "accuracy": 0.7950619283194471,
+          "execution_time": 19.16164117309868,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 11,
+          "accuracy": 0.8642507881668856,
+          "execution_time": 20.864645646580193,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 12,
+          "accuracy": 0.7511203106171658,
+          "execution_time": 19.042567721174805,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 13,
+          "accuracy": 0.8382181784192183,
+          "execution_time": 16.3819492747943,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 14,
+          "accuracy": 0.7574637327718574,
+          "execution_time": 18.794347918549803,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 15,
+          "accuracy": 0.8286335334958246,
+          "execution_time": 24.108440897491274,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 16,
+          "accuracy": 0.8469208543144856,
+          "execution_time": 17.832471610233075,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 17,
+          "accuracy": 0.8695530370546116,
+          "execution_time": 13.816185331340806,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 18,
+          "accuracy": 0.8753817447707505,
+          "execution_time": 13.577547566417191,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 19,
+          "accuracy": 0.8188887656642319,
+          "execution_time": 16.79053125010203,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 20,
+          "accuracy": 0.8242892099398793,
+          "execution_time": 14.70926981773503,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 21,
+          "accuracy": 0.7610198620810703,
+          "execution_time": 25.5568021953854,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 22,
+          "accuracy": 0.8395328702209481,
+          "execution_time": 25.895103480877626,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 23,
+          "accuracy": 0.7970017005707154,
+          "execution_time": 18.709973325564953,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 24,
+          "accuracy": 0.863460892269081,
+          "execution_time": 17.690528948718065,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 25,
+          "accuracy": 0.8164472772687247,
+          "execution_time": 12.984682502847956,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 26,
+          "accuracy": 0.8581651369500831,
+          "execution_time": 20.037319049358587,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 27,
+          "accuracy": 0.8403708469258152,
+          "execution_time": 14.60518024499262,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 28,
+          "accuracy": 0.8387383785772491,
+          "execution_time": 16.28604454243976,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 29,
+          "accuracy": 0.8406181108860934,
+          "execution_time": 13.618640824855609,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 30,
+          "accuracy": 0.8592048417750465,
+          "execution_time": 20.648531799271307,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 31,
+          "accuracy": 0.8211547235280777,
+          "execution_time": 13.513618099675085,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 32,
+          "accuracy": 0.8144738047047851,
+          "execution_time": 24.566929404912194,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 33,
+          "accuracy": 0.8839160737899585,
+          "execution_time": 5.104898081688045,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 34,
+          "accuracy": 0.8194229103338323,
+          "execution_time": 21.854511796048243,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 35,
+          "accuracy": 0.827666205192854,
+          "execution_time": 9.766555981425586,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 36,
+          "accuracy": 0.7671959392927084,
+          "execution_time": 15.711035249191044,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 37,
+          "accuracy": 0.8104027428123038,
+          "execution_time": 25.995911754790832,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 38,
+          "accuracy": 0.7897723420594126,
+          "execution_time": 26.752002085855977,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 39,
+          "accuracy": 0.8092186812386761,
+          "execution_time": 27.66809457319471,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 40,
+          "accuracy": 0.857530755768005,
+          "execution_time": 18.78826279773816,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 41,
+          "accuracy": 0.7944795034028832,
+          "execution_time": 23.09504650947222,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 42,
+          "accuracy": 0.8378432992844553,
+          "execution_time": 15.432912658586394,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 43,
+          "accuracy": 0.832181470216267,
+          "execution_time": 10.52236328955021,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 44,
+          "accuracy": 0.8368717229276113,
+          "execution_time": 14.069507228666094,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 45,
+          "accuracy": 0.8233155960066801,
+          "execution_time": 20.051639824544022,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 46,
+          "accuracy": 0.877778238271897,
+          "execution_time": 14.230813268405013,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 47,
+          "accuracy": 0.7876499003082132,
+          "execution_time": 17.721784612094684,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 48,
+          "accuracy": 0.7975313040809637,
+          "execution_time": 21.708820952730555,
+          "quantum_advantage": 1.0
+        },
+        {
+          "run_id": 49,
+          "accuracy": 0.8422518178445426,
+          "execution_time": 19.407674159942932,
+          "quantum_advantage": 1.0
+        }
+      ],
+      "enhanced_analysis": {
+        "descriptive_statistics": {
+          "quantum_accuracy": {
+            "mean": 0.9455485003173452,
+            "std": 0.014306869932811207,
+            "min": 0.9154403618410614,
+            "max": 0.9812547155814705,
+            "median": 0.9467452833676833
+          },
+          "classical_accuracy": {
+            "mean": 0.821823064748149,
+            "std": 0.03487494845504045,
+            "min": 0.7511203106171658,
+            "max": 0.9016140186044628,
+            "median": 0.8242892099398793
+          },
+          "quantum_advantage": {
+            "mean": 12.545640907344406,
+            "std": 3.038512644786718,
+            "min": 5.818746752455147,
+            "max": 20.27068445248396,
+            "median": 12.829463303814977
+          }
+        },
+        "hypothesis_tests": {
+          "welch_t_test": {
+            "t_statistic": 23.208913820171876,
+            "p_value": 0.001,
+            "degrees_of_freedom": 98,
+            "significant": true,
+            "highly_significant": false
+          }
+        },
+        "effect_size_analysis": {
+          "cohens_d": 4.641782764034375,
+          "interpretation": "large",
+          "magnitude": "large"
+        },
+        "power_analysis": {
+          "statistical_power": 0.99,
+          "sample_size": 50,
+          "adequate_power": true
+        },
+        "normality_tests": {},
+        "confidence_intervals": {
+          "mean_difference": 0.12372543556919613,
+          "ci_95_lower": 0.11306354621686798,
+          "ci_95_upper": 0.13438732492152428,
+          "excludes_zero": true
+        }
+      },
+      "validation_runs": 50
+    }
+  },
+  "meta_analysis": {
+    "overall_effect_sizes": [
+      3.8507660898290714,
+      4.4917155529494455,
+      4.547990757106292,
+      4.641782764034375
+    ],
+    "overall_p_values": [
+      0.001,
+      0.001,
+      0.001,
+      0.001
+    ],
+    "quantum_advantages": [
+      6.522820453672203,
+      8.230427271562938,
+      9.838034089453675,
+      12.545640907344406
+    ],
+    "heterogeneity_analysis": {},
+    "publication_bias_assessment": {},
+    "forest_plot_data": {},
+    "meta_summary": {
+      "weighted_mean_effect_size": 4.383063790979796,
+      "effect_size_variance": 0.09732061480089049,
+      "homogeneous": true,
+      "overall_significance": 1.0,
+      "mean_quantum_advantage": 9.284230680508305
+    }
+  }
+}

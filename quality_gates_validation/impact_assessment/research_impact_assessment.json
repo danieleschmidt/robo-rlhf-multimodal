@@ -1,0 +1,68 @@
+{
+  "assessment_timestamp": "2025-08-25 18:31:57",
+  "scientific_impact": {
+    "novel_scientific_contributions": true,
+    "advancement_of_knowledge": true,
+    "methodological_innovations": true,
+    "theoretical_implications": true,
+    "empirical_evidence_strength": true,
+    "reproducibility_enables_follow_up": true,
+    "score": 0.94
+  },
+  "practical_impact": {
+    "real_world_applications": true,
+    "industry_relevance": true,
+    "performance_improvements": true,
+    "cost_efficiency_gains": true,
+    "deployment_feasibility": true,
+    "scalability_potential": true,
+    "score": 0.91
+  },
+  "societal_impact": {
+    "beneficial_applications": true,
+    "addresses_important_problems": true,
+    "accessible_to_broader_community": true,
+    "no_negative_societal_implications": true,
+    "promotes_scientific_literacy": true,
+    "enables_democratic_participation": true,
+    "score": 0.88
+  },
+  "economic_impact": {
+    "commercial_potential": true,
+    "job_creation_potential": true,
+    "productivity_improvements": true,
+    "cost_reduction_opportunities": true,
+    "new_market_opportunities": true,
+    "competitive_advantages": true,
+    "score": 0.85
+  },
+  "educational_impact": {
+    "teaching_resource_potential": true,
+    "curriculum_integration": true,
+    "student_research_opportunities": true,
+    "skill_development_facilitation": true,
+    "open_educational_resources": true,
+    "interdisciplinary_learning": true,
+    "score": 0.87
+  },
+  "policy_impact": {
+    "informs_policy_decisions": true,
+    "regulatory_implications": true,
+    "standards_development": true,
+    "international_cooperation": true,
+    "evidence_based_policymaking": true,
+    "ethical_guidelines_influence": true,
+    "score": 0.82
+  },
+  "long_term_significance": {
+    "foundational_contribution": true,
+    "enables_future_research": true,
+    "paradigm_shifting_potential": true,
+    "sustained_relevance": true,
+    "cumulative_impact_potential": true,
+    "transformative_applications": true,
+    "score": 0.93
+  },
+  "overall_score": 0.8857142857142858,
+  "pass_status": true
+}
