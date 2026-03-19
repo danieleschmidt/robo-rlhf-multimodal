@@ -1,66 +1,35 @@
 """
-Robo-RLHF-Multimodal: Multimodal Reinforcement Learning from Human Feedback for Robotics.
+robo_rlhf — Multimodal RLHF pipeline for robotics.
 
-End-to-end pipeline for collecting teleoperation data, gathering human preferences,
-and fine-tuning policies using state-of-the-art multimodal RLHF techniques.
+Core components
+---------------
+RobotObservation   : multimodal observation (image + proprioception)
+MultimodalEncoder  : CNN + MLP encoder → fused embedding
+RewardModel        : Bradley-Terry preference model
+PreferenceDataset  : dataset of (obs_a, obs_b, preference) pairs
+RLHFTrainer        : reward learning + PPO policy fine-tuning
 """
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 __author__ = "Daniel Schmidt"
-__email__ = "daniel@example.com"
 
-# Core imports (always available)
-from robo_rlhf.collectors import TeleOpCollector
-
-# Optional imports with graceful fallback
-try:
-    from robo_rlhf.preference import PreferencePairGenerator, PreferenceServer
-except ImportError:
-    PreferencePairGenerator, PreferenceServer = None, None
-
-try:
-    from robo_rlhf.algorithms import MultimodalRLHF
-except ImportError:
-    MultimodalRLHF = None
-
-try:
-    from robo_rlhf.models import VisionLanguageActor
-except ImportError:
-    VisionLanguageActor = None
-
-# Quantum-inspired autonomous capabilities (with graceful fallback)
-try:
-    from robo_rlhf.quantum import (
-        QuantumTaskPlanner,
-        QuantumDecisionEngine,
-        QuantumOptimizer,
-        MultiObjectiveOptimizer,
-        AutonomousSDLCExecutor,
-        PredictiveAnalytics,
-        ResourcePredictor
-    )
-except ImportError as e:
-    print(f"Warning: Quantum modules not available: {e}")
-    QuantumTaskPlanner = None
-    QuantumDecisionEngine = None
-    QuantumOptimizer = None
-    MultiObjectiveOptimizer = None
-    AutonomousSDLCExecutor = None
-    PredictiveAnalytics = None
-    ResourcePredictor = None
+from robo_rlhf.observation import RobotObservation, IMAGE_SHAPE, PROPRIO_DIM
+from robo_rlhf.encoder import MultimodalEncoder, ImageEncoder, ProprioEncoder
+from robo_rlhf.reward_model import RewardModel
+from robo_rlhf.preference_dataset import PreferenceDataset, PreferencePair
+from robo_rlhf.rlhf_trainer import RLHFTrainer, TrainerConfig, RobotPolicy
 
 __all__ = [
-    "TeleOpCollector",
-    "PreferencePairGenerator", 
-    "PreferenceServer",
-    "MultimodalRLHF",
-    "VisionLanguageActor",
-    # Quantum capabilities
-    "QuantumTaskPlanner",
-    "QuantumDecisionEngine",
-    "QuantumOptimizer", 
-    "MultiObjectiveOptimizer",
-    "AutonomousSDLCExecutor",
-    "PredictiveAnalytics",
-    "ResourcePredictor",
+    "RobotObservation",
+    "IMAGE_SHAPE",
+    "PROPRIO_DIM",
+    "MultimodalEncoder",
+    "ImageEncoder",
+    "ProprioEncoder",
+    "RewardModel",
+    "PreferenceDataset",
+    "PreferencePair",
+    "RLHFTrainer",
+    "TrainerConfig",
+    "RobotPolicy",
 ]
